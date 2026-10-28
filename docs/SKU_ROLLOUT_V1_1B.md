@@ -7,9 +7,9 @@ Each SKU records: product, unique SKU, optical power (diopters), `unit_label` (v
 
 ## Safe rollout
 1. Test PR build and Preview first.
-2. Back up the production Supabase schema/data.
-3. Apply `supabase/migrations/20261028_product_variants.sql` once to the Supabase project.
-4. Verify schema privileges and RLS with anonymous, customer and admin roles; do not seed arbitrary SKUs.
+2. **Database migration completed on 2026-10-28** for VIVILENS Supabase. Do **not** run the migration again on the current database. Apply it once only to a fresh environment when cloning the project.
+3. Verified: all 7 existing products remained in `inventory_mode='product'`, aggregate stock stayed at 121, listed-price aggregate remained unchanged, `product_variants` has 0 rows, RLS is enabled, and anon INSERT/UPDATE grants are absent.
+4. Run product/customer/admin RLS tests and confirm seller packaging conventions before activating SKUs.
 5. In Admin, open **SKU** for one product, enter verified SKU code, diopter, sale unit, stock, and price if distinct.
 6. After entering all valid SKUs, edit the parent product and switch its inventory mode from **product** to **variant**.
 7. Test product detail SKU selection, out-of-stock options, two powers as distinct cart lines, quantity limits, old cart behavior and mobile layouts.
