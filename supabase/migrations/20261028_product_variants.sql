@@ -1,6 +1,11 @@
 -- VIVILENS V1.1B: sellable stock-keeping units for prescription/power variants.
 -- Apply in Supabase SQL Editor only after reviewing actual VIVILENS SKUs, packaging and prices.
--- Does not alter legacy products or enable checkout.
+-- Preserves existing product inventory by default and does not enable checkout.
+alter table public.products
+  add column if not exists inventory_mode text not null default 'product'
+  check (inventory_mode in ('product','variant'));
+
+-- Switch to inventory_mode = 'variant' only after verified SKU rows are populated.
 create table if not exists public.product_variants (
   id uuid primary key default gen_random_uuid(),
   product_id uuid not null references public.products(id) on delete cascade,
