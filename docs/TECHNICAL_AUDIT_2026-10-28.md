@@ -37,3 +37,6 @@ Scope: source review of `main`, not a live browser acceptance test. No Supabase 
 
 ## Review caveat
 Cloudflare live URL could not be accessed by the inspection tool; deployment runtime state and mobile rendering remain **unverified**.
+
+## CI/CD verification follow-up (2026-10-28)
+A new commit was pushed on this audit branch to exercise the GitHub-triggered Cloudflare Preview path (rather than manually retrying an older build). Confirm the resulting build's effective Build command and Preview command in the Cloudflare build details before merging. This commit does not modify storefront application code or production branch settings.
