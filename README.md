@@ -93,3 +93,17 @@ Alternative: unzip the provided ZIP and use GitHub **Add file → Upload files**
 ## Suggested next release (V1.1)
 
 Add inventory per lens power / eye, cart variants, customer address book, COD checkout, order history, admin order management and server-side stock checks before taking real orders.
+
+
+## V1.1A — Shareable URLs and client-side metadata
+
+- Home: `/`
+- Shop: `/shop`
+- Product detail: `/products/<slug>` (e.g. `/products/milk-tea-brown`)
+- Customer account: `/account`; admin: `/admin`
+- Browser Back/Forward, page refresh and deep links are handled by the React router and Cloudflare SPA asset fallback.
+- Unknown pages and missing/inactive products show a not-found screen. Cloudflare's SPA fallback may still respond HTTP 200; this is an application-level 404, not an edge HTTP 404.
+- The browser updates document title, description, canonical, robots and Open Graph tags. **Client-rendered SEO tags do not guarantee correct rich previews for social crawlers or search engines that do not execute JavaScript.** Edge-side metadata rendering or SSR is required for production-grade per-product link previews.
+- Run `npm test` for routing unit tests, then `npm run build`.
+
+Do not claim checkout, prescription selection, order processing or payment availability; these are not included in V1.1A.
