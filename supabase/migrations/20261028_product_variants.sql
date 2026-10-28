@@ -21,6 +21,7 @@ create table if not exists public.product_variants (
 
 create index if not exists product_variants_product_idx on public.product_variants(product_id);
 alter table public.product_variants enable row level security;
+revoke all on table public.product_variants from anon, authenticated;
 
 -- A public customer may only see active SKUs under active parent products.
 create policy "variants_public_read" on public.product_variants
