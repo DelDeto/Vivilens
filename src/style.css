@@ -250,3 +250,17 @@ footer{background:#f9eff2}
  .vv-media-tools button{width:25px;height:24px}
 }
 @media(prefers-reduced-motion:reduce){.vv-gallery-thumbs button{transition:none}}
+
+
+/* V1.1B: optional SKU selection and admin editor */
+.variant-picker{display:flex;flex-direction:column;gap:9px;margin:20px 0;padding:16px;border:1px solid #ead4dc;border-radius:12px;background:#fff8fa}
+.variant-picker label{font-weight:700;color:#6f4356;font-size:13px}
+.variant-picker select{width:100%;min-height:44px;padding:10px 13px;border:1px solid #d9afbe;border-radius:9px;background:white;color:#603f50}
+.variant-picker small{color:#896c78;font-size:12px;line-height:1.6}
+.variant-list{display:flex;flex-direction:column;gap:8px;margin:16px 0;max-height:230px;overflow-y:auto}
+.variant-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px;border:1px solid #edd9e2;border-radius:10px}
+.variant-row span{display:flex;flex-direction:column;gap:3px;min-width:0;word-break:break-word}
+.variant-row b{color:#78465d;font-size:13px}
+.variant-row small{color:#907986;font-size:12px}
+.variant-row button{flex-shrink:0}
+@media(max-width:650px){.variant-picker{margin:15px 0}.variant-row{padding:8px}}
