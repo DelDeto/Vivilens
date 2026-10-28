@@ -40,3 +40,9 @@ Cloudflare live URL could not be accessed by the inspection tool; deployment run
 
 ## CI/CD verification follow-up (2026-10-28)
 A new commit was pushed on this audit branch to exercise the GitHub-triggered Cloudflare Preview path (rather than manually retrying an older build). Confirm the resulting build's effective Build command and Preview command in the Cloudflare build details before merging. This commit does not modify storefront application code or production branch settings.
+
+## Resolved: Cloudflare Preview configuration override
+- The Worker-level `previews_base_config` already had `npm run build`, but the branch-specific Preview `audit-v1-1-2026-10-28` had an independent empty `settings.build_command`. This branch override caused every Preview run to skip Vite and fail with a missing `dist` directory.
+- Fixed **only the branch-specific Preview** in Cloudflare via its Preview settings API: `build_command = npm run build`, `deploy_command = npx wrangler preview`.
+- Manual Preview build `349e3fae-b1a2-400e-b517-f90d0d5dbc48` for commit `b295b80` completed successfully: Vite generated `dist` and Wrangler deployed a branch-isolated Preview. Production `main` was not changed.
+- This documentation change is also a push-trigger verification: the ensuing automatic Preview build should inherit the branch-specific fixed settings.
