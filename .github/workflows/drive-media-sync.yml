@@ -7,6 +7,7 @@ on:
       - 'scripts/sync_drive_images.py'
       - '.github/workflows/drive-media-sync.yml'
       - 'requirements-media.txt'
+      - 'catalog/drive_products_2026-10-29.json'
   workflow_dispatch:
     inputs:
       mode:
@@ -63,7 +64,7 @@ jobs:
       - name: Optimize Drive images and optionally upload
         env:
           RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.ref == 'refs/heads/main' && 'upload' || 'dry-run') }}
-          RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'siren-gray' }}
-          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '5' || '2') }}
+          RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || '' }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '0' || '2') }}
         run: |
           python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
