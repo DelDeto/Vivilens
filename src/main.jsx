@@ -5,7 +5,7 @@ import {supabase,configured} from './supabase';
 import {demoProducts,money} from './data';
 import {ProductGallery,MediaEditor} from './ProductGallery';
 import {routeFromPath,pathForPage,updatePageMetadata} from './routing';
-import {formatPower,variantsForProduct,cartLineKey,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,boxPrice} from './variants';
+import {formatPower,variantsForProduct,cartLineKey,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,remainingPairBoxes,boxPrice} from './variants';
 import './style.css';
 
 const cartKey='vivilens-cart-v1';
@@ -71,13 +71,15 @@ function App(){
    const right=variants.find(v=>v.id===rightId&&v.product_id===p.id&&v.active);
    if(!left||!right||!isSupportedPower(left.power)||!isSupportedPower(right.power))return notify('Vui lòng chọn độ cho cả hai mắt.');
    if(!['chiếc','1 chiếc'].includes(left.unit_label.toLocaleLowerCase('vi').trim())||!['chiếc','1 chiếc'].includes(right.unit_label.toLocaleLowerCase('vi').trim()))return notify('SKU phải quản lý tồn kho theo từng chiếc lens.');
-   const boxes=availablePairBoxes(left,right);
-   if(boxes<1)return notify('Không đủ 2 chiếc lens theo độ cận đã chọn.');
    const key=pairCartKey(p.id,left.id,right.id);
+   const existing=cart.find(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)===key);
+   const max=remainingPairBoxes(cart,variants,p.id,left.id,right.id,existing?key:null);
+   if(max<1||(existing&&existing.qty>=max))return notify('Không đủ tồn kho để thêm một hộp gồm hai chiếc lens.');
    setCart(old=>{
     const ex=old.find(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)===key);
-    if(ex)return old.map(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)===key?{...x,qty:Math.min(boxes,x.qty+1)}:x);
-    return [...old,{id:p.id,leftVariantId:left.id,rightVariantId:right.id,qty:1}];
+    const safeMax=remainingPairBoxes(old,variants,p.id,left.id,right.id,ex?key:null);
+    if(ex)return old.map(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)===key?{...x,qty:Math.min(safeMax,x.qty+1)}:x);
+    return safeMax>=1?[...old,{id:p.id,leftVariantId:left.id,rightVariantId:right.id,qty:1}]:old;
    });
   } else {
    const stock=availableUnits(p,null);
@@ -96,8 +98,8 @@ function App(){
   if(!product)return;
   const left=leftId?variants.find(v=>v.id===leftId && v.product_id===id && v.active):null;
   const right=rightId?variants.find(v=>v.id===rightId && v.product_id===id && v.active):null;
-  const max=product.inventory_mode==='variant'?availablePairBoxes(left,right):availableUnits(product,null);
   const key=pairCartKey(id,leftId,rightId);
+  const max=product.inventory_mode==='variant'?remainingPairBoxes(cart,variants,id,leftId,rightId,key):availableUnits(product,null);
   setCart(old=>qty<=0?old.filter(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)!==key):old.map(x=>pairCartKey(x.id,x.leftVariantId,x.rightVariantId)===key?{...x,qty:Math.max(0,Math.min(qty,max))}:x));
  }
  async function authSubmit(e){e.preventDefault();if(!configured)return notify('Cần kết nối Supabase trước khi đăng ký tài khoản');setAuthBusy(true);const args={email,password};const {data,error}=authMode==='register'?await supabase.auth.signUp({...args,options:{emailRedirectTo:window.location.origin}}):await supabase.auth.signInWithPassword(args);setAuthBusy(false);if(error)return notify(error.message);if(authMode==='register'&&!data.session)notify('Vui lòng mở email để xác nhận tài khoản.');else{notify('Đăng nhập thành công');setAuthOpen(false);setEmail('');setPassword('')}}
