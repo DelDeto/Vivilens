@@ -2447,7 +2447,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1MZBXNZbIe96qo_LQskjvIEJRGaYSoyDJ",
       "drive_folder_url": "https://drive.google.com/drive/folders/1MZBXNZbIe96qo_LQskjvIEJRGaYSoyDJ",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1eeILitirUqnNMUue53cTG9U--13d1rCb",
+          "filename": "EVERY BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1eeILitirUqnNMUue53cTG9U--13d1rCb/view?usp=drivesdk"
+        },
+        {
+          "id": "1aInbY1tR-DhthUCx1fFK7gZJlL-Fo19o",
+          "filename": "EVERY BROWN (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1aInbY1tR-DhthUCx1fFK7gZJlL-Fo19o/view?usp=drivesdk"
+        },
+        {
+          "id": "1VAz4g_I5Yad6zOCZA2Kx5h7su0AamVH6",
+          "filename": "EVERY BROWN (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1VAz4g_I5Yad6zOCZA2Kx5h7su0AamVH6/view?usp=drivesdk"
+        },
+        {
+          "id": "1tSsGtEmhfGIQXr2I0pf0Um5TrVHB6Cx8",
+          "filename": "EVERY BROWN (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1tSsGtEmhfGIQXr2I0pf0Um5TrVHB6Cx8/view?usp=drivesdk"
+        },
+        {
+          "id": "13EuTTgyTNSNMFaQehYCtF1zupTDNE1Ss",
+          "filename": "EVERY BROWN (5).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/13EuTTgyTNSNMFaQehYCtF1zupTDNE1Ss/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Sandy Brown",
@@ -2457,7 +2490,22 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1qPo63-y42gp3jOK7COImjrADJj-RqUbb",
       "drive_folder_url": "https://drive.google.com/drive/folders/1qPo63-y42gp3jOK7COImjrADJj-RqUbb",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1WmV_e1uwyP7IMSSJTVU-gIKxqNk6W6Nk",
+          "filename": "192.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1WmV_e1uwyP7IMSSJTVU-gIKxqNk6W6Nk/view?usp=drivesdk"
+        },
+        {
+          "id": "1eIxdI-eMGMORYPH5AJONpRQ2tF4q62Wx",
+          "filename": "194.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1eIxdI-eMGMORYPH5AJONpRQ2tF4q62Wx/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 2
     },
     {
       "name": "Moon Light Gray",
@@ -2467,7 +2515,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1QuUN-cVUCcCSml0iO0-0OcYwatYhfhhf",
       "drive_folder_url": "https://drive.google.com/drive/folders/1QuUN-cVUCcCSml0iO0-0OcYwatYhfhhf",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1PoylA_RJs32oNZKcGihoTO-OwyaRXcKU",
+          "filename": "BÌA MOON LIGHT GRAY-min.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1PoylA_RJs32oNZKcGihoTO-OwyaRXcKU/view?usp=drivesdk"
+        },
+        {
+          "id": "1c6DCmdgGGuts-67K7tSb0vpzwB18VB46",
+          "filename": "BÌA MOON LIGHT GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1c6DCmdgGGuts-67K7tSb0vpzwB18VB46/view?usp=drivesdk"
+        },
+        {
+          "id": "14VBKIDJOHxRuNrLGkr6JCYmPCLMlW7G9",
+          "filename": "MOON LIGHT GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/14VBKIDJOHxRuNrLGkr6JCYmPCLMlW7G9/view?usp=drivesdk"
+        },
+        {
+          "id": "1WWacTMRD6sI73YjCQeq_cTBUYYeNym2v",
+          "filename": "MOON LIGHT GRAY (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1WWacTMRD6sI73YjCQeq_cTBUYYeNym2v/view?usp=drivesdk"
+        },
+        {
+          "id": "1E1dT8J3o9o3EqVqNC5nRoEU-p0Ob7Q5B",
+          "filename": "MOON LIGHT GRAY (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1E1dT8J3o9o3EqVqNC5nRoEU-p0Ob7Q5B/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Smoky Cloud",
@@ -2477,7 +2558,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1JhU5s_vitdLDTp5XH4lTfjifwPTnHbns",
       "drive_folder_url": "https://drive.google.com/drive/folders/1JhU5s_vitdLDTp5XH4lTfjifwPTnHbns",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1PMvyTPsLqVNqGzdgQ0C1X6ZFGbnaJFfs",
+          "filename": "SMOKY CLOUD.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1PMvyTPsLqVNqGzdgQ0C1X6ZFGbnaJFfs/view?usp=drivesdk"
+        },
+        {
+          "id": "1mCJhD-4bwMTEnTt5Fwx8SXa3KouCwwmi",
+          "filename": "SMOKY CLOUD.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1mCJhD-4bwMTEnTt5Fwx8SXa3KouCwwmi/view?usp=drivesdk"
+        },
+        {
+          "id": "1ksDaeJaNb5o_nTACGEqUlRamhL-BlqZQ",
+          "filename": "SMOKY CLOUD (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1ksDaeJaNb5o_nTACGEqUlRamhL-BlqZQ/view?usp=drivesdk"
+        },
+        {
+          "id": "1vvqHFdQB2yqGvFDUaJNO6To3clEfKpaA",
+          "filename": "SMOKY CLOUD (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1vvqHFdQB2yqGvFDUaJNO6To3clEfKpaA/view?usp=drivesdk"
+        },
+        {
+          "id": "1rhDyzxeoMgzRr00aziE9A4jN5v_zhd4t",
+          "filename": "SMOKY CLOUD (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1rhDyzxeoMgzRr00aziE9A4jN5v_zhd4t/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 6
     },
     {
       "name": "Spark Brown",
@@ -2487,7 +2601,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1BhCzgTozzPsCZ235ctfJO7wlgwMSk3B9",
       "drive_folder_url": "https://drive.google.com/drive/folders/1BhCzgTozzPsCZ235ctfJO7wlgwMSk3B9",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1UeMfEJAL_Nbw31gsAON75UCLQae_Ca9g",
+          "filename": "235.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1UeMfEJAL_Nbw31gsAON75UCLQae_Ca9g/view?usp=drivesdk"
+        },
+        {
+          "id": "1FjRJ9iAMtFzAZLcI_gzATKH_butsEos8",
+          "filename": "236.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1FjRJ9iAMtFzAZLcI_gzATKH_butsEos8/view?usp=drivesdk"
+        },
+        {
+          "id": "1qdgEW4RhHtvto0pgwhoIx0QxQjxnyV3Y",
+          "filename": "266.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1qdgEW4RhHtvto0pgwhoIx0QxQjxnyV3Y/view?usp=drivesdk"
+        },
+        {
+          "id": "1ZjYVzQntVKiXg8y4jdDaFCcG6wMgqeCc",
+          "filename": "267.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1ZjYVzQntVKiXg8y4jdDaFCcG6wMgqeCc/view?usp=drivesdk"
+        },
+        {
+          "id": "1g4dL3oXqGyS2W11mGbfqbMfG1pFhh-39",
+          "filename": "268.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1g4dL3oXqGyS2W11mGbfqbMfG1pFhh-39/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 8
     },
     {
       "name": "Deep Blue",
@@ -2497,7 +2644,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1n7wOqGv38IDq1pwViVQ2RAlXnbrLGQCk",
       "drive_folder_url": "https://drive.google.com/drive/folders/1n7wOqGv38IDq1pwViVQ2RAlXnbrLGQCk",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1E1O74Q3wFVeL88EZW5uOLX8OgRg6Lgj3",
+          "filename": "DEEP BLUE .JPEG",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1E1O74Q3wFVeL88EZW5uOLX8OgRg6Lgj3/view?usp=drivesdk"
+        },
+        {
+          "id": "16jxOWjqzhrZM8CokgBv5n5hnOn43h0g7",
+          "filename": "DEEP BLUE.JPEG",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/16jxOWjqzhrZM8CokgBv5n5hnOn43h0g7/view?usp=drivesdk"
+        },
+        {
+          "id": "1cgayMBrm9bq3qI28xGxpQyJJBF7Nn8ip",
+          "filename": "215-min.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1cgayMBrm9bq3qI28xGxpQyJJBF7Nn8ip/view?usp=drivesdk"
+        },
+        {
+          "id": "1Ihiag4J3icEHQdK5AHzcSF75MON30v3H",
+          "filename": "361.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Ihiag4J3icEHQdK5AHzcSF75MON30v3H/view?usp=drivesdk"
+        },
+        {
+          "id": "144ksEDdh4VGm8O0hZEV3sCSXVJcuE8Oc",
+          "filename": "366.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/144ksEDdh4VGm8O0hZEV3sCSXVJcuE8Oc/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 6
     },
     {
       "name": "Mute Gray",
@@ -2507,7 +2687,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1LQMQQ9bixXY3Y3jKNM2rR_U6lOX4fRED",
       "drive_folder_url": "https://drive.google.com/drive/folders/1LQMQQ9bixXY3Y3jKNM2rR_U6lOX4fRED",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1W_-MSg1yPdLwyQG1HfedazwHOWSGK69X",
+          "filename": "BÌA MUTE GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1W_-MSg1yPdLwyQG1HfedazwHOWSGK69X/view?usp=drivesdk"
+        },
+        {
+          "id": "1Lxao-DZVDjYmIQSe_oOkfr646qmuy-Fm",
+          "filename": "MUTE GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Lxao-DZVDjYmIQSe_oOkfr646qmuy-Fm/view?usp=drivesdk"
+        },
+        {
+          "id": "1i6boNXqWFngKx2BZbi1w2mWGoZLhlV6z",
+          "filename": "MUTE GRAY (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1i6boNXqWFngKx2BZbi1w2mWGoZLhlV6z/view?usp=drivesdk"
+        },
+        {
+          "id": "1D4AiPK33irBlzx1UgqBgLVa1vFfaFdYX",
+          "filename": "MUTE GRAY (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1D4AiPK33irBlzx1UgqBgLVa1vFfaFdYX/view?usp=drivesdk"
+        },
+        {
+          "id": "1mit1QDJM6JW_4NGrBsTTmmczXeAU2UsD",
+          "filename": "MUTE GRAY (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1mit1QDJM6JW_4NGrBsTTmmczXeAU2UsD/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Racy Gray",
@@ -2517,7 +2730,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "18SVqoFH5xLpkBbOgJ32RWJ0k-uERCivP",
       "drive_folder_url": "https://drive.google.com/drive/folders/18SVqoFH5xLpkBbOgJ32RWJ0k-uERCivP",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1OaYyctbSpLQzLex6Q4_RJUsBpQTqlDn0",
+          "filename": "BÌA RACY GRAY-min.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1OaYyctbSpLQzLex6Q4_RJUsBpQTqlDn0/view?usp=drivesdk"
+        },
+        {
+          "id": "1FF15InP6L73QgA_fVAa4UDjBlKNvXq2V",
+          "filename": "BÌA RACY GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1FF15InP6L73QgA_fVAa4UDjBlKNvXq2V/view?usp=drivesdk"
+        },
+        {
+          "id": "1ZANmG0Z82h7_7-41LbsdAeSZzZHpA9Ht",
+          "filename": "RACY GRAY.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1ZANmG0Z82h7_7-41LbsdAeSZzZHpA9Ht/view?usp=drivesdk"
+        },
+        {
+          "id": "1rRe3DMPPcyLbFu8SvQi-RUfFzo0VFhZp",
+          "filename": "RACY GRAY (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1rRe3DMPPcyLbFu8SvQi-RUfFzo0VFhZp/view?usp=drivesdk"
+        },
+        {
+          "id": "1tmHlFV8VDOnBr2CLfebBSeZUHD1XZ70f",
+          "filename": "RACY GRAY (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1tmHlFV8VDOnBr2CLfebBSeZUHD1XZ70f/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 6
     },
     {
       "name": "Snowing Brown",
@@ -2527,7 +2773,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1ev-L_orwoMYOAF6GADdtGUVVdv_LP5Zf",
       "drive_folder_url": "https://drive.google.com/drive/folders/1ev-L_orwoMYOAF6GADdtGUVVdv_LP5Zf",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1SB3sSQZSnNnMCp4oD6NZemHFugsX99Gq",
+          "filename": "BÌA SNOWING BROWN-min.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1SB3sSQZSnNnMCp4oD6NZemHFugsX99Gq/view?usp=drivesdk"
+        },
+        {
+          "id": "1eWnLVqpi0j6_asPt--I3St_D-R8DLxaB",
+          "filename": "BÌA SNOWING BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1eWnLVqpi0j6_asPt--I3St_D-R8DLxaB/view?usp=drivesdk"
+        },
+        {
+          "id": "1azqtEHP9ciI5H9PFmTNx89HRhmhs1K75",
+          "filename": "SNOWING BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1azqtEHP9ciI5H9PFmTNx89HRhmhs1K75/view?usp=drivesdk"
+        },
+        {
+          "id": "1c0_EIx3i7Ljd1ccbWyZsUcIdzqPYSghf",
+          "filename": "SNOWING BROWN (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1c0_EIx3i7Ljd1ccbWyZsUcIdzqPYSghf/view?usp=drivesdk"
+        },
+        {
+          "id": "1pC8pZy7H6D-hiYvj565iGCpbHNUXXstw",
+          "filename": "SNOWING BROWN (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1pC8pZy7H6D-hiYvj565iGCpbHNUXXstw/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 7
     },
     {
       "name": "Nani Gray",
@@ -2537,7 +2816,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1-hKc3zydFm-GDeSv9_OdGLLj6z1OOQWA",
       "drive_folder_url": "https://drive.google.com/drive/folders/1-hKc3zydFm-GDeSv9_OdGLLj6z1OOQWA",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "13y4cev_eLrSnXHhPcuDCbDXxmGkEwrOz",
+          "filename": "251.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/13y4cev_eLrSnXHhPcuDCbDXxmGkEwrOz/view?usp=drivesdk"
+        },
+        {
+          "id": "1NS9AOcK_XaJNV2lbqVVXC0s-GOGSTlzs",
+          "filename": "255.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1NS9AOcK_XaJNV2lbqVVXC0s-GOGSTlzs/view?usp=drivesdk"
+        },
+        {
+          "id": "11QFJIUBDPkioYpJKDj52AAtADbV_ioR9",
+          "filename": "256.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/11QFJIUBDPkioYpJKDj52AAtADbV_ioR9/view?usp=drivesdk"
+        },
+        {
+          "id": "1InUE9lLe6ddyYn0smO3Kjn-aPHwnRXld",
+          "filename": "257.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1InUE9lLe6ddyYn0smO3Kjn-aPHwnRXld/view?usp=drivesdk"
+        },
+        {
+          "id": "12N20WylikL2ec-fHVQPUuXXq3IlKKNTX",
+          "filename": "258.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/12N20WylikL2ec-fHVQPUuXXq3IlKKNTX/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 6
     },
     {
       "name": "Between Gray",
@@ -2547,7 +2859,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1YPNgxXcHYRviTzNifvd1Qn96cZy91-qM",
       "drive_folder_url": "https://drive.google.com/drive/folders/1YPNgxXcHYRviTzNifvd1Qn96cZy91-qM",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1hkHjrs7oYcXhg4SvZ3VsaIH0oIwGEIya",
+          "filename": "1790751012356_2220361902432329913_1234902244506557514_70ce01181bb27701db26c7bffd2bfe6c.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1hkHjrs7oYcXhg4SvZ3VsaIH0oIwGEIya/view?usp=drivesdk"
+        },
+        {
+          "id": "1cmSnRucbaGdkuccAdIFUt34_dbHrPG_i",
+          "filename": "1790751016558_2220361902432329913_1234902244506557514_2c30977b6300ad74fa98fafb732815aa.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1cmSnRucbaGdkuccAdIFUt34_dbHrPG_i/view?usp=drivesdk"
+        },
+        {
+          "id": "1Fzk_B7sFqSQ-EsVAVCsoZu5t-H9CQSwi",
+          "filename": "1790751020752_2220361902432329913_1234902244506557514_ef1d844989284e83255259f8eac1cb4a.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1Fzk_B7sFqSQ-EsVAVCsoZu5t-H9CQSwi/view?usp=drivesdk"
+        },
+        {
+          "id": "1Ez7CQCJYZ7a4OUQORdOIb6XFktp9wxkV",
+          "filename": "1790751025423_2220361902432329913_1234902244506557514_cfdfd9b2a7616a8b588a5609e5c5eca8.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1Ez7CQCJYZ7a4OUQORdOIb6XFktp9wxkV/view?usp=drivesdk"
+        },
+        {
+          "id": "1_-8K1vxAN_sQbpn56u5JIzK6eGvKhmHt",
+          "filename": "1790751331114_2220361902432329913_1234902244506557514_12bc5442e7354991bfb6338100bc8260.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1_-8K1vxAN_sQbpn56u5JIzK6eGvKhmHt/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Bubble Brown",
@@ -2557,7 +2902,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1XXd7AC1bUs8gQ0TYGOc-cOqR4CUptSUR",
       "drive_folder_url": "https://drive.google.com/drive/folders/1XXd7AC1bUs8gQ0TYGOc-cOqR4CUptSUR",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1UpVkeoNUacqgqYbEoiJV8s4jRyYMoaTX",
+          "filename": "BÌA BUBBLE BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1UpVkeoNUacqgqYbEoiJV8s4jRyYMoaTX/view?usp=drivesdk"
+        },
+        {
+          "id": "1nHHQcXhoKei06_uEinlnScIgXv-g_Otu",
+          "filename": "BUBBLE BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1nHHQcXhoKei06_uEinlnScIgXv-g_Otu/view?usp=drivesdk"
+        },
+        {
+          "id": "1lTuoYIXHFzYOBKCQ9kbN6PuRIgywonv2",
+          "filename": "BUBBLE BROWN (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1lTuoYIXHFzYOBKCQ9kbN6PuRIgywonv2/view?usp=drivesdk"
+        },
+        {
+          "id": "1PmQDH3FifySXFqGrV5wnABpj19kyoro3",
+          "filename": "BUBBLE BROWN (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1PmQDH3FifySXFqGrV5wnABpj19kyoro3/view?usp=drivesdk"
+        },
+        {
+          "id": "1HV_EUlAQzTmhr-n0wbtyM3tlti94AdE-",
+          "filename": "BUBBLE BROWN (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1HV_EUlAQzTmhr-n0wbtyM3tlti94AdE-/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Shy Gray",
@@ -2567,7 +2945,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "182IvZfI3cwRki0J0CBJyHyyt3B5OBev2",
       "drive_folder_url": "https://drive.google.com/drive/folders/182IvZfI3cwRki0J0CBJyHyyt3B5OBev2",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "150NmG3vNRDIPVkdIek7yrfVKse75kj-c",
+          "filename": "1790656174728_2220361902432329913_1234902244506557514_cf80fe1379e6364d98d7c8bbf3158313.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/150NmG3vNRDIPVkdIek7yrfVKse75kj-c/view?usp=drivesdk"
+        },
+        {
+          "id": "1LWQJrJpL0wvFqSu1gp1CPF4wY8Idb_xr",
+          "filename": "1790656178904_2220361902432329913_1234902244506557514_2c3fcdc0cd6f789461bcdccfc010bd76.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1LWQJrJpL0wvFqSu1gp1CPF4wY8Idb_xr/view?usp=drivesdk"
+        },
+        {
+          "id": "1HiqjTijcA6gpgDamrq0phHAkfDeM5I0Q",
+          "filename": "1790656195409_2220361902432329913_1234902244506557514_6ebd6af5c780facbc0e998cd051f15d2.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1HiqjTijcA6gpgDamrq0phHAkfDeM5I0Q/view?usp=drivesdk"
+        },
+        {
+          "id": "1oD7W05jrPONccNMkIn8iM2gtfGhQQXiE",
+          "filename": "1790656786542_2220361902432329913_1234902244506557514_ff4cbd28fc442b6739ab496af8084581.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1oD7W05jrPONccNMkIn8iM2gtfGhQQXiE/view?usp=drivesdk"
+        },
+        {
+          "id": "1oLKqcN5zhhfjbUuJS_09VdNjQC0AocYG",
+          "filename": "1790656966924_2220361902432329913_1234902244506557514_c3839c4eef3fe670261c792116339eda.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1oLKqcN5zhhfjbUuJS_09VdNjQC0AocYG/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Ai Blue",
@@ -2577,7 +2988,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1wgu4mWWnYfYDo1yrouZr9Qk-11XLIJHe",
       "drive_folder_url": "https://drive.google.com/drive/folders/1wgu4mWWnYfYDo1yrouZr9Qk-11XLIJHe",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1nQGnBLKW382voeidywiikfuOsP_visw0",
+          "filename": "AI BLUE.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1nQGnBLKW382voeidywiikfuOsP_visw0/view?usp=drivesdk"
+        },
+        {
+          "id": "1kgZ--KYeIgAgfWYIRIzq4TMwlg9TdsWF",
+          "filename": "AI BLUE (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1kgZ--KYeIgAgfWYIRIzq4TMwlg9TdsWF/view?usp=drivesdk"
+        },
+        {
+          "id": "1QVZWdDPUQjLQKIp9yAhFxUfkyy6ndSbt",
+          "filename": "AI BLUE (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1QVZWdDPUQjLQKIp9yAhFxUfkyy6ndSbt/view?usp=drivesdk"
+        },
+        {
+          "id": "1VERdxX-3_AgoL8_nPY97D3Q_1oGfhLM-",
+          "filename": "AI BLUE (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1VERdxX-3_AgoL8_nPY97D3Q_1oGfhLM-/view?usp=drivesdk"
+        },
+        {
+          "id": "10eDmhR4aZ6i6sAqpnRE3iuLOyxnCn56j",
+          "filename": "AI BLUE (5).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/10eDmhR4aZ6i6sAqpnRE3iuLOyxnCn56j/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 6
     },
     {
       "name": "Milky Blue",
@@ -2587,7 +3031,34 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1G5vVOgf24UnYlea1olN_0tL4X7XiXQaX",
       "drive_folder_url": "https://drive.google.com/drive/folders/1G5vVOgf24UnYlea1olN_0tL4X7XiXQaX",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1fakNNWaCUvsPIjj-Pir-BzD1ZNHnWaWd",
+          "filename": "1790664366397_2220361902432329913_1234902244506557514_aa421e9c1c2acaf130c953054273ad12.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1fakNNWaCUvsPIjj-Pir-BzD1ZNHnWaWd/view?usp=drivesdk"
+        },
+        {
+          "id": "12pRGlqbTV-wOfLRnhkFtCUBOtYr4gxR_",
+          "filename": "1790664372650_2220361902432329913_1234902244506557514_e4d945a8d89c9f823fc7803ed8c35d4b.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/12pRGlqbTV-wOfLRnhkFtCUBOtYr4gxR_/view?usp=drivesdk"
+        },
+        {
+          "id": "1-ZE5WiF0r2aYVOMLhgP2FZFYjq7_E4-S",
+          "filename": "1790664379043_2220361902432329913_1234902244506557514_fc325b32e2380cd9620493c068a5f0e4.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/1-ZE5WiF0r2aYVOMLhgP2FZFYjq7_E4-S/view?usp=drivesdk"
+        },
+        {
+          "id": "142HhV9KoNyK6KaObxyqsvPAKxqG6xLiz",
+          "filename": "1790664385292_2220361902432329913_1234902244506557514_5b07bf8627e8be6ae49a87fea75dd6b5.jpg",
+          "mime_type": "image/jpeg",
+          "drive_url": "https://drive.google.com/file/d/142HhV9KoNyK6KaObxyqsvPAKxqG6xLiz/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 4
     },
     {
       "name": "Frozen Blue",
