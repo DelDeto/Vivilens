@@ -264,3 +264,14 @@ footer{background:#f9eff2}
 .variant-row small{color:#907986;font-size:12px}
 .variant-row button{flex-shrink:0}
 @media(max-width:650px){.variant-picker{margin:15px 0}.variant-row{padding:8px}}
+
+
+/* VIVILENS: one box, independently selected left and right prescriptions */
+.variant-eye-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.variant-eye-fields label{display:flex;flex-direction:column;gap:8px;min-width:0}
+.variant-eye-fields select{width:100%;min-width:0;min-height:44px}
+.variant-box-summary{display:flex;flex-direction:column;gap:6px;padding:13px;background:white;border:1px solid #f0dfe6;border-radius:10px}
+.variant-box-summary b{font-size:14px;color:#74465a}
+.variant-box-summary span{font-size:12px;color:#785e6e}
+.variant-box-summary strong{font-size:16px;color:#a45272}
+@media(max-width:480px){.variant-eye-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.variant-eye-fields select{font-size:12px;padding:8px 6px}}
