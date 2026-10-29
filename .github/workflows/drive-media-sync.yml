@@ -46,6 +46,8 @@ jobs:
           python-version: '3.12'
       - name: Install image conversion dependencies
         run: pip install -r requirements-media.txt
+      - name: Check Python sync syntax
+        run: python -m py_compile scripts/sync_drive_images.py
       - name: Verify signed GitHub OIDC access to Supabase Edge
         env:
           TOKEN_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
