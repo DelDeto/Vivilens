@@ -467,3 +467,17 @@ footer{padding-top:28px}
 @media(prefers-reduced-motion:reduce){
  .vv-product-facts summary svg{transition:none}
 }
+
+
+/* Catalog pagination: bounded rows, comfortable touch targets. */
+#vv-catalog-results{scroll-margin-top:88px}
+.vv-catalog-pagination{display:flex;justify-content:center;align-items:center;gap:18px;margin:25px 0 0}
+.vv-catalog-pagination span{font-size:12px;font-weight:600;color:#775766}
+.vv-catalog-pagination button{border:1px solid #e5c8d4;border-radius:30px;padding:9px 18px;background:white;color:#8e5371;font-size:12px;font-weight:700}
+.vv-catalog-pagination button:not(:disabled):hover{background:#fbeef2}
+.vv-catalog-pagination button:disabled{opacity:.35}
+@media(max-width:650px){
+ #vv-catalog-results{scroll-margin-top:67px}
+ .vv-catalog-pagination{gap:10px;margin-top:18px}
+ .vv-catalog-pagination button{padding:10px 14px;min-height:44px}
+}
