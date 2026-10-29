@@ -8,6 +8,10 @@ on:
       - '.github/workflows/drive-media-sync.yml'
       - 'requirements-media.txt'
       - 'catalog/drive_products_2026-10-29.json'
+  # Periodic catch-up for photos temporarily blocked by public Google Drive limits.
+  # GitHub Actions scheduler may start later than the specified UTC minute.
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -38,7 +42,7 @@ concurrency:
 jobs:
   optimize-and-sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -67,7 +71,7 @@ jobs:
         env:
           RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.ref == 'refs/heads/main' && 'upload' || 'dry-run') }}
           RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || '' }}
-          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '0' || '2') }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '50' || '2') }}
         run: |
           python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
 
