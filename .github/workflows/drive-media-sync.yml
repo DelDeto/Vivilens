@@ -46,6 +46,8 @@ jobs:
           python-version: '3.12'
       - name: Install image conversion dependencies
         run: pip install -r requirements-media.txt
+      - name: Check Python sync syntax
+        run: python -m py_compile scripts/sync_drive_images.py
       - name: Verify signed GitHub OIDC access to Supabase Edge
         env:
           TOKEN_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
@@ -68,3 +70,12 @@ jobs:
           RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '0' || '2') }}
         run: |
           python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
+
+      - name: Upload resumable media sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: media-sync-report
+          path: media-sync-report.json
+          if-no-files-found: ignore
+          retention-days: 14

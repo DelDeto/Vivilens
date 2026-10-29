@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """VIVILENS original Drive photos -> high-quality WebP -> Supabase Storage.
 This script does NOT modify prices, stock, activity, or prescriptions.
-Requires SUPABASE_SERVICE_ROLE_KEY only for --mode upload.
+Uses signed GitHub Actions OIDC for upload, with no long-lived credentials.
 """
 from __future__ import annotations
 import argparse
@@ -59,10 +59,11 @@ def fetch_drive_image(file_id: str, tempdir: str) -> bytes:
             with Image.open(BytesIO(data)) as img:
                 img.verify()
             return data
-        except (RuntimeError, OSError, UnidentifiedImageError) as error:
+        except Exception as error:
+            # gdown raises FileURLRetrievalError on a private, over-quota or rate-limited file.
             if attempt == 2:
-                raise RuntimeError(f"Cannot download Drive file {file_id}. If Drive is private, configure service-account access instead.") from error
-            time.sleep(2 + attempt * 3)
+                raise RuntimeError(f"Cannot download Drive image {file_id}: public link unavailable, inaccessible or rate limited.") from error
+            time.sleep(3 * (2 ** attempt))
     raise RuntimeError(f"Download failed: {file_id}")
 
 
@@ -86,6 +87,24 @@ def github_oidc_token() -> str:
     _cached_token = response.json()["value"]
     _cached_at = time.monotonic()
     return _cached_token
+
+
+def list_imported_ids(slug: str) -> dict:
+    """OIDC-authorized preflight: avoid downloading already imported images."""
+    for attempt in range(4):
+        response = requests.get(EDGE_URL, headers={
+            "Authorization": "Bearer " + github_oidc_token()
+        }, params={"slug": slug}, timeout=TIMEOUT)
+        if response.status_code in (429, 500, 502, 503, 504) and attempt < 3:
+            time.sleep(2 ** attempt)
+            continue
+        if not response.ok:
+            raise RuntimeError(f"Cannot list already uploaded files for {slug}: HTTP {response.status_code}: {response.text[:250]}")
+        data = response.json()
+        if not isinstance(data.get("existing_drive_ids"), list):
+            raise RuntimeError("Invalid preflight response: missing existing_drive_ids")
+        return data
+    raise RuntimeError("Image status preflight retries exhausted.")
 
 
 def upload_via_edge(slug: str, file_id: str, webp: bytes) -> dict:
@@ -117,28 +136,71 @@ def main():
     if args.mode == "upload":
         github_oidc_token()  # fail safely before downloading any files
     size, raw_total, completed, skipped = 0, 0, 0, 0
+    failures = []
     with tempfile.TemporaryDirectory(prefix="vivilens-images-") as tempdir:
         for item in products:
-            for source in item.get("images", []):
+            sources = item.get("images", [])
+            if args.mode == "upload":
+                try:
+                    preflight = list_imported_ids(item["slug"])
+                except Exception as error:
+                    failures.append({"slug": item["slug"], "file_id": None, "error": str(error)})
+                    print(f"ERROR preflight {item['slug']}: {error}", flush=True)
+                    continue
+                existing = set(preflight["existing_drive_ids"])
+                available_slots = max(0, 5 - int(preflight["gallery_count"]))
+                if available_slots == 0:
+                    skipped += len(sources)
+                    print(f"SKIP {item['slug']}: gallery already has 5 images", flush=True)
+                    continue
+            else:
+                existing, available_slots = set(), 5
+            for source in sources:
                 if args.limit and completed >= args.limit:
-                    print(f"FINISHED {completed} files; {raw_total/1048576:.1f} MiB originals -> {size/1048576:.1f} MiB WebP; skipped {skipped}")
-                    return
+                    break
                 file_id = source["id"]
-                original = fetch_drive_image(file_id, tempdir)
-                optimized = convert_photo(original)
-                raw_total += len(original)
-                size += len(optimized)
-                if size > args.max_mb * 1048576:
-                    raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB. Stop before upload.")
-                if args.mode == "upload":
-                    result = upload_via_edge(item["slug"], file_id, optimized)
-                    if result.get("skipped"):
-                        skipped += 1
-                        print(f"SKIP {item['slug']} {file_id}: {result.get('reason','already present')}")
-                        continue
-                completed += 1
-                print(f"{args.mode.upper()} {item['slug']} {file_id}: {len(original)//1024} KB -> {len(optimized)//1024} KB")
-    print(f"FINISHED {completed} new images; {raw_total/1048576:.1f} MiB originals -> {size/1048576:.1f} MiB WebP; skipped {skipped}")
+                if file_id in existing:
+                    skipped += 1
+                    continue
+                if available_slots <= 0:
+                    skipped += 1
+                    continue
+                try:
+                    original = fetch_drive_image(file_id, tempdir)
+                    optimized = convert_photo(original)
+                    raw_total += len(original)
+                    if size + len(optimized) > args.max_mb * 1048576:
+                        raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB budget.")
+                    if args.mode == "upload":
+                        result = upload_via_edge(item["slug"], file_id, optimized)
+                        if result.get("skipped"):
+                            skipped += 1
+                            if result.get("reason") == "gallery is full":
+                                available_slots = 0
+                            continue
+                        existing.add(file_id)
+                        available_slots -= 1
+                    size += len(optimized)
+                    completed += 1
+                    print(f"{args.mode.upper()} {item['slug']} {file_id}: {len(original)//1024} KB -> {len(optimized)//1024} KB", flush=True)
+                    if args.mode == "upload":
+                        time.sleep(0.7)  # Respect Google Drive public download rate limits.
+                except Exception as error:
+                    failures.append({"slug": item["slug"], "file_id": file_id, "error": str(error)})
+                    print(f"ERROR {item['slug']} {file_id}: {error}", flush=True)
+                    if "budget" in str(error):
+                        raise
+                    continue
+            if args.limit and completed >= args.limit:
+                break
+
+    report = {"processed_new": completed, "already_present_or_full": skipped, "failures": failures,
+              "original_mib": round(raw_total / 1048576, 2), "webp_mib": round(size / 1048576, 2)}
+    Path("media-sync-report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"FINISHED new={completed} skipped={skipped} errors={len(failures)} "
+          f"original={raw_total/1048576:.2f}MiB webp={size/1048576:.2f}MiB", flush=True)
+    if failures:
+        raise SystemExit(f"Partial import: {len(failures)} images/products require retry; see media-sync-report.json.")
 
 
 if __name__ == "__main__":
