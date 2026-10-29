@@ -41,10 +41,24 @@ Deno.serve(async (req) => {
     return json({ error: "Workflow identity not authorized" }, 403);
   }
 
-  // Dry-run from the feature branch verifies signature handling without any database changes.
+  // Signed lookup lets retries skip existing images without downloading from Drive again.
   if (req.method === "GET") {
     if (ref !== MAIN && ref !== TEST_BRANCH) return json({ error: "Branch not allowed" }, 403);
-    return json({ ok: true, repository: EXPECTED_REPO, ref, authenticated: "GitHub OIDC" });
+    const slugQuery = new URL(req.url).searchParams.get("slug");
+    if (!slugQuery) return json({ ok: true, repository: EXPECTED_REPO, ref, authenticated: "GitHub OIDC" });
+    if (!/^[a-z0-9-]{1,128}$/.test(slugQuery)) return json({ error: "Invalid slug" }, 400);
+    const url = Deno.env.get("SUPABASE_URL") || "";
+    const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+    if (!url || !serviceRole) return json({ error: "Storage credentials not provisioned" }, 503);
+    const db = createClient(url, serviceRole, { auth: { persistSession: false, autoRefreshToken: false } });
+    const { data: product, error: productError } = await db.from("products").select("id").eq("slug", slugQuery).maybeSingle();
+    if (productError) return json({ error: "Failed to load product" }, 500);
+    if (!product) return json({ error: "Unknown product" }, 404);
+    const { data: rows, error: rowsError } = await db.from("product_images")
+      .select("storage_path").eq("product_id", product.id);
+    if (rowsError) return json({ error: "Failed to load image inventory" }, 500);
+    const importedIds = (rows || []).map(row => /^.+\\/drive-([A-Za-z0-9_-]+)\\.webp$/.exec(row.storage_path || "")?.[1]).filter(Boolean);
+    return json({ ok: true, slug: slugQuery, existing_drive_ids: importedIds, gallery_count: rows?.length || 0 });
   }
 
   if (ref !== MAIN || !["push", "workflow_dispatch"].includes(String(claims.event_name))) {
