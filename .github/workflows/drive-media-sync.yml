@@ -1,0 +1,54 @@
+name: VIVILENS Drive image optimization and sync
+
+on:
+  push:
+    branches: [feature/drive-webp-sync]
+    paths:
+      - 'scripts/sync_drive_images.py'
+      - '.github/workflows/drive-media-sync.yml'
+      - 'requirements-media.txt'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'dry-run checks image download/quality; upload writes to Supabase'
+        required: true
+        default: dry-run
+        type: choice
+        options: [dry-run, upload]
+      slug:
+        description: 'Optional product slug, blank for all 122 products'
+        required: false
+        default: ''
+        type: string
+      limit:
+        description: 'Maximum images (0 = all). Use 5 for a first upload test.'
+        required: true
+        default: '5'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vivilens-drive-media-sync
+  cancel-in-progress: false
+
+jobs:
+  optimize-and-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image conversion dependencies
+        run: pip install -r requirements-media.txt
+      - name: Optimize Drive images and optionally upload
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'dry-run' }}
+          RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'siren-gray' }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || '2' }}
+        run: |
+          python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
