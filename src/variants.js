@@ -53,3 +53,26 @@ export function availablePairBoxes(leftVariant,rightVariant) {
 export function boxPrice(product) {
   return Math.max(0, Number(product?.price)||0);
 }
+
+/**
+ * Maximum boxes that can be added for the selected two powers, after accounting
+ * for ALL other selected pairs already in the local cart. Informational only:
+ * server-side checkout must recheck this atomically.
+ */
+export function remainingPairBoxes(cart, variants, productId, leftId, rightId, excludeLineKey = null) {
+  const left = variants.find(v=>v.id===leftId&&v.product_id===productId&&v.active);
+  const right = variants.find(v=>v.id===rightId&&v.product_id===productId&&v.active);
+  if(!left||!right) return 0;
+  const required=new Map();
+  for(const item of cart) {
+    if(item.id!==productId||!item.leftVariantId||!item.rightVariantId)continue;
+    const lineKey=pairCartKey(item.id,item.leftVariantId,item.rightVariantId);
+    if(lineKey===excludeLineKey)continue;
+    const qty=Math.max(0,Math.floor(Number(item.qty)||0));
+    required.set(item.leftVariantId,(required.get(item.leftVariantId)||0)+qty);
+    required.set(item.rightVariantId,(required.get(item.rightVariantId)||0)+qty);
+  }
+  const availableL=Math.max(0,Math.floor(Number(left.stock)||0)-(required.get(leftId)||0));
+  const availableR=Math.max(0,Math.floor(Number(right.stock)||0)-(required.get(rightId)||0));
+  return leftId===rightId?Math.floor(availableL/2):Math.min(availableL,availableR);
+}
