@@ -4925,7 +4925,40 @@
       "wear_period": "1 ngày",
       "drive_folder_id": "1ELfNTrKSh_72MBlXyKiA9DykwahJ78ft",
       "drive_folder_url": "https://drive.google.com/drive/folders/1ELfNTrKSh_72MBlXyKiA9DykwahJ78ft",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "19qMsPteybzK4scxTJa2ysc_KQXWmvMzV",
+          "filename": "AIRY GREEN (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/19qMsPteybzK4scxTJa2ysc_KQXWmvMzV/view?usp=drivesdk"
+        },
+        {
+          "id": "1Soz_r4VgXulXcrrpCxcj9fxIiGwlwpZV",
+          "filename": "AIRY GREEN (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Soz_r4VgXulXcrrpCxcj9fxIiGwlwpZV/view?usp=drivesdk"
+        },
+        {
+          "id": "1tC9oZQSZNdFKmrVoZpnCoZeM0qBNMMCE",
+          "filename": "AIRY GREEN (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1tC9oZQSZNdFKmrVoZpnCoZeM0qBNMMCE/view?usp=drivesdk"
+        },
+        {
+          "id": "11ojm4Gz3ncMKRhgOQFEW2PCUzfNKCjCq",
+          "filename": "AIRY GREEN (5).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/11ojm4Gz3ncMKRhgOQFEW2PCUzfNKCjCq/view?usp=drivesdk"
+        },
+        {
+          "id": "1Gmu9aWKlqQegFXZVkeh_GTSvqBBXrIEz",
+          "filename": "AIRY GREEN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Gmu9aWKlqQegFXZVkeh_GTSvqBBXrIEz/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     },
     {
       "name": "Soft Blue",
@@ -4935,7 +4968,40 @@
       "wear_period": "Chưa xác nhận",
       "drive_folder_id": "1077ezkDRbTvGCB-F7TEbl8YvNX937s4a",
       "drive_folder_url": "https://drive.google.com/drive/folders/1077ezkDRbTvGCB-F7TEbl8YvNX937s4a",
-      "status": "draft_pending_metadata_and_images"
+      "status": "draft_pending_metadata_and_images",
+      "images": [
+        {
+          "id": "1Zp3t2Q2g7t5QCZCCQi_IV5QUQTFD_4Fv",
+          "filename": "BÌA SOFT BLUE.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Zp3t2Q2g7t5QCZCCQi_IV5QUQTFD_4Fv/view?usp=drivesdk"
+        },
+        {
+          "id": "1UIzeGGAtVqJXDU9hDNJTyo-JlKjAwr8N",
+          "filename": "SOFT BLUE.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1UIzeGGAtVqJXDU9hDNJTyo-JlKjAwr8N/view?usp=drivesdk"
+        },
+        {
+          "id": "1ZOiaVwfAecYWd3uNbWw9F8F2TteVBeY4",
+          "filename": "SOFT BLUE (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1ZOiaVwfAecYWd3uNbWw9F8F2TteVBeY4/view?usp=drivesdk"
+        },
+        {
+          "id": "1YkU1NSsbSkmh57S6bxKV4YM5a0KikUQp",
+          "filename": "SOFT BLUE (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1YkU1NSsbSkmh57S6bxKV4YM5a0KikUQp/view?usp=drivesdk"
+        },
+        {
+          "id": "1pCB5rqp94eqmnrx10GWZ3tF7t8GBHm3K",
+          "filename": "SOFT BLUE (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1pCB5rqp94eqmnrx10GWZ3tF7t8GBHm3K/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5
     }
   ]
 }
