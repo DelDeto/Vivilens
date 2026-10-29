@@ -559,8 +559,40 @@
       "drive_folder_id": "1Hbvv2-GVxZmWOORx6ZNmZLXoHRP3aIHv",
       "drive_folder_url": "https://drive.google.com/drive/folders/1Hbvv2-GVxZmWOORx6ZNmZLXoHRP3aIHv",
       "status": "draft_pending_metadata_and_images",
-      "images": [],
-      "media_count": 0
+      "images": [
+        {
+          "id": "1IckZ6fdiQV6j_k3J1VZQHxwtCj-dpwjF",
+          "filename": "OLIVE BROWN.png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1IckZ6fdiQV6j_k3J1VZQHxwtCj-dpwjF/view?usp=drivesdk"
+        },
+        {
+          "id": "1L0cxrUTyVFHq3vmirHnN83LZ-jrdvJou",
+          "filename": "OLIVE BROWN (2).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1L0cxrUTyVFHq3vmirHnN83LZ-jrdvJou/view?usp=drivesdk"
+        },
+        {
+          "id": "10QSCMfMPQgm0K2mNv0sF9kQDTQCYqCjo",
+          "filename": "OLIVE BROWN (3).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/10QSCMfMPQgm0K2mNv0sF9kQDTQCYqCjo/view?usp=drivesdk"
+        },
+        {
+          "id": "1Ym5qEZIWUc5zAk5qoRzGbgPKJqE6HLbp",
+          "filename": "OLIVE BROWN (4).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1Ym5qEZIWUc5zAk5qoRzGbgPKJqE6HLbp/view?usp=drivesdk"
+        },
+        {
+          "id": "1F1CO_a2IVqgXyLfi3coqBc7N2vhLVk5Y",
+          "filename": "OLIVE BROWN (5).png",
+          "mime_type": "image/png",
+          "drive_url": "https://drive.google.com/file/d/1F1CO_a2IVqgXyLfi3coqBc7N2vhLVk5Y/view?usp=drivesdk"
+        }
+      ],
+      "media_count": 5,
+      "media_source_folder": "https://drive.google.com/drive/folders/1i7uu2AvdUMSQGzmxStHQkdpt7yF_lm4G"
     },
     {
       "name": "Mini Pink",
