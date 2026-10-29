@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {formatPower,variantsForProduct,cartLineKey,unitPrice,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,boxPrice} from '../src/variants.js';
+import {formatPower,variantsForProduct,cartLineKey,unitPrice,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,remainingPairBoxes,boxPrice} from '../src/variants.js';
 
 test('displays optical powers without adding a sign to plano', () => {
   assert.equal(formatPower('-1.25'), '-1.25');
@@ -43,4 +43,17 @@ test('same power consumes two individual lenses per box',()=>{
   assert.equal(availablePairBoxes({...sku,stock:1},{...sku,stock:1}),0);
   assert.equal(availablePairBoxes({...sku,active:false},sku),0);
   assert.equal(availablePairBoxes(sku,{...sku,id:'other',product_id:'other'}),0);
+});
+
+test('cart reservations of a diopter are shared between all 2-lens boxes',()=>{
+  const skus=[
+    {id:'a',product_id:'p',stock:4,active:true},
+    {id:'b',product_id:'p',stock:2,active:true},
+    {id:'c',product_id:'p',stock:3,active:true}
+  ];
+  const cart=[{id:'p',leftVariantId:'a',rightVariantId:'b',qty:2}];
+  assert.equal(remainingPairBoxes(cart,skus,'p','a','c'),2);
+  assert.equal(remainingPairBoxes(cart,skus,'p','a','b'),0);
+  assert.equal(remainingPairBoxes(cart,skus,'p','a','b',pairCartKey('p','a','b')),2);
+  assert.equal(remainingPairBoxes(cart,skus,'p','a','a'),1);
 });
