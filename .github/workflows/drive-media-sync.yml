@@ -68,3 +68,12 @@ jobs:
           RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '0' || '2') }}
         run: |
           python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
+
+      - name: Upload resumable media sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: media-sync-report
+          path: media-sync-report.json
+          if-no-files-found: ignore
+          retention-days: 14
