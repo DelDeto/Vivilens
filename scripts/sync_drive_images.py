@@ -66,66 +66,41 @@ def fetch_drive_image(file_id: str, tempdir: str) -> bytes:
     raise RuntimeError(f"Download failed: {file_id}")
 
 
-def api(method: str, endpoint: str, key: str, *, json_data=None, content=None, extra_headers=None, params=None):
-    url = f"https://{PROJECT}.supabase.co/{endpoint}"
-    headers = {"apikey": key, "Authorization": "Bearer " + key}
-    if extra_headers:
-        headers.update(extra_headers)
+EDGE_URL = f"https://{PROJECT}.supabase.co/functions/v1/vivilens-drive-import"
+_cached_token = ""
+_cached_at = 0.0
+
+
+def github_oidc_token() -> str:
+    """Fetch a fresh, short-lived signed GitHub OIDC token, no persistent secrets."""
+    global _cached_token, _cached_at
+    if _cached_token and time.monotonic() - _cached_at < 100:
+        return _cached_token
+    request_url = os.getenv("ACTIONS_ID_TOKEN_REQUEST_URL", "")
+    request_secret = os.getenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN", "")
+    if not request_url or not request_secret:
+        raise RuntimeError("Requires GitHub Actions id-token: write. Cannot upload outside the trusted workflow.")
+    url = request_url + ("&" if "?" in request_url else "?") + "audience=vivilens-media-sync"
+    response = requests.get(url, headers={"Authorization": "bearer " + request_secret}, timeout=TIMEOUT)
+    response.raise_for_status()
+    _cached_token = response.json()["value"]
+    _cached_at = time.monotonic()
+    return _cached_token
+
+
+def upload_via_edge(slug: str, file_id: str, webp: bytes) -> dict:
     for attempt in range(4):
-        response = requests.request(method, url, headers=headers, json=json_data, data=content, params=params, timeout=TIMEOUT)
+        response = requests.post(EDGE_URL, headers={
+            "Authorization": "Bearer " + github_oidc_token()
+        }, files={"image": (file_id + ".webp", webp, "image/webp")},
+           data={"slug": slug, "drive_id": file_id}, timeout=TIMEOUT)
         if response.status_code in (429, 500, 502, 503, 504) and attempt < 3:
             time.sleep(2 ** attempt)
             continue
         if not response.ok:
-            raise RuntimeError(f"Supabase {method} {endpoint.split('?')[0]}: HTTP {response.status_code}: {response.text[:350]}")
-        try:
-            return response.json()
-        except ValueError:
-            return {}
-    raise RuntimeError("Too many Supabase retries.")
-
-
-def all_products(key: str):
-    rows = api("GET", "rest/v1/products", key, params={"select": "id,slug,name,active,image_url", "limit": "1000"})
-    return {x["slug"]: x for x in rows}
-
-
-def image_rows(key: str):
-    rows = api("GET", "rest/v1/product_images", key, params={"select": "product_id,position,storage_path,image_url", "limit": "1000"})
-    result = {}
-    for row in rows:
-        result.setdefault(row["product_id"], []).append(row)
-    return result
-
-
-def public_url(path: str):
-    return f"https://{PROJECT}.supabase.co/storage/v1/object/public/{BUCKET}/" + quote(path, safe="/")
-
-
-def upload(product, file_id, webp, key):
-    path = f"{product['id']}/drive-{file_id}.webp"
-    endpoint = f"storage/v1/object/{BUCKET}/{quote(path, safe='/')}"
-    api("POST", endpoint, key, content=webp, extra_headers={
-        "Content-Type": "image/webp", "cache-control": "public, max-age=31536000, immutable",
-        "x-upsert": "false"
-    })
-    return path
-
-
-def register_image(product, path, image_position, key):
-    url = public_url(path)
-    row = {
-        "product_id": product["id"],
-        "position": image_position,
-        "image_url": url,
-        "storage_path": path,
-        "alt_text": f"{product['name']} – ảnh sản phẩm {image_position}"
-    }
-    api("POST", "rest/v1/product_images", key, json_data=row, extra_headers={"Prefer": "return=minimal"})
-    # Preserve images already curated by the store owner; replace only missing/placeholder cover on FIRST IMAGE.
-    if image_position == 1 and (not product.get("image_url") or "images.unsplash.com" in product.get("image_url", "")):
-        api("PATCH", "rest/v1/products", key, json_data={"image_url": url},
-            params={"id": "eq." + product["id"]}, extra_headers={"Prefer": "return=minimal"})
+            raise RuntimeError(f"Edge import rejected HTTP {response.status_code}: {response.text[:350]}")
+        return response.json()
+    raise RuntimeError("Upload retries exceeded.")
 
 
 def main():
@@ -139,50 +114,28 @@ def main():
     products = [x for x in data["products"] if not args.slug or x["slug"] == args.slug]
     if args.slug and not products:
         raise SystemExit("Unknown slug: " + args.slug)
-    key = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
-    if args.mode == "upload" and not key:
-        raise SystemExit("Missing repository secret SUPABASE_SERVICE_ROLE_KEY. No uploads performed.")
-    known, existing = (all_products(key), image_rows(key)) if args.mode == "upload" else ({}, {})
+    if args.mode == "upload":
+        github_oidc_token()  # fail safely before downloading any files
     size, raw_total, completed, skipped = 0, 0, 0, 0
     with tempfile.TemporaryDirectory(prefix="vivilens-images-") as tempdir:
         for item in products:
-            dbproduct = known.get(item["slug"]) if args.mode == "upload" else None
-            if args.mode == "upload" and not dbproduct:
-                print("SKIP: product missing from Supabase:", item["slug"])
-                continue
-            attached = existing.get(dbproduct["id"], []) if dbproduct else []
-            occupied = {row.get("storage_path") for row in attached}
-            if len(attached) >= 5:
-                skipped += len(item.get("images", []))
-                continue
             for source in item.get("images", []):
                 if args.limit and completed >= args.limit:
-                    print(f"FINISHED {completed} new files; {raw_total/1048576:.1f} MiB originals -> {size/1048576:.1f} MiB WebP; skipped {skipped}")
+                    print(f"FINISHED {completed} files; {raw_total/1048576:.1f} MiB originals -> {size/1048576:.1f} MiB WebP; skipped {skipped}")
                     return
                 file_id = source["id"]
-                path = f"{dbproduct['id']}/drive-{file_id}.webp" if dbproduct else ""
-                if path in occupied:
-                    skipped += 1
-                    continue
-                if len(attached) >= 5:
-                    break
                 original = fetch_drive_image(file_id, tempdir)
                 optimized = convert_photo(original)
                 raw_total += len(original)
                 size += len(optimized)
                 if size > args.max_mb * 1048576:
-                    raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB. Stop before upload; review limits.")
+                    raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB. Stop before upload.")
                 if args.mode == "upload":
-                    try:
-                        uploaded = upload(dbproduct, file_id, optimized, key)
-                    except RuntimeError as error:
-                        if "HTTP 409" in str(error):
-                            uploaded = path  # Idempotent recovery from an earlier partially uploaded run.
-                        else:
-                            raise
-                    register_image(dbproduct, uploaded, len(attached) + 1, key)
-                    attached.append({"storage_path": uploaded})
-                    occupied.add(uploaded)
+                    result = upload_via_edge(item["slug"], file_id, optimized)
+                    if result.get("skipped"):
+                        skipped += 1
+                        print(f"SKIP {item['slug']} {file_id}: {result.get('reason','already present')}")
+                        continue
                 completed += 1
                 print(f"{args.mode.upper()} {item['slug']} {file_id}: {len(original)//1024} KB -> {len(optimized)//1024} KB")
     print(f"FINISHED {completed} new images; {raw_total/1048576:.1f} MiB originals -> {size/1048576:.1f} MiB WebP; skipped {skipped}")
