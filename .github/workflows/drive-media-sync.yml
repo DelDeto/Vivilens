@@ -1,0 +1,69 @@
+name: VIVILENS Drive image optimization and sync
+
+on:
+  push:
+    branches: [feature/drive-webp-sync, main]
+    paths:
+      - 'scripts/sync_drive_images.py'
+      - '.github/workflows/drive-media-sync.yml'
+      - 'requirements-media.txt'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'dry-run checks image download/quality; upload writes to Supabase'
+        required: true
+        default: dry-run
+        type: choice
+        options: [dry-run, upload]
+      slug:
+        description: 'Optional product slug, blank for all 122 products'
+        required: false
+        default: ''
+        type: string
+      limit:
+        description: 'Maximum images (0 = all). Use 5 for a first upload test.'
+        required: true
+        default: '5'
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: vivilens-drive-media-sync
+  cancel-in-progress: false
+
+jobs:
+  optimize-and-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image conversion dependencies
+        run: pip install -r requirements-media.txt
+      - name: Verify signed GitHub OIDC access to Supabase Edge
+        env:
+          TOKEN_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+        run: |
+          python - <<'PY'
+          import os,requests
+          req_url=os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']+'&audience=vivilens-media-sync'
+          response=requests.get(req_url,headers={'Authorization':'bearer '+os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']},timeout=30)
+          response.raise_for_status()
+          token=response.json()['value']
+          result=requests.get('https://qovmjpafxlabeamvblkc.supabase.co/functions/v1/vivilens-drive-import',headers={'Authorization':'Bearer '+token},timeout=30)
+          print('Supabase Edge OIDC verification:',result.status_code,result.text[:300])
+          result.raise_for_status()
+          assert result.json().get('ok') is True
+          PY
+      - name: Optimize Drive images and optionally upload
+        env:
+          RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.ref == 'refs/heads/main' && 'upload' || 'dry-run') }}
+          RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'siren-gray' }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '5' || '2') }}
+        run: |
+          python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
