@@ -2,7 +2,7 @@ name: VIVILENS Drive image optimization and sync
 
 on:
   push:
-    branches: [feature/drive-webp-sync]
+    branches: [feature/drive-webp-sync, main]
     paths:
       - 'scripts/sync_drive_images.py'
       - '.github/workflows/drive-media-sync.yml'
@@ -28,6 +28,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: vivilens-drive-media-sync
@@ -44,11 +45,25 @@ jobs:
           python-version: '3.12'
       - name: Install image conversion dependencies
         run: pip install -r requirements-media.txt
+      - name: Verify signed GitHub OIDC access to Supabase Edge
+        env:
+          TOKEN_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+        run: |
+          python - <<'PY'
+          import os,requests
+          req_url=os.environ['ACTIONS_ID_TOKEN_REQUEST_URL']+'&audience=vivilens-media-sync'
+          response=requests.get(req_url,headers={'Authorization':'bearer '+os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']},timeout=30)
+          response.raise_for_status()
+          token=response.json()['value']
+          result=requests.get('https://qovmjpafxlabeamvblkc.supabase.co/functions/v1/vivilens-drive-import',headers={'Authorization':'Bearer '+token},timeout=30)
+          print('Supabase Edge OIDC verification:',result.status_code,result.text[:300])
+          result.raise_for_status()
+          assert result.json().get('ok') is True
+          PY
       - name: Optimize Drive images and optionally upload
         env:
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'dry-run' }}
+          RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.ref == 'refs/heads/main' && 'upload' || 'dry-run') }}
           RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'siren-gray' }}
-          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || '2' }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '5' || '2') }}
         run: |
           python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
