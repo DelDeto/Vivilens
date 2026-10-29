@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {formatPower,variantsForProduct,cartLineKey,unitPrice,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,remainingPairBoxes,boxPrice} from '../src/variants.js';
+import {formatPower,variantsForProduct,cartLineKey,unitPrice,availableUnits,supportedPowers,isSupportedPower,pairCartKey,availablePairBoxes,remainingPairBoxes,boxPrice,isChosenPower,remainingLegacyBoxes,legacyPairKey,hasCompleteCartSelection} from '../src/variants.js';
 
 test('displays optical powers without adding a sign to plano', () => {
   assert.equal(formatPower('-1.25'), '-1.25');
@@ -56,4 +56,33 @@ test('cart reservations of a diopter are shared between all 2-lens boxes',()=>{
   assert.equal(remainingPairBoxes(cart,skus,'p','a','b'),0);
   assert.equal(remainingPairBoxes(cart,skus,'p','a','b',pairCartKey('p','a','b')),2);
   assert.equal(remainingPairBoxes(cart,skus,'p','a','a'),1);
+});
+
+test('legacy products must have BOTH eyes explicitly selected before cart',()=>{
+  assert.equal(isChosenPower(''),false);
+  assert.equal(isChosenPower(null),false);
+  assert.equal(isChosenPower(undefined),false);
+  assert.equal(isChosenPower('0'),true);
+  assert.equal(isChosenPower('-1.25'),true);
+  assert.equal(isChosenPower('-0.50'),false);
+  assert.equal(hasCompleteCartSelection({id:'brown',qty:1}),false);
+  assert.equal(hasCompleteCartSelection({id:'brown',leftPower:'',rightPower:'-1.25'}),false);
+  assert.equal(hasCompleteCartSelection({id:'brown',leftPower:0,rightPower:-1.25,qty:1}),true);
+  assert.equal(hasCompleteCartSelection({id:'brown',leftVariantId:'a',rightVariantId:'b'}),true);
+});
+test('distinct chosen powers are distinct boxes; same choices share a cart line',()=>{
+  assert.notEqual(legacyPairKey('brown','-1','-1.25'),legacyPairKey('brown','-1.25','-1'));
+  assert.equal(legacyPairKey('brown',-1,-1.25),legacyPairKey('brown','-1','-1.25'));
+  assert.notEqual(legacyPairKey('brown','-1','-1'),legacyPairKey('gray','-1','-1'));
+});
+test('legacy stock is shared between all power combinations of one color',()=>{
+  const items=[
+   {id:'brown',leftPower:-1,rightPower:-1.25,qty:2},
+   {id:'brown',leftPower:-2,rightPower:-2,qty:1},
+   {id:'gray',leftPower:-1,rightPower:-1,qty:2}
+  ];
+  assert.equal(remainingLegacyBoxes(items,'brown',5),2);
+  assert.equal(remainingLegacyBoxes(items,'brown',5,legacyPairKey('brown',-1,-1.25)),4);
+  assert.equal(remainingLegacyBoxes(items,'gray',4),2);
+  assert.equal(remainingLegacyBoxes(items,'brown',1),0);
 });

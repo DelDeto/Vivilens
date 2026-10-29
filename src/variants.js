@@ -76,3 +76,30 @@ export function remainingPairBoxes(cart, variants, productId, leftId, rightId, e
   const availableR=Math.max(0,Math.floor(Number(right.stock)||0)-(required.get(rightId)||0));
   return leftId===rightId?Math.floor(availableL/2):Math.min(availableL,availableR);
 }
+
+/** A power must be explicitly chosen; an empty value is NOT plano. */
+export function isChosenPower(value) {
+  return value !== '' && value !== null && value !== undefined && isSupportedPower(value);
+}
+
+/** Legacy stock is measured in complete boxes, shared by all power combinations. */
+export function remainingLegacyBoxes(cart,productId,stock,excludeKey=null) {
+  const used=(cart||[]).reduce((total,item)=>{
+    if(item.id!==productId || legacyPairKey(item.id,item.leftPower,item.rightPower)===excludeKey) return total;
+    return total+Math.max(0,Math.floor(Number(item.qty)||0));
+  },0);
+  return Math.max(0,Math.floor(Number(stock)||0)-used);
+}
+
+/** For inventory_mode=product the cart keeps selected diopters without inventing SKU rows. */
+export function legacyPairKey(productId,leftPower,rightPower) {
+  return pairCartKey(productId,'power:'+String(leftPower??''),'power:'+String(rightPower??''));
+}
+
+/** Legacy cart entries without both selected eyes are not valid purchases. */
+export function hasCompleteCartSelection(item) {
+  return !!item && (
+    (Boolean(item.leftVariantId)&&Boolean(item.rightVariantId)) ||
+    (isChosenPower(item.leftPower)&&isChosenPower(item.rightPower))
+  );
+}
