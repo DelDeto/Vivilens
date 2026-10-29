@@ -57,7 +57,7 @@ Deno.serve(async (req) => {
     const { data: rows, error: rowsError } = await db.from("product_images")
       .select("storage_path").eq("product_id", product.id);
     if (rowsError) return json({ error: "Failed to load image inventory" }, 500);
-    const importedIds = (rows || []).map(row => /^.+\\/drive-([A-Za-z0-9_-]+)\\.webp$/.exec(row.storage_path || "")?.[1]).filter(Boolean);
+    const importedIds = (rows || []).map(row => String(row.storage_path || "").match(/drive-([A-Za-z0-9_-]+)[.]webp$/)?.[1]).filter(Boolean);
     return json({ ok: true, slug: slugQuery, existing_drive_ids: importedIds, gallery_count: rows?.length || 0 });
   }
 
