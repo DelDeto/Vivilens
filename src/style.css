@@ -332,14 +332,14 @@ footer{padding-top:28px}
 .admin-summary>div{padding:12px 19px}
 .admin-table{margin-top:16px}
 
-/* Product: gallery and independent two-eye picker fit together on laptop. */
+/* Product: large portrait gallery as in the earlier design, with the concise two-eye picker alongside. */
 .vv-detail-page{padding:22px 25px 32px;max-width:1240px}
 .vv-detail-breadcrumb{display:flex;align-items:center;gap:9px;color:#927a86;font-size:12px;margin-bottom:12px;min-width:0}
 .vv-detail-breadcrumb .back{padding:3px 0;font-size:12px;white-space:nowrap}
 .vv-detail-breadcrumb>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vv-detail-grid{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1fr);align-items:start;gap:clamp(22px,3.3vw,50px);margin-top:0}
 .vv-detail-grid>.vv-gallery{align-self:start;min-width:0}
-.vv-detail-grid .vv-gallery-stage{height:clamp(330px,56dvh,510px);aspect-ratio:auto;border-radius:15px}
+.vv-detail-grid .vv-gallery-stage{height:auto;aspect-ratio:4/5;border-radius:15px}
 .vv-detail-grid .vv-gallery-open img{object-fit:contain;object-position:center}
 .vv-detail-grid .vv-gallery-thumbs{display:flex;gap:8px;margin-top:8px;max-height:66px;overflow-x:auto}
 .vv-detail-grid .vv-gallery-thumbs button{aspect-ratio:auto;flex:0 0 56px;height:62px}
@@ -379,12 +379,12 @@ footer{padding-top:28px}
  .header-inner nav{gap:9px}
  .header-inner nav button{font-size:11px}
  .vv-detail-grid{gap:22px}
- .vv-detail-grid .vv-gallery-stage{height:clamp(300px,50dvh,440px)}
+ .vv-detail-grid .vv-gallery-stage{height:auto;aspect-ratio:4/5}
  .vv-detail-heading h1{font-size:clamp(27px,3.4vw,37px)}
  .hero-v2,.hero-v2 .hero-visual{min-height:420px}
 }
 
-/* Mobile: picture previews stay short; two-eye options and CTA take priority. */
+/* Mobile: preserve original full-width portrait product photography and compact purchase controls. */
 @media(max-width:650px){
  .topline{display:none}
  .header-inner{min-height:55px;padding:0 13px}
@@ -431,10 +431,10 @@ footer{padding-top:28px}
  .vv-detail-breadcrumb{font-size:11px;margin:0 0 9px}
  .vv-detail-breadcrumb .back{font-size:11px}
  .vv-detail-grid{grid-template-columns:minmax(0,1fr);gap:12px}
- .vv-detail-grid>.vv-gallery{width:100%;margin:0}
- .vv-detail-grid .vv-gallery-stage{height:clamp(175px,29dvh,255px);aspect-ratio:auto;border-radius:12px}
- .vv-detail-grid .vv-gallery-thumbs{margin-top:6px;gap:6px;max-height:43px;padding:0}
- .vv-detail-grid .vv-gallery-thumbs button{flex-basis:36px;height:41px}
+ .vv-detail-grid>.vv-gallery{width:calc(100% + 26px);margin:0 -13px}
+ .vv-detail-grid .vv-gallery-stage{height:auto;aspect-ratio:4/5;border-radius:0}
+ .vv-detail-grid .vv-gallery-thumbs{margin-top:7px;gap:7px;max-height:57px;padding:0 13px}
+ .vv-detail-grid .vv-gallery-thumbs button{flex-basis:44px;height:52px}
  .vv-detail-grid .vv-gallery-arrow{height:31px;width:31px}
  .vv-detail-grid .vv-gallery-count{bottom:9px;left:9px;padding:3px 8px;font-size:10px}
  .vv-detail-grid .vv-zoom-hint{bottom:9px;right:8px;padding:5px 8px;font-size:10px}
@@ -460,7 +460,7 @@ footer{padding-top:28px}
 
 @media(max-height:740px) and (min-width:651px){
  .vv-detail-page{padding-top:14px}
- .vv-detail-grid .vv-gallery-stage{height:clamp(280px,53dvh,430px)}
+ .vv-detail-grid .vv-gallery-stage{height:auto;aspect-ratio:4/5}
  .vv-detail-info .variant-picker{padding:9px;margin:7px 0}
  .vv-detail-info .detail-price{margin:2px 0 6px}
 }
