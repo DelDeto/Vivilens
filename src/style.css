@@ -523,3 +523,5 @@ footer{padding-top:28px}
 .vv-preview-notice p{margin:7px 0 0;font-size:13px;line-height:1.65}
 .vv-pending-price{font-size:18px;font-weight:600;color:#986e80}
 @media(max-width:600px){.vv-availability-tabs{margin:-6px 0 11px;gap:6px}.vv-availability-tabs button{font-size:11px;padding:6px 9px}.vv-preview-tag{font-size:9px;top:8px;left:8px;padding:5px 8px}.vv-card-no-photo span{font-size:18px}}
+
+.vv-unit-price{display:block;font-size:12px;font-weight:500;color:#9a7a88;line-height:1.7}.vv-preview-product .price strong{color:#a65b75;font-weight:700}.vv-detail-info .detail-price span{display:inline-block;font-size:12px;font-weight:500;color:#987986}
