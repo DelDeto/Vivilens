@@ -127,6 +127,7 @@ def main():
     parser.add_argument("--mode", choices=("dry-run", "upload"), default="dry-run")
     parser.add_argument("--limit", type=int, default=4, help="Max number of images to process; 0 means all")
     parser.add_argument("--slug", default="", help="One model only, e.g. siren-gray")
+    parser.add_argument("--priority-slugs", default="ai-blue,milky-blue", help="Comma-separated image-less lens models to attempt first when uploading")
     parser.add_argument("--max-mb", type=int, default=LIMIT_MB, help="Stop upload if compressed bytes exceed this budget")
     parser.add_argument("--max-attempts", type=int, default=32, help="Maximum new Drive downloads to attempt per run; prevents timeout when Google rate limits")
     parser.add_argument("--max-failures", type=int, default=7, help="Stop a batch after this many inaccessible photos; next scheduled run rotates to a different section")
@@ -144,6 +145,11 @@ def main():
         products = products[rotation:] + products[:rotation]
         print(f"RESUME rotation={rotation}/{len(products)} run={run_number}", flush=True)
     if args.mode == "upload":
+        priority = [slug.strip() for slug in args.priority_slugs.split(",") if slug.strip()]
+        if priority and not args.slug:
+            order = {slug: i for i, slug in enumerate(priority)}
+            products.sort(key=lambda p: (0, order[p["slug"]]) if p["slug"] in order else (1, 0))
+            print(f"PRIORITY photos: {', '.join(priority)}", flush=True)
         github_oidc_token()  # fail safely before downloading any files
     size, raw_total, completed, skipped = 0, 0, 0, 0
     attempted, stopped_early = 0, False
