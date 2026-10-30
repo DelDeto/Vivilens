@@ -31,3 +31,5 @@
 @media(max-width:650px){body:has(.vv-detail-page) .mobile-bottom-nav{display:none}.vv-compare-tray{bottom:84px}body:has(.vv-detail-page) .vv-compare-tray{bottom:90px}}
 
 .vv-photo-open{position:absolute;inset:0;width:100%;height:100%;padding:0;background:transparent}.vv-catalog-photo .featured-tag{pointer-events:none;z-index:2}.toast{z-index:90}
+/* Keep comparison photos and specifications together in a desktop viewport. */
+@media(min-width:651px){.vv-compare-photo{height:clamp(160px,29dvh,320px)}.vv-compare-photo img{height:100%;aspect-ratio:auto;object-fit:contain}.vv-comparison h3{min-height:34px;margin-top:10px}.vv-comparison dl>div{min-height:49px;padding:6px 0}.vv-comparison dl{margin-bottom:14px}.vv-comparison .textlink{margin-top:11px}}
