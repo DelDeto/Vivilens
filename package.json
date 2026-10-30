@@ -1,14 +1,15 @@
 {
   "name": "vivilens-ecommerce-v1",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "vite build --emptyOutDir && node scripts/build_social_pages.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "deploy": "wrangler deploy",
-    "test": "node --test"
+    "test": "node --test",
+    "build:brand": "node scripts/build_brand_assets.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.57.0",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
+    "sharp": "0.35.4",
     "vite": "6.0.5",
     "wrangler": "4.135.0"
   }

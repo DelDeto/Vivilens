@@ -1,6 +1,5 @@
-// VIVILENS V1.1A: URL navigation and per-page metadata.
-const SITE = 'VIVILENS';
-const DEFAULT_DESCRIPTION = 'Khám phá kính áp tròng màu VIVILENS theo màu sắc và phong cách của bạn.';
+import {socialMetadata} from './social.js';
+// URL navigation and per-page metadata.
 
 export function routeFromPath(pathname = '/') {
   const path = pathname.replace(/\/+$/, '') || '/';
@@ -44,40 +43,15 @@ function setMeta(attribute, key, value) {
 }
 
 export function updatePageMetadata(page, selected, pathname = window.location.pathname) {
-  let title = SITE + ' — Your Eyes, Your Mood';
-  let description = DEFAULT_DESCRIPTION;
-  const hidden = page === 'account' || page === 'admin' || page === 'notfound' || (page === 'detail' && !selected);
-  if (page === 'catalog') {
-    title = 'Bộ sưu tập lens màu | ' + SITE;
-    description = 'Khám phá lens Brown, Gray, Pink, Blue của VIVILENS. Chọn màu mắt phù hợp với phong cách bạn yêu thích.';
-  } else if (page === 'detail' && selected) {
-    title = selected.name + ' | ' + SITE;
-    description = (selected.description || selected.name + ' — kính áp tròng màu VIVILENS').trim().slice(0, 155);
-  } else if (page === 'account') {
-    title = 'Tài khoản | ' + SITE;
-  } else if (page === 'admin') {
-    title = 'Quản trị | ' + SITE;
-  } else if (page === 'notfound') {
-    title = 'Không tìm thấy trang | ' + SITE;
+  const meta=socialMetadata(page,selected,window.location.origin,pathname);
+  document.title=meta.title;
+  const fields={description:meta.description,robots:meta.hidden?'noindex, nofollow':'index, follow','twitter:card':'summary_large_image','twitter:title':meta.title,'twitter:description':meta.description,'twitter:image':meta.image,'twitter:image:alt':meta.imageAlt};
+  for(const [key,value] of Object.entries(fields))setMeta('name',key,value);
+  for(const [key,value] of Object.entries({'og:type':meta.type,'og:site_name':'VIVILENS','og:locale':'vi_VN','og:title':meta.title,'og:description':meta.description,'og:url':meta.canonical,'og:image':meta.image,'og:image:secure_url':meta.image,'og:image:alt':meta.imageAlt,'og:image:type':meta.imageType,'og:image:width':meta.width,'og:image:height':meta.height})){
+    if(value===null)document.head.querySelector('meta[property="'+key+'"]')?.remove();
+    else setMeta('property',key,value);
   }
-  document.title = title;
-  setMeta('name', 'description', description);
-  setMeta('name', 'robots', hidden ? 'noindex, nofollow' : 'index, follow');
-  setMeta('property', 'og:type', page === 'detail' && selected ? 'product' : 'website');
-  setMeta('property', 'og:site_name', SITE);
-  setMeta('property', 'og:title', title);
-  setMeta('property', 'og:description', description);
-  const canonicalPath = page === 'detail' && selected ? pathForPage('detail', selected) : pathname;
-  const canonical = window.location.origin + canonicalPath;
-  let link = document.head.querySelector('link[rel="canonical"]');
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', canonical);
-  setMeta('property', 'og:url', canonical);
-  const image = selected?.image_url;
-  if (image && /^https?:\/\//i.test(image)) setMeta('property', 'og:image', image);
-  else document.head.querySelector('meta[property="og:image"]')?.remove();
+  let link=document.head.querySelector('link[rel="canonical"]');
+  if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}
+  link.href=meta.canonical;
 }

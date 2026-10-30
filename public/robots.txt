@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /account
+Sitemap: https://vivilens.duc-nguyen-ndd127.workers.dev/sitemap.xml

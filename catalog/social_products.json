@@ -1,0 +1,1100 @@
+[
+  {
+    "slug": "ai-blue",
+    "name": "AI Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a4efb64d-968c-4a21-8134-aa66f3d0967f/drive-1nQGnBLKW382voeidywiikfuOsP_visw0.webp"
+  },
+  {
+    "slug": "airy-green-1-day",
+    "name": "Airy Green (1 Day)",
+    "color": "Green",
+    "wear_period": "1 ngày",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/6c6a54fc-c7e8-44e6-81bd-67cc08ca032f/drive-19qMsPteybzK4scxTJa2ysc_KQXWmvMzV.webp"
+  },
+  {
+    "slug": "airy-pink-1-day",
+    "name": "Airy Pink (1 Day)",
+    "color": "Pink",
+    "wear_period": "1 ngày",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/ab838da4-cbfe-49f5-a1f5-129249518d2d/drive-1kXb0gBCONcw69iGblgyY0o1EtfQ7KSUP.webp"
+  },
+  {
+    "slug": "angel-blue",
+    "name": "Angel Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/cfc90208-fc73-407d-b00b-ed82a64b8210/drive-1rgYc7rU_R3UwaKqBr5BSa8pwI9ZeLfZ_.webp"
+  },
+  {
+    "slug": "autumn-green",
+    "name": "Autumn Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/13d702ba-0aa3-49f9-a151-fe6ed9122a87/drive-1Pd-diXaA88AsLqAElwVfMlJJFPTow3LV.webp"
+  },
+  {
+    "slug": "baby-black",
+    "name": "Baby Black",
+    "color": "Black",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/bb75af09-6711-4b48-a695-37223b9f6071/drive-1cVTt0IJLOkFfxwDr00aUQQXsr8i603m2.webp"
+  },
+  {
+    "slug": "between-gray",
+    "name": "Between Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/bee3523e-73a8-4de4-8134-6e4f13ee9a08/drive-1hkHjrs7oYcXhg4SvZ3VsaIH0oIwGEIya.webp"
+  },
+  {
+    "slug": "black-sea",
+    "name": "Black Sea",
+    "color": "Black",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2d576232-6ab5-4b04-8b83-10767644fa38/drive-1iX1XErLzzp81mmnoHwDVlJLpWEq_Opzm.webp"
+  },
+  {
+    "slug": "blur-brown",
+    "name": "Blur Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/ee8463a1-44d2-46c9-af7a-40ac75a0c92b/drive-1qbBxxxhRA8elgqTHNj7QDjI474Su1qSG.webp"
+  },
+  {
+    "slug": "bubble-blue",
+    "name": "Bubble Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/5a40b154-1f5a-4e1a-8b14-54a23c2d1425/drive-11xJJFJ7-ADz04Ui75fSyxy2lz2rbHOYQ.webp"
+  },
+  {
+    "slug": "bubble-brown",
+    "name": "Bubble Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/46e9118e-4104-4500-9354-6e5ec70853c1/drive-1UpVkeoNUacqgqYbEoiJV8s4jRyYMoaTX.webp"
+  },
+  {
+    "slug": "cat-dimond-blue",
+    "name": "Cat Dimond Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d4cc218f-ddc5-4ce1-8e29-d66af146f299/drive-179ikKve3sQmofUVvHKjfZWOSACFDkqy9.webp"
+  },
+  {
+    "slug": "cat-dimond-brown",
+    "name": "Cat Dimond Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/8972175e-fea2-4658-8029-326e16a80524/drive-1NgO62phMrMMbcFTUf1VsPJJbVE6Ubawu.webp"
+  },
+  {
+    "slug": "cat-eyes-blue",
+    "name": "Cat Eyes Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/6d762250-61cd-4888-8249-aac15f285489/drive-10kMsV5kBFSEmzZe8E11pAvD6pMZiyotg.webp"
+  },
+  {
+    "slug": "clay-brown",
+    "name": "Clay Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/ba067095-b3c9-45b2-be18-2bcbef1b9d67/drive-1KjopV6yJhp2LNuJCbzMIfVNCQxdBYmf5.webp"
+  },
+  {
+    "slug": "clear-sky-blue",
+    "name": "Clear Sky Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/322ca698-0d60-423d-93c1-938b60100e98/drive-15x1x0KvudBzByx3857mtUvdG_-_E_coZ.webp"
+  },
+  {
+    "slug": "coastal-bluexgreen",
+    "name": "Coastal Bluexgreen",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/6eab749c-a503-4a81-b9b5-4c5d158864ad/drive-1RKwlQEVURQfCqkNV4TS2zxJ_xcfnUERT.webp"
+  },
+  {
+    "slug": "coffee-brown",
+    "name": "Coffee Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d08833e9-ce21-4e7c-bff6-9fa6ea19e4d3/drive-1yXBiPoekiayiyMMTCysFUBaaiCl7l0nQ.webp"
+  },
+  {
+    "slug": "cookie-brown",
+    "name": "Cookie Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/b30a6486-9fa5-45f3-9b01-2ede34dc1159/drive-1l71Ia8J0rII8gWoV2VshVswIZmz2777A.webp"
+  },
+  {
+    "slug": "cotton-plush-pink",
+    "name": "Cotton Plush Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/3ab0f61f-970d-48fc-a7d9-148e0544824e/drive-1ic08Ah_r560Z5Pe-846wXuNu1JdyjFV5.webp"
+  },
+  {
+    "slug": "cramy-pink",
+    "name": "Cramy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/39f583e7-08ca-4265-87ea-8d1cd66dea98/drive-1z8ukBjT1e4u8ZNEun0EIMGVgTRDw1L5M.webp"
+  },
+  {
+    "slug": "creamy-brown",
+    "name": "Creamy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/372ca939-dab8-4373-a7c2-3febcbc0b9b7/drive-1leQiMBWSRKhC6cS08gd8H-rsEDCKpwtH.webp"
+  },
+  {
+    "slug": "creamy-gray",
+    "name": "Creamy Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/39c5cc42-fbb4-429c-83a4-fe51db2b6d92/drive-1Px8GXoL01N9SHk-UcUGKfnjsu5UueKcU.webp"
+  },
+  {
+    "slug": "creamy-pink",
+    "name": "Creamy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/5ce41527-2f74-4a96-876b-2ac9df248a6b/drive-138Cs_001Y1eElB-zoY-D00hC0c84t9yw.webp"
+  },
+  {
+    "slug": "deep-blue",
+    "name": "Deep Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/9caf6133-aa13-48c1-a238-a6ec9b1cbaab/drive-1E1O74Q3wFVeL88EZW5uOLX8OgRg6Lgj3.webp"
+  },
+  {
+    "slug": "dream-blue",
+    "name": "Dream Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/f18dece5-08a9-4764-a834-807b01b6be1d/drive-1kt3k0VDhDnbjyVQcPBPP6hHoUPaq3Jsz.webp"
+  },
+  {
+    "slug": "every-brown",
+    "name": "Every Brown",
+    "color": "Brown",
+    "wear_period": "1 ngày",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/cb316d1c-0635-4a1e-bc19-41e37b387309/drive-1eeILitirUqnNMUue53cTG9U--13d1rCb.webp"
+  },
+  {
+    "slug": "fairy-blue",
+    "name": "Fairy Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/13277b2a-8660-47a4-bc70-c1026d6f89e8/drive-1DsJCaUT0Hq_etwVlc5WmB1EwY2efLMwt.webp"
+  },
+  {
+    "slug": "fairy-gray",
+    "name": "Fairy Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fe31d894-252a-4915-ade7-d23d955ffbec/drive-1cTZzDTy5A-TGovXQ0rDBHWfjqni4KKp2.webp"
+  },
+  {
+    "slug": "fairy-pink",
+    "name": "Fairy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/aa47acee-3448-4dd5-98e2-b76be8904127/drive-1S36MWljUPWFi6pCDcvW5bcqXmqXDHxAc.webp"
+  },
+  {
+    "slug": "flower-violet",
+    "name": "Flower Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fc0d6e1c-e822-430b-a9b4-ed9587cd166c/drive-1JVUHhZj-mNjKqw50YPXQ3RIGM_fyDx0w.webp"
+  },
+  {
+    "slug": "flowers-blue",
+    "name": "Flowers Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/be8b744b-9dd6-4950-8a97-a1b00aaf5030/drive-1x1HOu8HwmLdV7DX0sloR2CUm5OHsXGxo.webp"
+  },
+  {
+    "slug": "flowers-gray",
+    "name": "Flowers Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/4bbf7702-c4eb-497c-ab52-884f8c6cfc47/drive-1HfzDKAjvg34Ge_7U4c3Rb4DBKQEVnS3l.webp"
+  },
+  {
+    "slug": "freeze-blue",
+    "name": "Freeze Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7b36523b-1953-49a4-a83a-503bcaf1c77e/drive-1ykVnzzXMUFAVlF_TJuXryCs5lRFABjj0.webp"
+  },
+  {
+    "slug": "freeze-brown",
+    "name": "Freeze Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d377996a-ea61-4028-b598-d876865bd40f/drive-1JU6I_EhyfeCgfyll8sunQNZQG2xHIjIi.webp"
+  },
+  {
+    "slug": "frozen-blue",
+    "name": "Frozen Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/ea9d0132-184d-432a-a5a4-e44119a83485/drive-1-JtuFVjR8FmGRxcqQ9IebbtfBjcd_fBr.webp"
+  },
+  {
+    "slug": "frozen-gray",
+    "name": "Frozen Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/f8720da4-6b74-43c8-988e-81c11e1855ec/drive-18yqjS3kV0of9mapDLWIth9POauQNVfmX.webp"
+  },
+  {
+    "slug": "frozen-green",
+    "name": "Frozen Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/947aa603-4361-41ef-8351-a6e7ba96b343/drive-1apqFY8ZgDjMza0Oatmqe31q6ObLds0De.webp"
+  },
+  {
+    "slug": "gassy-blue",
+    "name": "Gassy Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/eebe72c5-a22e-4c22-8b74-a7baf8e2b7ec/drive-1rK4tII9U3srBLl2xQmoGxaSv26i8SUUt.webp"
+  },
+  {
+    "slug": "gassy-violet",
+    "name": "Gassy Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/4ea2b390-23ab-453c-ad00-753c73d7826f/drive-1AnVaUgBb9Q6a0BN-1nmHulRIy4qoaiX7.webp"
+  },
+  {
+    "slug": "hazel-brown",
+    "name": "Hazel Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/9a7c78db-f857-4e60-8a1e-13e6b85daa9b/drive-1c9mqBnkpgkGnpc0-msUuVZI1JKpspKOH.webp"
+  },
+  {
+    "slug": "jelly-brown",
+    "name": "Jelly Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a51e3c21-3ea0-44e7-abe0-bf26520a5ad0/drive-140AS8jMtd5L4ZNg-X7h1Y-5dpdF8u0V-.webp"
+  },
+  {
+    "slug": "jelly-gray",
+    "name": "Jelly Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e19e758d-d974-46ee-afdb-3af9365db789/drive-1O-W2jyRz_TrbI8Wyz-Yf_E9oWxtAzaQ4.webp"
+  },
+  {
+    "slug": "lemond-brown",
+    "name": "Lemond Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/bd74d358-cdd4-40ac-aa9b-bec1ad2ca179/drive-1lkJI9QpfWiyi4DgFpTdpaXNrEasN513E.webp"
+  },
+  {
+    "slug": "light-blue",
+    "name": "Light Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a86753ae-7323-4d14-9f9b-53bcb701c119/drive-1xDDd9Sj1TYLim8QxN5IQhp84zNbXNwom.webp"
+  },
+  {
+    "slug": "light-blue-2",
+    "name": "Light Blue 2",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/1323833a-a5a6-47cb-acfe-4b9a01e858a4/drive-1boSthHdx2-6oVpiH8HY9C35R8BnShHeX.webp"
+  },
+  {
+    "slug": "medium-brown",
+    "name": "Medium Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/b45728fa-4904-488b-b8cf-ee777afca59e/drive-101hGQVVsi2TSTcigxJPb9aiNeMZIyK33.webp"
+  },
+  {
+    "slug": "medium-gray",
+    "name": "Medium Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d3c09bbe-8f0c-4da2-bbf6-87a9d631834c/drive-14ORvlM1Uu6Vo3-bNO9sE6ZVGxmi3gEjz.webp"
+  },
+  {
+    "slug": "medium-pink",
+    "name": "Medium Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e865785e-6e6d-496a-b73d-d80535ea3b7e/drive-18_LW5WVoTrcbQmt78A-NfACBXrOgTmV4.webp"
+  },
+  {
+    "slug": "mermaid-blue",
+    "name": "Mermaid Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/9dd934f9-4420-4dad-af27-76d7c3aa179d/drive-1ugiJCkM3BwseS3dyqNQI9NL8FMTu9F2l.webp"
+  },
+  {
+    "slug": "mermaid-blue-and-green",
+    "name": "Mermaid Blue&Green",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e577e8a9-56e7-4faa-839b-fb7e6ea81572/drive-10OwKjTdNlA9H-1y-2qkAC0KpF3R58O0c.webp"
+  },
+  {
+    "slug": "mermaid-green",
+    "name": "Mermaid Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2646505d-14d2-449f-a1d3-4280c6917e50/drive-1Y5u4yrhmaOhV6EqS_oynrTqn-4uQka__.webp"
+  },
+  {
+    "slug": "midnight-blue",
+    "name": "Midnight Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e7fdf103-f045-474b-91c0-3ea181484505/drive-1fWuwUa4TPZb_5zbzhr8RZi2Qf7j2ZGD6.webp"
+  },
+  {
+    "slug": "milk-coffee-brown",
+    "name": "Milk Coffee Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e55eed4c-7ba1-46a8-80d2-769edc253fd9/drive-1LASFk73cfLb01e06awUKzz0qZMjA600z.webp"
+  },
+  {
+    "slug": "milk-pink",
+    "name": "Milk Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d5b3774c-476f-45a9-a968-820066aeaa7f/drive-1Hn5Ch6lRyqXi_LTNBdBHSwDrd6humc3h.webp"
+  },
+  {
+    "slug": "milk-tea-brown",
+    "name": "Milk Tea Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7fc50441-c670-4114-9b44-b8d6cfbf80de/drive-15jN14P4gOecbP0DYIRFjczZ4XHB8TCfw.webp"
+  },
+  {
+    "slug": "milk-tea-brown-1-day",
+    "name": "Milk Tea Brown (1 Day)",
+    "color": "Brown",
+    "wear_period": "1 ngày",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/b93c3f08-07ad-41d1-aaf8-9749881ab812/drive-1H4NTrt3hwkb5yttyiOHa8WnmpwRm5QlF.webp"
+  },
+  {
+    "slug": "milk-tea-pink",
+    "name": "Milk Tea Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/172e05ea-818b-4171-b05e-4f9c47b0dcba/drive-1JFDPJgm1SFvp9F5ExcImRVUTJfL5ocjN.webp"
+  },
+  {
+    "slug": "milky-blue",
+    "name": "Milky Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/22ed9ea1-0f8e-4a3c-b41c-5b02f72611b4/drive-1fakNNWaCUvsPIjj-Pir-BzD1ZNHnWaWd.webp"
+  },
+  {
+    "slug": "mini-pink",
+    "name": "Mini Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/c88e3232-f0a3-4197-ab10-34be1e4a7dd3/drive-1323R-j7VnhwRzRzRxVtp9XIAI7aHV66V.webp"
+  },
+  {
+    "slug": "mist-blue",
+    "name": "Mist Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a8c63f36-38eb-4d8f-8617-f646cd2a88a6/drive-1JkZHTZIm8ZdFOV_-GjIwMkQx2e_fGWhr.webp"
+  },
+  {
+    "slug": "mono-gray",
+    "name": "Mono Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/75c48e3e-a5bf-47ab-a5e4-c3a708a10f5b/drive-1ZAVTZ0VN7YwEIuCyFapC6l3I67qdEVJW.webp"
+  },
+  {
+    "slug": "mood-line-brown",
+    "name": "Mood Line Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/c39e13b8-9635-4cdd-9a49-9c8c7542bad2/drive-1GjnwMlznobekuYuTKL6QFhP0YTSAbKzP.webp"
+  },
+  {
+    "slug": "moon-light-blue",
+    "name": "Moon Light Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/c72a377a-9721-433b-8ecb-58125cad91fe/drive-1b60sMMyrVCgdcoCfWuOAqvVK90zsSAwT.webp"
+  },
+  {
+    "slug": "moon-light-brown",
+    "name": "Moon Light Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/c19618dd-ffac-41b4-8ae0-07f8a057d3da/drive-1B6TitNSn-jjWvIHTk2IqXfkUJ9Z_BNSv.webp"
+  },
+  {
+    "slug": "moon-light-gray",
+    "name": "Moon Light Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/0dfbde77-a2f9-4f2c-b465-7147f0942638/drive-1PoylA_RJs32oNZKcGihoTO-OwyaRXcKU.webp"
+  },
+  {
+    "slug": "moon-light-rose",
+    "name": "Moon Light Rose",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fe357451-7d1c-4a6a-8277-6d195a87438d/drive-1XWuND85kMGffZatMVGF4o3Xj1Hiqs_NJ.webp"
+  },
+  {
+    "slug": "moon-light-wood-brown",
+    "name": "Moon Light Wood Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/5cc6e49a-3baa-450a-9734-2508bf42a31e/drive-1PtQhnhVlcQQKYmWHI42oX1nDtULFfrID.webp"
+  },
+  {
+    "slug": "mute-gray",
+    "name": "Mute Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fd5ec2db-dd57-4a98-9311-d11edf8826ad/drive-1W_-MSg1yPdLwyQG1HfedazwHOWSGK69X.webp"
+  },
+  {
+    "slug": "mute-pink",
+    "name": "Mute Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/8bc9f86e-ceb8-4b76-bba6-52b0a6e209fd/drive-1QuYMVfU2gv2MLM2xKkH3t3KHW621J0hh.webp"
+  },
+  {
+    "slug": "nani-gray",
+    "name": "Nani Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/328c02aa-bc55-4014-ad7f-24f100dfa831/drive-13y4cev_eLrSnXHhPcuDCbDXxmGkEwrOz.webp"
+  },
+  {
+    "slug": "natural-brown",
+    "name": "Natural Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/9edf0283-e9ed-40fa-a013-79341e3c5ce9/drive-1mMwazngoauHC8mmBZzHlE3ThsaWp6Geb.webp"
+  },
+  {
+    "slug": "navy-brown",
+    "name": "Navy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7a616549-5583-44b6-a6c6-06eed0cf3a36/drive-1HZKyvA2yhsBYHCMtZLpwWy0OsvdC0765.webp"
+  },
+  {
+    "slug": "ocean-blue",
+    "name": "Ocean Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/358f2fef-45a4-41f3-9692-8120e705d058/drive-1_nJREHFXpkAuRI9prNfYnWsDeX6OpEZ4.webp"
+  },
+  {
+    "slug": "ocean-brown",
+    "name": "Ocean Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/18050bff-b789-4d29-9b20-1a218ed11610/drive-1pu7uCOjv1h_ezHi4wyGuNmmFIAiuqMMZ.webp"
+  },
+  {
+    "slug": "ocean-gray",
+    "name": "Ocean Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/51916802-be8e-4c13-ad75-7c331cf58216/drive-1j-vMKv2iPwIgBOh_XO3AyynQLAwbTvpt.webp"
+  },
+  {
+    "slug": "ocean-green",
+    "name": "Ocean Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/90737330-c519-44f7-afa2-a306cae0123e/drive-1yzTtjELkNi3dyA4Y4Yb1ZRwC3JxguLnd.webp"
+  },
+  {
+    "slug": "olive-brown",
+    "name": "Olive Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/701142bd-903b-4a4c-a8ad-172c83087598/drive-1IckZ6fdiQV6j_k3J1VZQHxwtCj-dpwjF.webp"
+  },
+  {
+    "slug": "peace-green",
+    "name": "Peace Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a05616c8-7ae6-41dc-ae67-2375df10fe4e/drive-1Pc34SGSltUEBAnKiXhgrGjvu6x25avW2.webp"
+  },
+  {
+    "slug": "peacook-blue",
+    "name": "Peacook Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/21f37375-c1cf-4d5b-9720-555eb5dd9551/drive-1WcCicdQYWfwjnSaTEVTKm1iU4uwmAtKU.webp"
+  },
+  {
+    "slug": "perry-green",
+    "name": "Perry Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/460d3da4-bfbb-45c0-938d-fad5df75066e/drive-1xY6NyjIaKpgv0n4OeSLbpRX_YgKKIpdK.webp"
+  },
+  {
+    "slug": "pink-noir-rose",
+    "name": "Pink Noir Rose",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/1d3155ac-ae17-4a99-a49f-10e3daeb1b87/drive-1U4yEfpiKFLGIBWfvfoo9gVehS6MtkMaM.webp"
+  },
+  {
+    "slug": "puppy-blue",
+    "name": "Puppy Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/04627c5f-a485-4a12-b228-db2eefe80b6c/drive-16kvdlPCDaPpY1o2Abjk29h4Nxd3vLVUl.webp"
+  },
+  {
+    "slug": "puppy-brown",
+    "name": "Puppy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/c74a84b6-1b99-4818-9574-143f2288bee9/drive-1qf3rGGWj4PPbmGov-HPnfsQ-cI1Pjwuc.webp"
+  },
+  {
+    "slug": "puppy-pink",
+    "name": "Puppy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/21febd7a-f195-4004-b480-251f0b6d8e00/drive-1c0rIS2rhmqV7xMBM7Kp6EUvZPXaxCVBa.webp"
+  },
+  {
+    "slug": "racy-angel",
+    "name": "Racy Angel",
+    "color": "Other",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2f2a7f62-6043-4ab9-bba3-fdafef8a0e4c/drive-1bPtXuJpryC6JM1ztpRJ9XEAXnObE2kDW.webp"
+  },
+  {
+    "slug": "racy-blue",
+    "name": "Racy Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/72415183-1a92-41ce-92cf-a0bd39cfafed/drive-1U5_M7p5bQW4lrh-WAHJ43wRNSg8SejC6.webp"
+  },
+  {
+    "slug": "racy-brown",
+    "name": "Racy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/3de7b12a-514a-457e-9bac-579721d21919/drive-11_rht_UzydrGjT9VmqZe9zslxYlt1PE3.webp"
+  },
+  {
+    "slug": "racy-gray",
+    "name": "Racy Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/f5ffeaf7-9db4-4f59-9571-7ba0683651c8/drive-1OaYyctbSpLQzLex6Q4_RJUsBpQTqlDn0.webp"
+  },
+  {
+    "slug": "racy-pink",
+    "name": "Racy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/91cda38e-7683-4fa3-b5a1-bcfc13f50d7f/drive-1rRM_GaSLT376Iv9f_at0rdNHZdSZY6H0.webp"
+  },
+  {
+    "slug": "racy-violet",
+    "name": "Racy Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2fedc865-f794-4967-ba7c-389a90e8ee17/drive-1jOKXvka7ZMZhbSY5nCyYN06FT14S9urn.webp"
+  },
+  {
+    "slug": "rainbown-brown",
+    "name": "Rainbown Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/bc6f4ba8-d7ea-4396-a571-d1aeefd16183/drive-1jXcvShAAqPYGSuvd3shECjj_Wn9XsVZa.webp"
+  },
+  {
+    "slug": "royal-blue",
+    "name": "Royal Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2f04ce63-1376-4b30-98fe-04190a921a7b/drive-1izxbdF2AfOrr1L6EqgZJgjbchdPoeS2u.webp"
+  },
+  {
+    "slug": "royal-brown",
+    "name": "Royal Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/4ee21571-9c2d-4b19-8d81-5282e40711f3/drive-1uAgv-OXGC_RnP4MpqAmxil0Gk4Lo5P8z.webp"
+  },
+  {
+    "slug": "royal-gray",
+    "name": "Royal Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d747a92f-d9b6-4266-aada-7c44f3f1410c/drive-1tkAEE5XfXbX6nzImi6ULQpLZni9K7FDZ.webp"
+  },
+  {
+    "slug": "sandy-brown",
+    "name": "Sandy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/77a4a192-6092-4bb5-9f89-0a21aa98e641/drive-1WmV_e1uwyP7IMSSJTVU-gIKxqNk6W6Nk.webp"
+  },
+  {
+    "slug": "sandy-gray",
+    "name": "Sandy Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2a96b751-6edf-4354-8e6b-5279778dacb4/drive-1akZtrwkf-UX7b8WqaBRipI3Phb18VpMx.webp"
+  },
+  {
+    "slug": "sandy-nude-brown",
+    "name": "Sandy Nude Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/9bb71b6a-b38b-49eb-bb7b-83d9d01a3b13/drive-1OTCVyBCirnnQjr2t8jLiAYGQdVHigbqh.webp"
+  },
+  {
+    "slug": "sandy-olive-brown",
+    "name": "Sandy Olive Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.0",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/29344e62-e5f5-4cda-85c1-154903e999af/drive-1iZ-Y2ux046R66CXnNWiQJ8HJslLac7Sb.webp"
+  },
+  {
+    "slug": "sea-blue",
+    "name": "Sea Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a3bd7073-cc5e-4839-8678-af0177cbab77/drive-1RBRnuS1h7b1OjDN7Cvl8VmEZRuzkxFFh.webp"
+  },
+  {
+    "slug": "shy-gray",
+    "name": "Shy Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a337514b-4ef2-48bd-b8c8-fa081442ca8a/drive-150NmG3vNRDIPVkdIek7yrfVKse75kj-c.webp"
+  },
+  {
+    "slug": "silver-gray",
+    "name": "Silver Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e25961b0-45d5-4b3f-a5b6-4903c3f667c6/drive-1JqRyPqTw5j1q5S1EOM_rai_VQtmd9QR1.webp"
+  },
+  {
+    "slug": "siren-gray",
+    "name": "Siren Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/514db283-af34-4dcc-b77f-af1a9c1ffd4a/drive-1LbdzvTYs0C9SkyED-qzIgk0cvPaOfKb_.webp"
+  },
+  {
+    "slug": "smoke-black",
+    "name": "Smoke Black",
+    "color": "Black",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/3049d20e-4fa2-4313-8ffc-fd284ff5ed87/drive-1Zp_OuVkOtqUfw0HPk5CYWXwbL7e-EJ04.webp"
+  },
+  {
+    "slug": "smoke-brown",
+    "name": "Smoke Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/79fe7c34-52c0-45ae-ac1f-beaf3377e230/drive-1oinkPTPawrOTRbkmovgCDPLY039HFmW6.webp"
+  },
+  {
+    "slug": "smoky-cloud",
+    "name": "Smoky Cloud",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/778d506a-6459-4f08-b4f0-94ea2b53add0/drive-1PMvyTPsLqVNqGzdgQ0C1X6ZFGbnaJFfs.webp"
+  },
+  {
+    "slug": "snowing-brown",
+    "name": "Snowing Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/f87efdc4-d2e6-410f-934a-438131d37a27/drive-1SB3sSQZSnNnMCp4oD6NZemHFugsX99Gq.webp"
+  },
+  {
+    "slug": "snowing-gray",
+    "name": "Snowing Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/617c62e9-8bfd-4577-96d6-30ae2f6d8c12/drive-1lJifpJATJB5x5VwZrOm7MaIMjXsNslJu.webp"
+  },
+  {
+    "slug": "soft-blue",
+    "name": "Soft Blue",
+    "color": "Blue",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/f2d5b79f-5b42-4952-b558-2c2fddfb5644/drive-1Zp3t2Q2g7t5QCZCCQi_IV5QUQTFD_4Fv.webp"
+  },
+  {
+    "slug": "spark-brown",
+    "name": "Spark Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.3",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/55b2ac5f-d500-4917-bc80-44adebd9132c/drive-1UeMfEJAL_Nbw31gsAON75UCLQae_Ca9g.webp"
+  },
+  {
+    "slug": "starv-violet",
+    "name": "Starv Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/6b301ae7-c4c4-4f5a-ba15-05b3368e4569/drive-10BjKSIJXz_C-70Rko6FwOjph9c6buC28.webp"
+  },
+  {
+    "slug": "stormy-gray-1",
+    "name": "Stormy Gray 1",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d6e9dd3b-2229-4474-a486-951fd8d8064e/drive-1JK509tDVD6SLQwVcGp4GgWnRqNao9eXc.webp"
+  },
+  {
+    "slug": "sweet-bean-brown",
+    "name": "Sweet Bean Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/40c4e8f6-64c0-48fe-8e6e-0654d800d2b4/drive-1Bgsg5nRKoUQuz13lbzn3v3wIc1q5eRp6.webp"
+  },
+  {
+    "slug": "sweet-bean-gray",
+    "name": "Sweet Bean Gray",
+    "color": "Gray",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a5101ea9-19e9-4ef6-975a-3875458c3519/drive-1kSo18KQE8fSnx9X_klGJ-_WGEypEqcbE.webp"
+  },
+  {
+    "slug": "swoon-pink",
+    "name": "Swoon Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "Chưa xác nhận",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/b3077f3c-8f51-49df-bbe9-4c15f84e8994/drive-13QqPoNuNE25t5giLvp4WBVNo8vVsBbD3.webp"
+  },
+  {
+    "slug": "tear-violet",
+    "name": "Tear Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/1da5b75e-bb28-4978-ac2e-6fc1d60dcde4/drive-1eyGpA0xCfvNS4z3JNQjiRizNMoBaLh5Q.webp"
+  },
+  {
+    "slug": "teddy-pink",
+    "name": "Teddy Pink",
+    "color": "Pink",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/01f03b87-2701-4b70-a3d4-54b15069f7c1/drive-1ffc74bCPK1e4rcBjjLAUePq4loaWeJGv.webp"
+  },
+  {
+    "slug": "tokyo-brown",
+    "name": "Tokyo Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2ec13c9c-af71-4c06-a4d8-4646bff806f6/drive-1ogLsHTlvaTiUhgJJzALfhDMNwVMutftv.webp"
+  },
+  {
+    "slug": "tokyo-green",
+    "name": "Tokyo Green",
+    "color": "Green",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/d45bb8e3-333d-4322-8ee6-d97a75c0002e/drive-1tSsz9-JIzcFrDvs8GXE1RMz8gfP8EPa5.webp"
+  },
+  {
+    "slug": "vampire-violet",
+    "name": "Vampire Violet",
+    "color": "Violet",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/4786fd8c-2fc9-4255-9a04-e8a9e1d06a2c/drive-1dOHbIOtPkr0jqmu7mJEK83kr5FP1ed8X.webp"
+  },
+  {
+    "slug": "warm-hazel",
+    "name": "Warm Hazel",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.2",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e27bddf9-91a3-47ba-a059-27e24ed69f9b/drive-1btDEPhOqQ8-ftbb7Y5fDBqn9L7HZMJBi.webp"
+  },
+  {
+    "slug": "woddy-brown",
+    "name": "Woddy Brown",
+    "color": "Brown",
+    "wear_period": "6 tháng",
+    "diameter": "14.5",
+    "price": 220000,
+    "image_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/4f9b0aee-28a5-4d5f-be71-a821fb1ade37/drive-1462c_6FQK3THmCYArbLrGluPCJ2lI_ek.webp"
+  }
+]

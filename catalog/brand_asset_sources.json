@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "key": "milk-tea-brown",
+      "slug": "milk-tea-brown",
+      "name": "Milk Tea Brown",
+      "color": "Brown",
+      "source_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7fc50441-c670-4114-9b44-b8d6cfbf80de/drive-15jN14P4gOecbP0DYIRFjczZ4XHB8TCfw.webp",
+      "source_position": 1
+    },
+    {
+      "key": "clear-sky-blue",
+      "slug": "clear-sky-blue",
+      "name": "Clear Sky Blue",
+      "color": "Blue",
+      "source_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/322ca698-0d60-423d-93c1-938b60100e98/drive-15x1x0KvudBzByx3857mtUvdG_-_E_coZ.webp",
+      "source_position": 1
+    },
+    {
+      "key": "creamy-pink",
+      "slug": "creamy-pink",
+      "name": "Creamy Pink",
+      "color": "Pink",
+      "source_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/5ce41527-2f74-4a96-876b-2ac9df248a6b/drive-1Ch5vf3SMIGlXRlNRoZSS6LdQoOsjN1sn.webp",
+      "source_position": 3
+    },
+    {
+      "key": "fairy-gray",
+      "slug": "fairy-gray",
+      "name": "Fairy Gray",
+      "color": "Gray",
+      "source_url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fe31d894-252a-4915-ade7-d23d955ffbec/drive-1cTZzDTy5A-TGovXQ0rDBHWfjqni4KKp2.webp",
+      "source_position": 1
+    }
+  ],
+  "note": "Original product photos only; resizing/layout permitted. No model, face, pose or lens-color edits."
+}

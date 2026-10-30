@@ -1,5 +1,7 @@
 # VIVILENS Ecommerce V1.0
 
+**Current release: V1.4.** The homepage uses original product photography, responsive WebP assets, a favicon set and pre-rendered social previews. See [brand assets and link-preview maintenance](docs/BRAND_ASSETS.md). The V1.0 and V1.1A sections below describe those historical releases; decorative homepage swatches and JavaScript-only social metadata have since been replaced.
+
 Responsive storefront for colored contact lenses. React/Vite + Supabase Auth/Postgres + Cloudflare Pages.
 
 ## Included
