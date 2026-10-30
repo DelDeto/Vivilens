@@ -127,9 +127,10 @@ def main():
     parser.add_argument("--mode", choices=("dry-run", "upload"), default="dry-run")
     parser.add_argument("--limit", type=int, default=4, help="Max number of images to process; 0 means all")
     parser.add_argument("--slug", default="", help="One model only, e.g. siren-gray")
+    parser.add_argument("--priority-slugs", default="ai-blue,milky-blue", help="Comma-separated image-less lens models to attempt first when uploading")
     parser.add_argument("--max-mb", type=int, default=LIMIT_MB, help="Stop upload if compressed bytes exceed this budget")
-    parser.add_argument("--max-attempts", type=int, default=32, help="Maximum new Drive downloads to attempt per run; prevents timeout when Google rate limits")
-    parser.add_argument("--max-failures", type=int, default=7, help="Stop a batch after this many inaccessible photos; next scheduled run rotates to a different section")
+    parser.add_argument("--max-attempts", type=int, default=60, help="Maximum new Drive downloads to attempt per run; prevents timeout when Google rate limits")
+    parser.add_argument("--max-failures", type=int, default=10, help="Stop a batch after this many inaccessible photos; next scheduled run rotates to a different section")
     args = parser.parse_args()
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     products = [x for x in data["products"] if not args.slug or x["slug"] == args.slug]
@@ -144,6 +145,17 @@ def main():
         products = products[rotation:] + products[:rotation]
         print(f"RESUME rotation={rotation}/{len(products)} run={run_number}", flush=True)
     if args.mode == "upload":
+        priority = [slug.strip() for slug in args.priority_slugs.split(",") if slug.strip()]
+        if priority and not args.slug:
+            order = {slug: i for i, slug in enumerate(priority)}
+            products.sort(key=lambda p: (0, order[p["slug"]]) if p["slug"] in order else (1, 0))
+            print(f"PRIORITY photos: {', '.join(priority)}", flush=True)
+        # Cover-first two-pass import gives each lens model a real cover before filling
+        # complete 5-photo galleries. The cover pass tries a second original when
+        # the preferred first Drive photo is temporarily inaccessible.
+        if not args.slug:
+            covers = [{**item, "_cover_phase": True, "images": item.get("images", [])[:2]} for item in products]
+            products = covers + products
         github_oidc_token()  # fail safely before downloading any files
     size, raw_total, completed, skipped = 0, 0, 0, 0
     attempted, stopped_early = 0, False
@@ -163,6 +175,9 @@ def main():
                     continue
                 existing = set(preflight["existing_drive_ids"])
                 available_slots = max(0, 5 - int(preflight["gallery_count"]))
+                if item.get("_cover_phase") and int(preflight["gallery_count"]) > 0:
+                    skipped += len(sources)
+                    continue
                 if available_slots == 0:
                     skipped += len(sources)
                     print(f"SKIP {item['slug']}: gallery already has 5 images", flush=True)
@@ -200,6 +215,9 @@ def main():
                         available_slots -= 1
                     size += len(optimized)
                     completed += 1
+                    if item.get("_cover_phase"):
+                        print(f"COVER_READY {item['slug']}", flush=True)
+                        break
                     print(f"{args.mode.upper()} {item['slug']} {file_id}: {len(original)//1024} KB -> {len(optimized)//1024} KB", flush=True)
                     if args.mode == "upload":
                         time.sleep(0.7)  # Respect Google Drive public download rate limits.
