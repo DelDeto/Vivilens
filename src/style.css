@@ -507,3 +507,19 @@ footer{padding-top:28px}
  .admin-summary strong{font-size:19px}
  .admin-summary span{font-size:10px}
 }
+
+
+/* Public color-catalog previews: visibly separate from products available for purchase. */
+.vv-preview-tag{position:absolute;top:12px;left:12px;z-index:2;background:#fff9f2;color:#9a596b;border:1px solid #e9c8d4;border-radius:100px;font-size:10px;letter-spacing:.11em;font-weight:800;padding:7px 11px}
+.vv-card-no-photo{height:100%;width:100%;min-height:170px;background:linear-gradient(140deg,#fcf3f5,#f3e4ec);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:#a66a80}
+.vv-card-no-photo span{font-family:'Playfair Display',serif;font-size:24px;letter-spacing:.13em;font-weight:600}
+.vv-card-no-photo small{font-size:11px;letter-spacing:.02em;padding:0 10px;color:#8e7b85}
+.vv-preview-product .price{color:#9e7484;font-weight:600;font-size:13px}
+.vv-availability-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:-15px 0 14px}
+.vv-availability-tabs button{border-radius:100px;background:#fff;border:1px solid #ead4df;padding:8px 14px;color:#845a6b;font-size:12px;font-weight:600}
+.vv-availability-tabs button.active{background:#9e5972;color:#fff;border-color:#9e5972}
+.vv-preview-notice{border:1px solid #edd5df;background:#fcf4f7;border-radius:12px;padding:15px 18px;margin:12px 0 16px}
+.vv-preview-notice strong{font-size:12px;letter-spacing:.035em;color:#9e4d6d}
+.vv-preview-notice p{margin:7px 0 0;font-size:13px;line-height:1.65}
+.vv-pending-price{font-size:18px;font-weight:600;color:#986e80}
+@media(max-width:600px){.vv-availability-tabs{margin:-6px 0 11px;gap:6px}.vv-availability-tabs button{font-size:11px;padding:6px 9px}.vv-preview-tag{font-size:9px;top:8px;left:8px;padding:5px 8px}.vv-card-no-photo span{font-size:18px}}
