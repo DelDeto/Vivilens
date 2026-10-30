@@ -11,6 +11,9 @@
 - Supabase Edge Function vivilens-drive-import verifies the issuer's JWKS signature and exact repository id (1436795943), repository name, workflow path, event type and main branch before accepting any upload.
 - The Supabase service key stays inside the managed Supabase Edge environment; it is not copied into GitHub secrets, scripts, logs or client code.
 - The upload path is a stable per-product/per-Drive-image filename so reruns skip images already imported.
+- Public downloads try verified original-image bytes from Drive's download endpoints and its full-resolution image CDN before falling back to gdown. Login, quota and error HTML is rejected.
+- Four independent product folders can be processed concurrently. A product's gallery always has one serial writer; the cover pass finishes before the gallery pass starts.
+- Main-branch catch-up now processes all remaining source references (instead of stopping at 50), within the existing 250 MiB budget, 1,200-attempt limit and 55-minute job timeout.
 - A store owner's existing gallery is never erased and never exceeds five photos. Only an empty or Unsplash placeholder product cover may be replaced.
 - Products remain in their existing active/draft status; prices, stock, packaging and SKU prescriptions are never modified.
 

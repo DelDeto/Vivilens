@@ -5,12 +5,14 @@ Uses signed GitHub Actions OIDC for upload, with no long-lived credentials.
 """
 from __future__ import annotations
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 import json
 import os
 from pathlib import Path
 import tempfile
 import time
+from threading import Lock
 from urllib.parse import quote
 
 import gdown
@@ -50,7 +52,25 @@ def convert_photo(raw: bytes) -> bytes:
 
 def fetch_drive_image(file_id: str, tempdir: str) -> bytes:
     path = os.path.join(tempdir, file_id)
-    for attempt in range(3):
+    # Public originals sometimes fail via gdown's confirmation-page parser even
+    # though Drive can serve the same original directly. Validate image bytes,
+    # never accept a login/quota HTML page as a successful download.
+    urls = [
+        f"https://drive.google.com/uc?export=download&id={quote(file_id)}",
+        f"https://drive.usercontent.google.com/download?id={quote(file_id)}&export=download&confirm=t",
+        f"https://lh3.googleusercontent.com/d/{quote(file_id)}=s0",
+    ]
+    for url in urls:
+        try:
+            response = requests.get(url, timeout=(10, 30))
+            response.raise_for_status()
+            data = response.content
+            with Image.open(BytesIO(data)) as img:
+                img.verify()
+            return data
+        except (requests.RequestException, OSError, ValueError):
+            continue
+    for attempt in range(2):
         try:
             result = gdown.download(id=file_id, output=path, quiet=True, fuzzy=True)
             if not result:
@@ -61,7 +81,7 @@ def fetch_drive_image(file_id: str, tempdir: str) -> bytes:
             return data
         except Exception as error:
             # gdown raises FileURLRetrievalError on a private, over-quota or rate-limited file.
-            if attempt == 2:
+            if attempt == 1:
                 raise RuntimeError(f"Cannot download Drive image {file_id}: public link unavailable, inaccessible or rate limited.") from error
             time.sleep(3 * (2 ** attempt))
     raise RuntimeError(f"Download failed: {file_id}")
@@ -70,10 +90,16 @@ def fetch_drive_image(file_id: str, tempdir: str) -> bytes:
 EDGE_URL = f"https://{PROJECT}.supabase.co/functions/v1/vivilens-drive-import"
 _cached_token = ""
 _cached_at = 0.0
+_token_lock = Lock()
 
 
 def github_oidc_token() -> str:
     """Fetch a fresh, short-lived signed GitHub OIDC token, no persistent secrets."""
+    with _token_lock:
+        return _refresh_github_oidc_token()
+
+
+def _refresh_github_oidc_token() -> str:
     global _cached_token, _cached_at
     if _cached_token and time.monotonic() - _cached_at < 100:
         return _cached_token
@@ -131,6 +157,7 @@ def main():
     parser.add_argument("--max-mb", type=int, default=LIMIT_MB, help="Stop upload if compressed bytes exceed this budget")
     parser.add_argument("--max-attempts", type=int, default=60, help="Maximum new Drive downloads to attempt per run; prevents timeout when Google rate limits")
     parser.add_argument("--max-failures", type=int, default=10, help="Stop a batch after this many inaccessible photos; next scheduled run rotates to a different section")
+    parser.add_argument("--workers", type=int, default=4, choices=range(1, 5), help="Independent product folders to sync concurrently; writes within each product remain serial")
     args = parser.parse_args()
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     products = [x for x in data["products"] if not args.slug or x["slug"] == args.slug]
@@ -150,86 +177,105 @@ def main():
             order = {slug: i for i, slug in enumerate(priority)}
             products.sort(key=lambda p: (0, order[p["slug"]]) if p["slug"] in order else (1, 0))
             print(f"PRIORITY photos: {', '.join(priority)}", flush=True)
-        # Cover-first two-pass import gives each lens model a real cover before filling
-        # complete 5-photo galleries. The cover pass tries a second original when
-        # the preferred first Drive photo is temporarily inaccessible.
-        if not args.slug:
-            covers = [{**item, "_cover_phase": True, "images": item.get("images", [])[:2]} for item in products]
-            products = covers + products
         github_oidc_token()  # fail safely before downloading any files
-    size, raw_total, completed, skipped = 0, 0, 0, 0
-    attempted, stopped_early = 0, False
-    failures = []
+
+    lock = Lock()
+    state = dict(size=0, raw_total=0, completed=0, skipped=0, attempted=0,
+                 inflight=0, stopped_early=False, failures=[])
+
+    def failure(slug, file_id, error):
+        with lock:
+            state["failures"].append({"slug": slug, "file_id": file_id, "error": str(error)})
+        print(f"ERROR {slug} {file_id or 'preflight'}: {error}", flush=True)
+
     with tempfile.TemporaryDirectory(prefix="vivilens-images-") as tempdir:
-        for item in products:
-            if args.mode == "upload" and (attempted >= args.max_attempts or len(failures) >= args.max_failures):
-                stopped_early = True
-                break
+        def process_product(item, cover_phase=False):
             sources = item.get("images", [])
             if args.mode == "upload":
                 try:
                     preflight = list_imported_ids(item["slug"])
                 except Exception as error:
-                    failures.append({"slug": item["slug"], "file_id": None, "error": str(error)})
-                    print(f"ERROR preflight {item['slug']}: {error}", flush=True)
-                    continue
+                    failure(item["slug"], None, error)
+                    return
                 existing = set(preflight["existing_drive_ids"])
                 available_slots = max(0, 5 - int(preflight["gallery_count"]))
-                if item.get("_cover_phase") and int(preflight["gallery_count"]) > 0:
-                    skipped += len(sources)
-                    continue
+                if cover_phase and int(preflight["gallery_count"]) > 0:
+                    return
                 if available_slots == 0:
-                    skipped += len(sources)
+                    with lock:
+                        state["skipped"] += len(sources)
                     print(f"SKIP {item['slug']}: gallery already has 5 images", flush=True)
-                    continue
+                    return
             else:
                 existing, available_slots = set(), 5
+            product_temp = os.path.join(tempdir, item["slug"])
+            os.makedirs(product_temp, exist_ok=True)
             for source in sources:
-                if args.limit and completed >= args.limit:
-                    break
-                if args.mode == "upload" and (attempted >= args.max_attempts or len(failures) >= args.max_failures):
-                    stopped_early = True
-                    break
                 file_id = source["id"]
                 if file_id in existing:
-                    skipped += 1
+                    with lock:
+                        state["skipped"] += 1
                     continue
                 if available_slots <= 0:
-                    skipped += 1
-                    continue
-                attempted += 1
+                    break
+                with lock:
+                    if args.limit and state["completed"] + state["inflight"] >= args.limit:
+                        return
+                    if state["attempted"] >= args.max_attempts or len(state["failures"]) >= args.max_failures or state["stopped_early"]:
+                        state["stopped_early"] = True
+                        return
+                    state["attempted"] += 1
+                    state["inflight"] += 1
+                reserved = 0
                 try:
-                    original = fetch_drive_image(file_id, tempdir)
+                    original = fetch_drive_image(file_id, product_temp)
                     optimized = convert_photo(original)
-                    raw_total += len(original)
-                    if size + len(optimized) > args.max_mb * 1048576:
-                        raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB budget.")
+                    with lock:
+                        if state["size"] + len(optimized) > args.max_mb * 1048576:
+                            state["stopped_early"] = True
+                            raise RuntimeError(f"Compressed batch exceeded {args.max_mb} MiB budget.")
+                        reserved = len(optimized)
+                        state["size"] += reserved
                     if args.mode == "upload":
                         result = upload_via_edge(item["slug"], file_id, optimized)
                         if result.get("skipped"):
-                            skipped += 1
+                            with lock:
+                                state["skipped"] += 1
+                                state["size"] -= reserved
+                            reserved = 0
                             if result.get("reason") == "gallery is full":
                                 available_slots = 0
                             continue
                         existing.add(file_id)
                         available_slots -= 1
-                    size += len(optimized)
-                    completed += 1
-                    if item.get("_cover_phase"):
+                    with lock:
+                        state["completed"] += 1
+                        state["raw_total"] += len(original)
+                    reserved = 0
+                    if cover_phase:
                         print(f"COVER_READY {item['slug']}", flush=True)
                         break
                     print(f"{args.mode.upper()} {item['slug']} {file_id}: {len(original)//1024} KB -> {len(optimized)//1024} KB", flush=True)
                     if args.mode == "upload":
-                        time.sleep(0.7)  # Respect Google Drive public download rate limits.
+                        time.sleep(0.8)
                 except Exception as error:
-                    failures.append({"slug": item["slug"], "file_id": file_id, "error": str(error)})
-                    print(f"ERROR {item['slug']} {file_id}: {error}", flush=True)
-                    if "budget" in str(error):
-                        raise
-                    continue
-            if args.limit and completed >= args.limit:
-                break
+                    with lock:
+                        state["size"] -= reserved
+                    failure(item["slug"], file_id, error)
+                finally:
+                    with lock:
+                        state["inflight"] -= 1
 
+        # Each product has only one writer. The barrier between these two passes
+        # gets every model a cover before spending time on the rest of its gallery.
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            if args.mode == "upload" and not args.slug:
+                list(pool.map(lambda item: process_product(item, True), products))
+            list(pool.map(process_product, products))
+
+    size, raw_total = state["size"], state["raw_total"]
+    completed, skipped = state["completed"], state["skipped"]
+    attempted, stopped_early, failures = state["attempted"], state["stopped_early"], state["failures"]
     report = {"processed_new": completed, "already_present_or_full": skipped,
               "attempted_new_downloads": attempted, "batch_stopped_early": stopped_early,
               "catalog_rotation_index": rotation, "failures": failures,
@@ -239,6 +285,8 @@ def main():
           f"original={raw_total/1048576:.2f}MiB webp={size/1048576:.2f}MiB", flush=True)
     if failures:
         raise SystemExit(f"Partial import: {len(failures)} images/products require retry; see media-sync-report.json.")
+    if stopped_early:
+        raise SystemExit("Import stopped at the configured safety budget; see media-sync-report.json.")
 
 
 if __name__ == "__main__":

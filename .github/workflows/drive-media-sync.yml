@@ -52,6 +52,8 @@ jobs:
         run: pip install -r requirements-media.txt
       - name: Check Python sync syntax
         run: python -m py_compile scripts/sync_drive_images.py
+      - name: Verify media resume and download validation
+        run: python -m unittest discover -s tests -p 'test_media_sync.py' -v
       - name: Verify signed GitHub OIDC access to Supabase Edge
         env:
           TOKEN_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
@@ -71,9 +73,9 @@ jobs:
         env:
           RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.ref == 'refs/heads/main' && 'upload' || 'dry-run') }}
           RUN_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || '' }}
-          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '50' || '2') }}
+          RUN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || (github.ref == 'refs/heads/main' && '0' || '2') }}
         run: |
-          python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT"
+          python scripts/sync_drive_images.py --mode "$RUN_MODE" --slug "$RUN_SLUG" --limit "$RUN_LIMIT" --workers 4 --max-attempts 1200 --max-failures 60
 
       - name: Upload resumable media sync report
         if: always()
