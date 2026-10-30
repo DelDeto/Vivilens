@@ -61,7 +61,7 @@ Deno.serve(async (req) => {
     return json({ ok: true, slug: slugQuery, existing_drive_ids: importedIds, gallery_count: rows?.length || 0 });
   }
 
-  if (ref !== MAIN || !["push", "workflow_dispatch"].includes(String(claims.event_name))) {
+  if (ref !== MAIN || !["push", "workflow_dispatch", "schedule"].includes(String(claims.event_name))) {
     return json({ error: "Only approved main-branch sync can upload" }, 403);
   }
 
