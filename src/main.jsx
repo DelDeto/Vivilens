@@ -12,7 +12,7 @@ const cartKey='vivilens-cart-v1';
 const catalogPageSize=12;
 // Unverified model previews are browseable, but never buyable.
 function App(){
- const [products,setProducts]=useState(configured?[]:demoProducts),[loading,setLoading]=useState(configured),[user,setUser]=useState(null),[admin,setAdmin]=useState(false),[page,setPage]=useState(()=>routeFromPath(window.location.pathname).page),[selected,setSelected]=useState(null),[category,setCategory]=useState('All'),[availability,setAvailability]=useState('all'),[photoFilter,setPhotoFilter]=useState('all'),[period,setPeriod]=useState('All'),[sort,setSort]=useState('featured'),[catalogPage,setCatalogPage]=useState(1),[query,setQuery]=useState(''),[wish,setWish]=useState(()=>{try{return JSON.parse(localStorage.getItem('vivilens-wishlist-v1'))||[]}catch{return []}}),[cart,setCart]=useState(()=>{try{const stored=JSON.parse(localStorage.getItem(cartKey));return Array.isArray(stored)?stored.filter(hasCompleteCartSelection):[]}catch{return []}}),[cartOpen,setCartOpen]=useState(false),[authOpen,setAuthOpen]=useState(false),[authMode,setAuthMode]=useState('login'),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[authBusy,setAuthBusy]=useState(false),[notice,setNotice]=useState(''),[mobileOpen,setMobileOpen]=useState(false),[adminForm,setAdminForm]=useState(null),[adminProducts,setAdminProducts]=useState([]),[adminSearch,setAdminSearch]=useState(''),[adminStatus,setAdminStatus]=useState('draft'),[adminColor,setAdminColor]=useState('All'),[adminPage,setAdminPage]=useState(1),[galleryImages,setGalleryImages]=useState([]),[mediaProduct,setMediaProduct]=useState(null),[variants,setVariants]=useState([]),[adminVariants,setAdminVariants]=useState([]),[leftVariantId,setLeftVariantId]=useState(''),[rightVariantId,setRightVariantId]=useState(''),[leftPower,setLeftPower]=useState(''),[rightPower,setRightPower]=useState(''),[variantProduct,setVariantProduct]=useState(null),[variantForm,setVariantForm]=useState(null);
+ const [products,setProducts]=useState(configured?[]:demoProducts),[loading,setLoading]=useState(configured),[user,setUser]=useState(null),[admin,setAdmin]=useState(false),[page,setPage]=useState(()=>routeFromPath(window.location.pathname).page),[selected,setSelected]=useState(null),[category,setCategory]=useState('All'),[period,setPeriod]=useState('All'),[sort,setSort]=useState('featured'),[catalogPage,setCatalogPage]=useState(1),[query,setQuery]=useState(''),[wish,setWish]=useState(()=>{try{return JSON.parse(localStorage.getItem('vivilens-wishlist-v1'))||[]}catch{return []}}),[cart,setCart]=useState(()=>{try{const stored=JSON.parse(localStorage.getItem(cartKey));return Array.isArray(stored)?stored.filter(hasCompleteCartSelection):[]}catch{return []}}),[cartOpen,setCartOpen]=useState(false),[authOpen,setAuthOpen]=useState(false),[authMode,setAuthMode]=useState('login'),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[authBusy,setAuthBusy]=useState(false),[notice,setNotice]=useState(''),[mobileOpen,setMobileOpen]=useState(false),[adminForm,setAdminForm]=useState(null),[adminProducts,setAdminProducts]=useState([]),[adminSearch,setAdminSearch]=useState(''),[adminStatus,setAdminStatus]=useState('draft'),[adminColor,setAdminColor]=useState('All'),[adminPage,setAdminPage]=useState(1),[galleryImages,setGalleryImages]=useState([]),[mediaProduct,setMediaProduct]=useState(null),[variants,setVariants]=useState([]),[adminVariants,setAdminVariants]=useState([]),[leftVariantId,setLeftVariantId]=useState(''),[rightVariantId,setRightVariantId]=useState(''),[leftPower,setLeftPower]=useState(''),[rightPower,setRightPower]=useState(''),[variantProduct,setVariantProduct]=useState(null),[variantForm,setVariantForm]=useState(null);
  const notify=t=>{setNotice(t);setTimeout(()=>setNotice(''),4800)};
  async function loadGallery(){if(!supabase)return;const {data,error}=await supabase.from('product_images').select('id,product_id,image_url,alt_text,position').order('position',{ascending:true}).order('created_at',{ascending:true});if(error)notify('Lỗi tải thư viện ảnh: '+error.message);else setGalleryImages(data||[])}
  async function loadVariants(){
@@ -32,7 +32,7 @@ function App(){
  useEffect(()=>{if(!supabase)return;loadProducts();supabase.auth.getUser().then(({data})=>{setUser(data.user);checkAdmin(data.user?.id)});const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{setUser(session?.user||null);checkAdmin(session?.user?.id)});return()=>subscription.unsubscribe()},[]);
  useEffect(()=>{localStorage.setItem(cartKey,JSON.stringify(cart))},[cart]);
  useEffect(()=>{localStorage.setItem('vivilens-wishlist-v1',JSON.stringify(wish))},[wish]);
- useEffect(()=>{setCatalogPage(1)},[category,availability,photoFilter,period,sort,query]);
+ useEffect(()=>{setCatalogPage(1)},[category,period,sort,query]);
  useEffect(()=>{setAdminPage(1)},[adminSearch,adminStatus,adminColor]);
  useEffect(()=>{
   const syncRoute=()=>{
@@ -65,12 +65,9 @@ function App(){
   return url&&!url.includes('unsplash.com')&&!url.includes('placehold.co')?[{image_url:url,alt_text:'Ảnh thật '+p.name}]:[];
  };
  const hasPhoto=p=>photosFor(p).length>0;
- const photoReadyCount=products.filter(hasPhoto).length;
  const canShopProduct=p=>Boolean(p?.active&&Number(p.price)>0&&(p.inventory_mode==='variant'||Number(p.stock)>0));
  const available=useMemo(()=>products.filter(p=>
   (category==='All'||category==='Favorites'&&wish.includes(p.id)||p.color===category) &&
-  (availability==='all'||(availability==='live'?p.active:!p.active)) &&
-  (photoFilter==='all'||(photoFilter==='ready'?hasPhoto(p):!hasPhoto(p))) &&
   (period==='All'||p.wear_period===period) &&
   (!query||p.name.toLowerCase().includes(query.toLowerCase()))
  ).sort((a,b)=>{
@@ -80,8 +77,8 @@ function App(){
    if(!b.active||Number(b.price)<=0)return -1;
    return sort==='price-asc'?a.price-b.price:b.price-a.price;
   }
-  return Number(b.active)-Number(a.active)||Number(hasPhoto(b))-Number(hasPhoto(a))||Number(b.featured)-Number(a.featured)||a.name.localeCompare(b.name,'vi');
- }),[products,category,availability,photoFilter,period,sort,query,wish,photoByProduct]);
+  return Number(hasPhoto(b))-Number(hasPhoto(a))||Number(b.featured)-Number(a.featured)||a.name.localeCompare(b.name,'vi');
+ }),[products,category,period,sort,query,wish,photoByProduct]);
  // For SKU-mode products, a cart line represents ONE BOX with TWO chosen lenses.
  const catalogPages=Math.max(1,Math.ceil(available.length/catalogPageSize));
  const catalogItems=available.slice((catalogPage-1)*catalogPageSize,catalogPage*catalogPageSize);
@@ -182,22 +179,21 @@ function App(){
   notify('Đã lưu SKU');setVariantForm(null);await loadAdminVariants();
  }
  const Item=({p})=>{
-  const photos=photosFor(p),cover=photos[0],next=photos[1];
-  return <article className={'product vv-catalog-card '+(!p.active?'vv-preview-product':'')} key={p.id}>
-   <div className="product-photo vv-catalog-photo" role="button" tabIndex={0} aria-label={'Xem ảnh và chi tiết '+p.name} onKeyDown={e=>{if(e.target===e.currentTarget&&(e.key==='Enter'||e.key===' ')){e.preventDefault();go('detail',p)}}} onClick={()=>go('detail',p)}>
-    {!p.active&&<span className="vv-preview-tag">SẮP RA MẮT</span>}
-    {p.active&&p.featured&&<span className="featured-tag">VIVILENS PICK</span>}
-    {cover?<><img className="vv-catalog-cover" src={cover.image_url} alt={cover.alt_text||'Mẫu đeo lens '+p.name} loading="lazy"/>{next&&<img className="vv-catalog-alt" src={next.image_url} alt={'Ảnh thứ hai của '+p.name} loading="lazy"/>}<span className="vv-photo-quantity"><ImagePlus size={13}/> {photos.length} ảnh thật</span></>:<div className="vv-card-no-photo"><span>VIVILENS</span><small>Hình ảnh mẫu đeo đang được bổ sung</small></div>}
-    <button className={'wish-button '+(wish.includes(p.id)?'saved':'')} aria-label={wish.includes(p.id)?'Bỏ yêu thích':'Thêm yêu thích'} onClick={e=>{e.stopPropagation();toggleWish(p.id)}}><Heart size={19} fill={wish.includes(p.id)?'currentColor':'none'}/></button>
-   </div>
-   <div className="vv-card-body">
-    <div className="product-meta"><div><h3>{p.name}</h3><p>{p.color} · {p.wear_period&&p.wear_period!=='Chưa xác nhận'?p.wear_period:'Chu kỳ cần xác nhận'}</p></div></div>
-    <div className="vv-card-specs"><span>{p.diameter&&p.diameter!=='Chưa xác nhận'?'DIA '+p.diameter+' mm':'DIA đang xác minh'}</span><span>{p.wear_period==='1 ngày'?'1 ngày':'6 tháng'}</span></div>
-    <div className="price">{Number(p.price)>0?<><strong>{money(p.price)}</strong> <span>/ 2 chiếc</span><small className="vv-unit-price">{money(Number(p.price)/2)} / chiếc</small></>:'Giá đang cập nhật'}</div>
-    <button className="card-shop-link vv-card-cta" onClick={()=>go('detail',p)}>{p.active?'CHỌN ĐỘ CẬN':'XEM MẪU LENS'} <ArrowRight size={15}/></button>
-   </div>
-  </article>;
- };
+   const photos=photosFor(p),cover=photos[0],next=photos[1];
+   return <article className="product vv-catalog-card vv-shop-card" key={p.id}>
+    <div className="product-photo vv-catalog-photo" role="button" tabIndex={0} aria-label={'Xem '+p.name} onKeyDown={e=>{if(e.target===e.currentTarget&&(e.key==='Enter'||e.key===' ')){e.preventDefault();go('detail',p)}}} onClick={()=>go('detail',p)}>
+      {p.featured&&<span className="featured-tag">VIVILENS PICK</span>}
+      {cover?<><img className="vv-catalog-cover" src={cover.image_url} alt={cover.alt_text||'Lens '+p.name} loading="lazy"/>{next&&<img className="vv-catalog-alt" src={next.image_url} alt={'Khám phá '+p.name+' ở góc nhìn khác'} loading="lazy"/>}</>:<div className="vv-card-no-photo vv-brand-art"><span>VIVILENS</span><strong>{p.name}</strong><small>YOUR EYES, YOUR MOOD</small></div>}
+      <button className={'wish-button '+(wish.includes(p.id)?'saved':'')} aria-label={wish.includes(p.id)?'Bỏ yêu thích':'Thêm yêu thích'} onClick={e=>{e.stopPropagation();toggleWish(p.id)}}><Heart size={19} fill={wish.includes(p.id)?'currentColor':'none'}/></button>
+    </div>
+    <div className="vv-card-body">
+      <div className="product-meta"><div><h3>{p.name}</h3><p>{p.color} · Kính áp tròng màu</p></div></div>
+      <div className="vv-card-specs">{p.wear_period&&p.wear_period!=='Chưa xác nhận'&&<span>{p.wear_period}</span>}{p.diameter&&p.diameter!=='Chưa xác nhận'&&<span>DIA {p.diameter} mm</span>}</div>
+      <div className="price">{Number(p.price)>0?<><strong>{money(p.price)}</strong> <span>/ cặp 2 chiếc</span><small className="vv-unit-price">{money(Number(p.price)/2)} / chiếc</small></>:'Liên hệ để biết giá'}</div>
+      <button className="card-shop-link vv-card-cta" onClick={()=>go('detail',p)}>KHÁM PHÁ MẪU LENS <ArrowRight size={15}/></button>
+    </div>
+   </article>;
+  };
  return <><div className="topline">VIVILENS STUDIO ✳ YOUR EYES, YOUR MOOD · K-BEAUTY COLOR LENSES</div><header><div className="header-inner"><button className="plain mobile-only" onClick={()=>setMobileOpen(!mobileOpen)} aria-label="Menu"><Menu/></button><button className="logo" onClick={()=>go('home')}>VIVILENS<span>YOUR EYES, YOUR MOOD</span></button><nav className={mobileOpen?'open':''}><button onClick={()=>go('home')}>Trang chủ</button><button onClick={()=>{setCategory('All');go('catalog')}}>Tất cả lens</button><button onClick={()=>chooseColor('Brown')}>Lens Brown</button><button onClick={()=>chooseColor('Gray')}>Lens Gray</button><button onClick={()=>chooseColor('Pink')}>Lens Pink</button><button onClick={()=>chooseColor('Blue')}>Lens Blue</button><button onClick={()=>chooseColor('Favorites')}>Yêu thích</button>{admin&&<button onClick={()=>go('admin')}>Admin</button>}</nav><div className="head-actions"><button aria-label="Yêu thích" onClick={()=>chooseColor('Favorites')}><Heart size={21}/>{wish.length>0&&<span className="counter">{wish.length}</span>}</button><button aria-label="Tài khoản" onClick={()=>user?go('account'):setAuthOpen(true)}><UserRound size={21}/></button><button aria-label="Giỏ hàng" onClick={()=>setCartOpen(true)}><ShoppingBag size={21}/>{count>0&&<span className="counter">{count}</span>}</button></div></div></header>
  {!configured&&<div className="demo-strip">CHẾ ĐỘ DEMO — Sản phẩm và giá chỉ minh họa. Kết nối Supabase để dùng dữ liệu thật.</div>}
  {page==='home'&&<>
@@ -210,7 +206,7 @@ function App(){
  </div><div className="hero-visual"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400&q=90" alt="Ảnh makeup tham khảo – cảm hứng phong cách VIVILENS" fetchPriority="high"/><div className="hero-image-label">SOFT GLOW / EVERYDAY LOOK</div><div className="hero-stamp"><span>VIVILENS STUDIO</span><b>your eyes,<br/>your mood.</b><Sparkles size={22}/></div></div></section>
 <section className="benefits"><div><ShieldCheck/><span>Thông tin lens rõ ràng</span></div><div><Heart/><span>Chọn màu theo phong cách</span></div><div><ShoppingBag/><span>Giỏ hàng đơn giản</span></div></section>
 <section className="color-shop section"><div className="section-heading"><div><span className="eyebrow">01 / FIND YOUR COLOR</span><h2>Màu mắt nào là <em>bạn?</em></h2><p>Chạm vào màu yêu thích để tìm thiết kế hợp mood.</p></div><button className="textlink" onClick={()=>chooseColor('All')}>Tất cả màu lens <ArrowRight size={17}/></button></div><div className="color-grid">{[{label:'Brown',hint:'Soft & natural',shade:'#805b4a',n:'01'},{label:'Gray',hint:'Cool & chic',shade:'#919197',n:'02'},{label:'Pink',hint:'Sweet & dreamy',shade:'#b77b90',n:'03'},{label:'Blue',hint:'Bold & charming',shade:'#698fa8',n:'04'}].map(c=><button className={'color-card color-'+c.label.toLowerCase()} key={c.label} onClick={()=>chooseColor(c.label)}><span className="color-number">{c.n} / SHADE</span><span className="lens-swatch" style={{'--shade':c.shade}}/><strong>{c.label}</strong><small>{c.hint}</small><span className="color-circle-arrow"><ArrowRight size={18}/></span></button>)}</div></section>
-<section className="section featured-section"><div className="section-heading"><div><span className="eyebrow">02 / THE VIVILENS EDIT</span><h2>Curated for <em>your mood.</em></h2><p>Khám phá những mẫu lens nổi bật trong bộ sưu tập.</p></div><button className="textlink" onClick={()=>go('catalog')}>Xem tất cả <ArrowRight size={17}/></button></div><div className="products-grid">{(products.filter(p=>p.featured).length?products.filter(p=>p.featured).slice(0,4):products.slice(0,4)).map(p=><Item key={p.id} p={p}/>)}</div>{loading&&<p className="muted">Đang tải sản phẩm...</p>}</section>
+<section className="section featured-section"><div className="section-heading"><div><span className="eyebrow">02 / THE VIVILENS EDIT</span><h2>Curated for <em>your mood.</em></h2><p>Khám phá những mẫu lens nổi bật trong bộ sưu tập.</p></div><button className="textlink" onClick={()=>go('catalog')}>Xem tất cả <ArrowRight size={17}/></button></div><div className="products-grid">{([...products].sort((a,b)=>Number(hasPhoto(b))-Number(hasPhoto(a))||Number(b.featured)-Number(a.featured)).slice(0,4)).map(p=><Item key={p.id} p={p}/>)}</div>{loading&&<p className="muted">Đang tải sản phẩm...</p>}</section>
 <section className="section mood-editorial"><div className="section-heading"><div><span className="eyebrow">03 / LENS FOR EVERY MOOD</span><h2>Find your <em>eye-conic look.</em></h2></div></div><div className="mood-grid">
 <button className="mood-tile mood-natural" onClick={()=>chooseColor('Brown')}><span className="mood-num">01 / THE SOFT EDIT</span><h3>Everyday<br/><em>natural.</em></h3><p>Cho những ngày thích vẻ đẹp trong trẻo.</p><span className="mood-cta">SHOP BROWN <ArrowRight size={18}/></span><span className="mood-symbol" aria-hidden="true">✿</span></button>
 <button className="mood-tile mood-chic" onClick={()=>chooseColor('Gray')}><span className="mood-num">02 / THE COOL EDIT</span><h3>Softly<br/><em>bold.</em></h3><p>Điểm nhấn tinh tế cho vẻ ngoài cá tính.</p><span className="mood-cta">SHOP GRAY <ArrowRight size={18}/></span><span className="mood-symbol" aria-hidden="true">✳</span></button>
@@ -218,10 +214,10 @@ function App(){
 <section className="promo promo-v2"><div><span className="eyebrow">04 / A NEW POINT OF VIEW</span><h2>Beauty begins<br/>with <em>your eyes.</em></h2><p>Không chỉ là màu mắt, đó còn là cách bạn thể hiện chính mình.</p><button className="secondary" onClick={()=>go('catalog')}>CHỌN MÀU LENS <ArrowRight size={17}/></button></div><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1100&q=85" alt="Ảnh thời trang tham khảo" loading="lazy"/></section>
 <section className="service-note section"><span className="eyebrow">A LITTLE REMINDER / VIVILENS</span><p>Chọn phong cách bạn yêu thích, đồng thời luôn sử dụng và chăm sóc lens theo hướng dẫn phù hợp.</p><span>BEAUTY WITH CARE ✦</span></section>
  </>}
- {page==='catalog'&&<main className="section catalog"><span className="eyebrow">SHOP THE COLLECTION</span><h1>Discover your shade.</h1><p className="muted">Bộ sưu tập kính áp tròng VIVILENS · Ảnh mẫu đeo thật · 110.000đ/chiếc · 220.000đ/hộp 2 chiếc.</p><div className="vv-catalog-stats"><span><b>{photoReadyCount}</b> mẫu có ảnh thật</span><span><b>{products.length-photoReadyCount}</b> mẫu đang bổ sung ảnh</span><span><b>{products.length}</b> màu lens</span></div><div className="filter-row"><div className="chips">{['All',...Array.from(new Set(products.map(p=>p.color))).sort((a,b)=>a.localeCompare(b)), 'Favorites'].map(c=><button key={c} className={category===c?'active':''} onClick={()=>setCategory(c)}>{c==='All'?'Tất cả':c==='Favorites'?'♡ Yêu thích':c}</button>)}</div><label className="search"><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Tìm tên lens..."/></label></div><div className="vv-availability-tabs" aria-label="Lọc trạng thái mẫu">{[['all','Tất cả mẫu'],['live','Đang bán'],['preview','Sắp ra mắt']].map(([value,label])=><button key={value} className={availability===value?'active':''} aria-pressed={availability===value} onClick={()=>setAvailability(value)}>{label} ({value==='all'?products.length:value==='live'?products.filter(p=>p.active).length:products.filter(p=>!p.active).length})</button>)}</div><div className="vv-photo-filters" aria-label="Lọc sản phẩm theo ảnh thật">{[['all','Tất cả mẫu'],['ready','Có ảnh mẫu'],['waiting','Đang bổ sung ảnh']].map(([val,label])=><button key={val} aria-pressed={photoFilter===val} className={photoFilter===val?'active':''} onClick={()=>setPhotoFilter(val)}>{label}{val==='ready'?' ('+photoReadyCount+')':val==='waiting'?' ('+(products.length-photoReadyCount)+')':''}</button>)}</div><div className="catalog-controls"><label>Chu kỳ sử dụng <select value={period} onChange={e=>setPeriod(e.target.value)}><option value="All">Tất cả</option>{['1 ngày','3 tháng','6 tháng'].map(p=><option key={p}>{p}</option>)}</select></label><label>Sắp xếp <select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Nổi bật</option><option value="price-asc">Giá tăng dần</option><option value="price-desc">Giá giảm dần</option><option value="name">Tên A–Z</option></select></label><span>{available.length} mẫu lens</span></div>{loading?<p>Đang tải sản phẩm...</p>:<div id="vv-catalog-results" className="products-grid">{catalogItems.map(p=><Item key={p.id} p={p}/>)}</div>}{!loading&&catalogPages>1&&<nav className="vv-catalog-pagination" aria-label="Trang sản phẩm"><button disabled={catalogPage<=1} onClick={()=>moveCatalogPage(catalogPage-1)}>← Trước</button><span>Trang {catalogPage} / {catalogPages}</span><button disabled={catalogPage>=catalogPages} onClick={()=>moveCatalogPage(catalogPage+1)}>Tiếp →</button></nav>}{!loading&&!available.length&&<p>Chưa có sản phẩm phù hợp.</p>}</main>}
+ {page==='catalog'&&<main className="section catalog"><span className="eyebrow">VIVILENS / COLOR LENS COLLECTION</span><h1>Chọn màu lens dành cho bạn.</h1><p className="muted">Tự nhiên, trong trẻo hay nổi bật — khám phá màu lens hợp với phong cách của bạn. <strong>220.000đ / cặp 2 chiếc.</strong></p><div className="filter-row"><div className="chips">{['All',...Array.from(new Set(products.map(p=>p.color))).sort((a,b)=>a.localeCompare(b)), 'Favorites'].map(c=><button key={c} className={category===c?'active':''} onClick={()=>setCategory(c)}>{c==='All'?'Tất cả':c==='Favorites'?'♡ Yêu thích':c}</button>)}</div><label className="search"><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Tìm tên lens..."/></label></div><div className="catalog-controls"><label>Chu kỳ sử dụng <select value={period} onChange={e=>setPeriod(e.target.value)}><option value="All">Tất cả</option>{['1 ngày','3 tháng','6 tháng'].map(p=><option key={p}>{p}</option>)}</select></label><label>Sắp xếp <select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Gợi ý cho bạn</option><option value="price-asc">Giá tăng dần</option><option value="price-desc">Giá giảm dần</option><option value="name">Tên A–Z</option></select></label></div>{loading?<p>Đang tải sản phẩm...</p>:<div id="vv-catalog-results" className="products-grid">{catalogItems.map(p=><Item key={p.id} p={p}/>)}</div>}{!loading&&catalogPages>1&&<nav className="vv-catalog-pagination" aria-label="Trang sản phẩm"><button disabled={catalogPage<=1} onClick={()=>moveCatalogPage(catalogPage-1)}>← Trước</button><span>Trang {catalogPage} / {catalogPages}</span><button disabled={catalogPage>=catalogPages} onClick={()=>moveCatalogPage(catalogPage+1)}>Tiếp →</button></nav>}{!loading&&!available.length&&<p>Chưa có sản phẩm phù hợp.</p>}</main>}
  {page==='detail'&&selected&&<main className="section detail vv-detail-page">
  <div className="vv-detail-breadcrumb"><button className="back" onClick={()=>go('catalog')}>← Bộ sưu tập</button><span aria-hidden="true">/</span><span>{selected.name}</span></div>
- <div className="vv-detail-gallery-header"><span><ImagePlus size={16}/> {photosFor(selected).length ? photosFor(selected).length+' ảnh mẫu thật':'Đang đồng bộ ảnh mẫu từ bộ sưu tập'}</span><span>Phóng to và vuốt để xem từng ảnh</span></div><div className="detail-grid vv-detail-grid">
+ <div className="vv-detail-gallery-header"><span>VIVILENS · YOUR EYES, YOUR MOOD</span><span>Chạm để xem ảnh lớn</span></div><div className="detail-grid vv-detail-grid">
   <ProductGallery product={selected} images={photosFor(selected)}/>
   <div className="vv-detail-info">
    <div className="vv-detail-heading">
@@ -230,7 +226,7 @@ function App(){
    </div>
    <div className="detail-price">{Number(selected.price)>0?<><b>{money(boxPrice(selected))}</b> <span>/ hộp 2 chiếc · {money(Number(selected.price)/2)} / chiếc</span></>:<span className="vv-pending-price">Giá đang cập nhật</span>}</div>
    <div className="vv-detail-quickfacts"><span>{selected.color}</span>{selected.diameter&&selected.diameter!=='Chưa xác nhận'&&<span>{selected.diameter} mm</span>}{selected.wear_period&&selected.wear_period!=='Chưa xác nhận'&&<span>{selected.wear_period}</span>}</div>
-   {!canShopProduct(selected)&&<div className="vv-preview-notice" role="status"><strong>ĐANG GIỚI THIỆU MẪU · CHƯA MỞ BÁN</strong><p>Giá đã niêm yết theo chiếc và theo hộp. Ảnh, đường kính, độ cận và tình trạng hàng cần được kiểm chứng trước khi mở bán; mẫu này chưa thể thêm vào giỏ hàng.</p></div>}
+   {!canShopProduct(selected)&&<div className="vv-preview-notice" role="status"><strong>CẦN TƯ VẤN TRƯỚC KHI ĐẶT MUA</strong><p>Mẫu lens này chưa hỗ trợ đặt hàng trực tuyến. Vui lòng kiểm tra độ cận và tình trạng sản phẩm với cửa hàng trước khi mua.</p></div>}
    {canShopProduct(selected)&&<div className="variant-picker">
  <p><b>Chọn đủ 2 chiếc lens — độ cận từng mắt</b></p>
  {selected.inventory_mode!=='variant'&&<div className="variant-eye-fields">
@@ -245,7 +241,7 @@ function App(){
   <b>Đã chọn {Number(isChosenPower(leftPower))+Number(isChosenPower(rightPower))}/2 chiếc</b>
   <span>Mắt trái: {isChosenPower(leftPower)?formatPower(leftPower):'Chưa chọn'} · Mắt phải: {isChosenPower(rightPower)?formatPower(rightPower):'Chưa chọn'}</span>
   <strong>{money(boxPrice(selected))} / hộp (2 chiếc)</strong>
-  <small>Độ cận được lưu theo từng mắt; tồn kho từng độ chưa được đồng bộ, sẽ cần xác nhận trước khi xử lý đơn.</small>
+  <small>Bạn có thể chọn độ cho từng mắt. Tình trạng hàng theo độ cận sẽ được xác nhận khi đặt mua.</small>
  </div>}
  {selected.inventory_mode==='variant'&&<>
  <div className="variant-eye-fields">
@@ -267,7 +263,7 @@ function App(){
     <summary>Chi tiết sản phẩm &amp; hướng dẫn <ChevronRight size={17}/></summary>
     <div className="vv-product-facts-body">
      <p>{selected.description}</p>
-     <div className="specs"><span>Màu sắc <b>{selected.color}</b></span>{selected.diameter&&selected.diameter!=='Chưa xác nhận'&&<span>Đường kính <b>{selected.diameter} mm</b></span>}{selected.wear_period&&selected.wear_period!=='Chưa xác nhận'&&<span>Chu kỳ <b>{selected.wear_period}</b></span>}{selected.active&&<span>Tình trạng <b>{selected.inventory_mode==='variant'?(selectedVariants.some(v=>v.stock>=2)||selectedVariants.filter(v=>v.stock>=1).length>=2?'Còn hàng':'Hết hàng'):(selected.stock>0?'Còn hàng':'Hết hàng')}</b></span>}</div>
+     <div className="specs"><span>Màu sắc <b>{selected.color}</b></span>{selected.diameter&&selected.diameter!=='Chưa xác nhận'&&<span>Đường kính <b>{selected.diameter} mm</b></span>}{selected.wear_period&&selected.wear_period!=='Chưa xác nhận'&&<span>Chu kỳ <b>{selected.wear_period}</b></span>}</div>
      <small>Lưu ý: màu lens thực tế có thể khác màn hình. Sử dụng theo hướng dẫn phù hợp và thông tin chuyên môn.</small>
     </div>
    </details>

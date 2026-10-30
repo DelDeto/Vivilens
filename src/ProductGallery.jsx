@@ -2,7 +2,9 @@ import React, {useEffect,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,ChevronLeft,ChevronRight,ImagePlus,LoaderCircle,MoveDown,MoveUp,Trash2,X,ZoomIn} from 'lucide-react';
 
 export function ProductGallery({product,images=[]}){
- const slides = images.length ? [...images].sort((a,b)=>a.position-b.position) : (product?.image_url ? [{id:'cover',image_url:product.image_url,alt_text:'Ảnh sản phẩm '+product.name}] : []);
+ const cover=String(product?.image_url||'');
+ const verifiedCover=cover&&!cover.includes('unsplash.com')&&!cover.includes('placehold.co');
+ const slides = images.length ? [...images].sort((a,b)=>(a.position||0)-(b.position||0)) : (verifiedCover ? [{id:'cover',image_url:cover,alt_text:'Ảnh lens '+product.name}] : []);
  const [current,setCurrent]=useState(0),[zoom,setZoom]=useState(false),touch=useRef(null);
  useEffect(()=>{setCurrent(0);setZoom(false)},[product?.id]);
  useEffect(()=>{if(!zoom)return;const handle=e=>{if(e.key==='Escape')setZoom(false);if(e.key==='ArrowRight')setCurrent(i=>(i+1)%Math.max(slides.length,1));if(e.key==='ArrowLeft')setCurrent(i=>(i-1+Math.max(slides.length,1))%Math.max(slides.length,1))};window.addEventListener('keydown',handle);return()=>window.removeEventListener('keydown',handle)},[zoom,slides.length]);
@@ -11,9 +13,9 @@ export function ProductGallery({product,images=[]}){
  const swipeEnd=e=>{if(touch.current===null)return;const delta=e.changedTouches[0]?.clientX-touch.current;touch.current=null;if(Math.abs(delta)>45 && slides.length>1)step(delta<0?1:-1)};
  return <div className="vv-gallery">
   <div className="vv-gallery-stage" onTouchStart={swipeStart} onTouchEnd={swipeEnd}>
-   {slide?<button type="button" className="vv-gallery-open" onClick={()=>setZoom(true)} aria-label={'Phóng to ảnh '+(idx+1)}><img src={slide.image_url} alt={slide.alt_text||product.name} loading="eager"/><span className="vv-zoom-hint"><ZoomIn size={17}/> Xem ảnh lớn</span></button>:<div className="vv-gallery-empty">Ảnh đang cập nhật</div>}
+   {slide?<button type="button" className="vv-gallery-open" onClick={()=>setZoom(true)} aria-label={'Phóng to ảnh '+(idx+1)}><img src={slide.image_url} alt={slide.alt_text||product.name} loading="eager"/><span className="vv-zoom-hint"><ZoomIn size={17}/> Xem ảnh lớn</span></button>:<div className="vv-gallery-empty vv-gallery-brand"><strong>VIVILENS</strong><span>{product.name}</span><small>YOUR EYES, YOUR MOOD</small></div>}
    {slides.length>1&&<><button type="button" className="vv-gallery-arrow prev" onClick={()=>step(-1)} aria-label="Ảnh trước"><ChevronLeft/></button><button type="button" className="vv-gallery-arrow next" onClick={()=>step(1)} aria-label="Ảnh tiếp"><ChevronRight/></button></>}
-   <span className="vv-gallery-count">{slides.length?idx+1:0}/{slides.length}</span>
+   {slides.length>1&&<span className="vv-gallery-count">{idx+1}/{slides.length}</span>}
   </div>
   {slides.length>1&&<div className="vv-gallery-thumbs" aria-label="Chọn ảnh sản phẩm">{slides.map((s,i)=><button type="button" key={s.id||i} className={i===idx?'selected':''} onClick={()=>setCurrent(i)} aria-label={'Xem ảnh '+(i+1)} aria-current={i===idx?'true':undefined}><img src={s.image_url} alt={s.alt_text||'Ảnh thu nhỏ '+(i+1)} loading="lazy"/></button>)}</div>}
   {zoom&&slide&&<div className="vv-lightbox" role="dialog" aria-modal="true" aria-label={'Bộ ảnh '+product.name} onClick={()=>setZoom(false)}><button type="button" className="vv-lightbox-close" onClick={()=>setZoom(false)} aria-label="Đóng ảnh"><X/></button>{slides.length>1&&<button type="button" className="vv-lightbox-prev" onClick={e=>{e.stopPropagation();step(-1)}} aria-label="Ảnh trước"><ArrowLeft/></button>}<img onClick={e=>e.stopPropagation()} src={slide.image_url} alt={slide.alt_text||product.name}/>{slides.length>1&&<button type="button" className="vv-lightbox-next" onClick={e=>{e.stopPropagation();step(1)}} aria-label="Ảnh tiếp"><ArrowRight/></button>}<span className="vv-lightbox-counter">{idx+1} / {slides.length}</span></div>}
