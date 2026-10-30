@@ -1,0 +1,38 @@
+/* Branding navigation: products, styling, editorial and brand story. */
+.header-inner nav.vv-brand-navigation{gap:clamp(14px,1.9vw,28px);align-items:center}
+.vv-brand-navigation .vv-nav-link{color:#604a56;background:transparent;border:0;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:5px;white-space:nowrap;min-height:44px;padding:0}
+.vv-brand-navigation .vv-nav-link:hover,.vv-brand-navigation .vv-nav-link.is-active{color:#a64f73}
+.vv-nav-tag{font-size:7px;letter-spacing:.08em;color:#a45a7b;background:#f7e8ef;padding:3px 5px;border-radius:4px}
+.vv-nav-intro{display:none}
+.vv-nav-moods{position:relative}
+.vv-moods-trigger svg{transition:transform .15s}.vv-moods-trigger[aria-expanded=true] svg{transform:rotate(180deg)}
+.vv-brand-navigation button.vv-nav-quiz{display:flex;gap:7px;align-items:center;color:#9e4c70;border:1px solid #e7cbd9;background:#fcf0f5;min-height:38px;padding:0 13px;border-radius:24px;font-size:11px;white-space:nowrap}
+.vv-brand-navigation button.vv-nav-quiz:hover{background:#f5e3ed;color:#7e3757}
+.vv-mood-navigation{position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-44%);width:620px;max-width:calc(100vw - 40px);background:#fffcfa;border:1px solid #efdee7;box-shadow:0 16px 45px #5b2e4821;border-radius:17px;padding:24px;z-index:2}
+.vv-mood-nav-heading>span{display:block;font-size:8px;letter-spacing:.17em;color:#a26381;margin-bottom:7px}
+.vv-mood-nav-heading>strong{font-family:'Playfair Display',serif;font-size:26px;color:#59404f;font-weight:500;line-height:1.15}
+.vv-mood-nav-heading>p{font-size:11px;color:#987c8b;margin:9px 0 18px}
+.vv-mood-nav-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.vv-mood-nav-card{display:flex;align-items:center;gap:12px;color:#604553;text-decoration:none;background:#f9edf2;border:1px solid transparent;border-radius:10px;padding:8px;min-width:0}
+.vv-mood-nav-card:nth-child(2){background:#f4edf8}.vv-mood-nav-card:nth-child(3){background:#f5efeb}.vv-mood-nav-card:nth-child(4){background:#edf3f7}
+.vv-mood-nav-card:hover,.vv-mood-nav-card.is-selected{border-color:#cb9cb3}
+.vv-mood-nav-card img{width:52px;height:62px;object-fit:contain;border-radius:6px;background:#fffaf9;flex-shrink:0}
+.vv-mood-nav-card>span{flex:1;min-width:0}.vv-mood-nav-card strong{font-size:12px;display:block;font-weight:600;white-space:normal}.vv-mood-nav-card small{font-size:10px;color:#927684;display:block;margin-top:4px}.vv-mood-nav-card>svg{flex-shrink:0;margin-right:3px}
+.vv-mood-nav-all{display:flex;align-items:center;justify-content:flex-end;gap:7px;color:#9b5276;font-size:10px;text-decoration:none;margin-top:17px;min-height:25px}
+.vv-brand-navigation :is(button,a):focus-visible{outline:2px solid #aa5b80;outline-offset:4px}
+#vivi-edit,#ve-vivilens{scroll-margin-top:95px}
+.vv-brand-story{display:grid;grid-template-columns:1fr 1fr;gap:75px;padding-top:50px;padding-bottom:45px;border-top:1px solid #f0e2e8}
+.vv-story-heading h2{font-size:48px;font-weight:500;letter-spacing:-.035em;margin:17px 0 21px}.vv-story-heading h2 em{font-weight:400;color:#a45d7c}.vv-story-heading>p{font-size:13px;line-height:1.9;color:#8b6e7c;max-width:430px;margin-bottom:24px}
+.vv-story-values>div{border-bottom:1px solid #efe2e8;padding:0 0 17px;margin-bottom:17px}.vv-story-values>div>span{font-size:8px;letter-spacing:.12em;color:#ad7893}.vv-story-values h3{font-size:17px;font-weight:500;margin:7px 0;color:#674d5c}.vv-story-values p{font-size:12px;line-height:1.7;color:#967887;margin:0}.vv-brand-story .textlink{font-size:10px}
+.footer-main a{display:block;color:#79616c;font-size:13px;text-decoration:none;margin-top:12px}.footer-main a:hover{color:#a64f73}
+@media(min-width:901px) and (max-width:1100px){.header-inner nav.vv-brand-navigation{gap:12px}.vv-brand-navigation .vv-nav-link{font-size:11px}.vv-nav-tag{display:none}.vv-brand-navigation button.vv-nav-quiz{font-size:10px;padding:0 10px}.vv-mood-navigation{transform:translateX(-40%);width:590px}}
+@media(max-width:900px){
+ .header-inner nav.vv-brand-navigation{top:100%;align-items:stretch;gap:0;padding:18px 25px 24px;max-height:calc(100dvh - 140px);overflow-y:auto;overscroll-behavior:contain;background:#fffcfa;border-top:1px solid #f0e3e9;box-shadow:0 17px 30px #57314619}
+ .vv-nav-intro{display:block;padding-bottom:17px;margin-bottom:8px;border-bottom:1px solid #efdee7}.vv-nav-intro>span{display:block;font-size:8px;letter-spacing:.15em;color:#a8718b;margin-bottom:6px}.vv-nav-intro>strong{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:#79566b}
+ .vv-brand-navigation .vv-nav-link{font-size:14px;min-height:46px;padding:5px 0;justify-content:space-between;width:100%}.vv-brand-navigation .vv-nav-link>.vv-nav-tag{margin-right:auto;margin-left:5px}.vv-nav-moods{width:100%}
+ .vv-mood-navigation{position:static;transform:none;width:100%;max-width:none;border:0;box-shadow:none;background:transparent;padding:7px 0 13px;border-radius:0}.vv-mood-nav-heading{display:none}.vv-mood-nav-grid{gap:7px}.vv-mood-nav-card{gap:8px;padding:6px}.vv-mood-nav-card img{width:40px;height:51px}.vv-mood-nav-card strong{font-size:11px}.vv-mood-nav-card small{font-size:9px;margin-top:3px}.vv-mood-nav-card>svg{display:none}.vv-mood-nav-all{justify-content:flex-start;margin:9px 0 0;font-size:10px}
+ .vv-brand-navigation button.vv-nav-quiz{justify-content:center;font-size:12px;min-height:44px;margin-top:14px}.vv-nav-tag{font-size:8px}
+ .vv-brand-story{gap:30px}
+}
+@media(max-width:650px){.header-inner nav.vv-brand-navigation{padding:16px 22px 22px}.vv-brand-story{grid-template-columns:1fr;gap:28px;padding-top:30px;padding-bottom:25px}.vv-story-heading h2{font-size:37px;margin:14px 0 16px}.vv-story-heading>p{font-size:12px;line-height:1.8;margin-bottom:18px}.vv-story-values h3{font-size:16px}.vv-story-values p{font-size:11px}#vivi-edit,#ve-vivilens{scroll-margin-top:75px}}
+@media(prefers-reduced-motion:reduce){.vv-moods-trigger svg{transition:none}}
