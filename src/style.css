@@ -525,3 +525,37 @@ footer{padding-top:28px}
 @media(max-width:600px){.vv-availability-tabs{margin:-6px 0 11px;gap:6px}.vv-availability-tabs button{font-size:11px;padding:6px 9px}.vv-preview-tag{font-size:9px;top:8px;left:8px;padding:5px 8px}.vv-card-no-photo span{font-size:18px}}
 
 .vv-unit-price{display:block;font-size:12px;font-weight:500;color:#9a7a88;line-height:1.7}.vv-preview-product .price strong{color:#a65b75;font-weight:700}.vv-detail-info .detail-price span{display:inline-block;font-size:12px;font-weight:500;color:#987986}
+
+
+/* Photo-led lens catalog: authentic model/iris photography and clear specs.
+   Inspired by familiar beauty-shop browsing, not a copy of another brand. */
+.vv-catalog-card{display:flex;flex-direction:column;min-width:0;border-radius:17px;overflow:hidden;border:1px solid #f0e4e9;background:#fff;box-shadow:0 8px 26px rgba(96,54,73,.04);transition:box-shadow .2s,transform .2s}
+.vv-catalog-card:hover{transform:translateY(-3px);box-shadow:0 13px 33px rgba(100,56,74,.12)}
+.vv-catalog-card .vv-catalog-photo{aspect-ratio:1/1.06;overflow:hidden;border-radius:0;background:#f8f0f3}
+.vv-catalog-card .vv-catalog-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.vv-catalog-photo .vv-catalog-alt{opacity:0;transition:opacity .28s}
+@media(hover:hover){.vv-catalog-photo:hover .vv-catalog-alt{opacity:1;transform:none}}
+.vv-catalog-card .vv-card-body{padding:11px 13px 14px;display:flex;flex-direction:column;flex:1}
+.vv-catalog-card .product-meta{padding:0}
+.vv-catalog-card .product-meta h3{line-height:1.25;font-size:15px;min-height:20px;margin:0}
+.vv-catalog-card .product-meta p{font-size:11px;margin-top:4px}
+.vv-card-specs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.vv-card-specs span{font-size:10px;border:1px solid #f0dce4;color:#8d6474;background:#fff9fa;border-radius:100px;padding:3px 8px}
+.vv-catalog-card .price{margin:3px 0 8px;color:#a75e79}
+.vv-catalog-card .price strong{font-size:18px}
+.vv-catalog-card .price>span{font-size:11px;font-weight:500;color:#816f77}
+.vv-catalog-card .price small{font-size:11px}
+.vv-catalog-card .vv-card-cta{margin-top:auto;padding-top:9px;border-top:1px solid #f1e7eb;display:flex;justify-content:space-between;align-items:center;width:100%;font-size:11px;font-weight:800;color:#a15874;background:transparent;text-align:left}
+.vv-catalog-card .vv-preview-tag{top:9px;left:9px;font-size:9px;z-index:3}
+.vv-photo-quantity{position:absolute;bottom:9px;left:9px;background:#fffcf2ed;color:#745465;display:flex;gap:5px;align-items:center;border-radius:100px;padding:5px 8px;font-size:10px;z-index:2}
+.vv-catalog-photo .wish-button{z-index:3}
+.vv-catalog-photo .vv-card-no-photo{position:absolute;inset:0}
+.vv-catalog-stats{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 13px}
+.vv-catalog-stats span{background:#fcf5f7;border:1px solid #f4e5ec;padding:7px 11px;border-radius:10px;font-size:11px;color:#7f6170}
+.vv-catalog-stats b{font-size:13px;color:#a45471}
+.vv-photo-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0 0 12px}
+.vv-photo-filters button{border:1px solid #e9d8df;background:#fff;color:#896373;border-radius:100px;padding:7px 12px;font-size:11px}
+.vv-photo-filters button.active{background:#a25e76;border-color:#a25e76;color:#fff;font-weight:700}
+.vv-detail-gallery-header{margin:6px 0 -19px;display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:11px;color:#967181}
+.vv-detail-gallery-header span:first-child{display:flex;align-items:center;gap:6px;color:#a25e76;font-weight:600}
+@media(max-width:620px){.vv-catalog-card{border-radius:12px}.vv-catalog-card .vv-catalog-photo{aspect-ratio:1/1.18}.vv-catalog-card .vv-card-body{padding:9px 10px 11px}.vv-catalog-card .product-meta h3{font-size:14px}.vv-catalog-card .product-meta p{font-size:10px}.vv-card-specs{gap:4px;margin:7px 0}.vv-card-specs span{font-size:9px;padding:2px 5px}.vv-catalog-card .price strong{font-size:15px}.vv-catalog-card .vv-card-cta{font-size:10px}.vv-catalog-stats{gap:6px}.vv-catalog-stats span{font-size:10px;padding:5px 8px}.vv-detail-gallery-header{font-size:9px;margin-bottom:-10px}}
