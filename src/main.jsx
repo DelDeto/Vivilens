@@ -239,7 +239,7 @@ function App(){
  <div className="variant-box-summary"><b>1 hộp = 2 chiếc lens</b><span>Mắt trái: {leftVariant?formatPower(leftVariant.power):'Chưa chọn'} · Mắt phải: {rightVariant?formatPower(rightVariant.power):'Chưa chọn'}</span><strong>{money(boxPrice(selected))} / hộp</strong></div>
  <small>Hai mắt khác độ vẫn chỉ nhận một hộp gồm hai chiếc và tính tiền một hộp. Hàng được đóng theo lựa chọn của bạn.</small>
  </>}
- </div>
+ </div>}
    {canShopProduct(selected)&&<button className="primary wide vv-detail-add" onClick={()=>add(selected,leftVariantId,rightVariantId)} disabled={!selectedBothEyes||(selected.inventory_mode==='variant'?selectedAvailableBoxes<1:legacyAvailableBoxes<1)}><ShoppingBag size={18}/> {selectedBothEyes?'THÊM 1 HỘP (2 CHIẾC) VÀO GIỎ':'CHỌN ĐỦ 2 CHIẾC ĐỂ THÊM GIỎ'}</button>}
    <details className="vv-product-facts">
     <summary>Chi tiết sản phẩm &amp; hướng dẫn <ChevronRight size={17}/></summary>
