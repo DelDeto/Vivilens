@@ -128,17 +128,31 @@ def main():
     parser.add_argument("--limit", type=int, default=4, help="Max number of images to process; 0 means all")
     parser.add_argument("--slug", default="", help="One model only, e.g. siren-gray")
     parser.add_argument("--max-mb", type=int, default=LIMIT_MB, help="Stop upload if compressed bytes exceed this budget")
+    parser.add_argument("--max-attempts", type=int, default=32, help="Maximum new Drive downloads to attempt per run; prevents timeout when Google rate limits")
+    parser.add_argument("--max-failures", type=int, default=7, help="Stop a batch after this many inaccessible photos; next scheduled run rotates to a different section")
     args = parser.parse_args()
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     products = [x for x in data["products"] if not args.slug or x["slug"] == args.slug]
     if args.slug and not products:
         raise SystemExit("Unknown slug: " + args.slug)
+    # GitHub scheduled runs rotate across product folders instead of repeatedly
+    # retrying the same inaccessible Drive file at the front of the catalog.
+    rotation = 0
+    run_number = os.getenv("GITHUB_RUN_NUMBER", "")
+    if args.mode == "upload" and not args.slug and run_number.isdigit() and products:
+        rotation = (int(run_number) * 13) % len(products)
+        products = products[rotation:] + products[:rotation]
+        print(f"RESUME rotation={rotation}/{len(products)} run={run_number}", flush=True)
     if args.mode == "upload":
         github_oidc_token()  # fail safely before downloading any files
     size, raw_total, completed, skipped = 0, 0, 0, 0
+    attempted, stopped_early = 0, False
     failures = []
     with tempfile.TemporaryDirectory(prefix="vivilens-images-") as tempdir:
         for item in products:
+            if args.mode == "upload" and (attempted >= args.max_attempts or len(failures) >= args.max_failures):
+                stopped_early = True
+                break
             sources = item.get("images", [])
             if args.mode == "upload":
                 try:
@@ -158,6 +172,9 @@ def main():
             for source in sources:
                 if args.limit and completed >= args.limit:
                     break
+                if args.mode == "upload" and (attempted >= args.max_attempts or len(failures) >= args.max_failures):
+                    stopped_early = True
+                    break
                 file_id = source["id"]
                 if file_id in existing:
                     skipped += 1
@@ -165,6 +182,7 @@ def main():
                 if available_slots <= 0:
                     skipped += 1
                     continue
+                attempted += 1
                 try:
                     original = fetch_drive_image(file_id, tempdir)
                     optimized = convert_photo(original)
@@ -194,10 +212,12 @@ def main():
             if args.limit and completed >= args.limit:
                 break
 
-    report = {"processed_new": completed, "already_present_or_full": skipped, "failures": failures,
+    report = {"processed_new": completed, "already_present_or_full": skipped,
+              "attempted_new_downloads": attempted, "batch_stopped_early": stopped_early,
+              "catalog_rotation_index": rotation, "failures": failures,
               "original_mib": round(raw_total / 1048576, 2), "webp_mib": round(size / 1048576, 2)}
     Path("media-sync-report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"FINISHED new={completed} skipped={skipped} errors={len(failures)} "
+    print(f"FINISHED new={completed} skipped={skipped} attempts={attempted} stopped_early={stopped_early} errors={len(failures)} "
           f"original={raw_total/1048576:.2f}MiB webp={size/1048576:.2f}MiB", flush=True)
     if failures:
         raise SystemExit(f"Partial import: {len(failures)} images/products require retry; see media-sync-report.json.")
