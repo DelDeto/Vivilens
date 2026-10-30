@@ -1,6 +1,6 @@
 # VIVILENS Ecommerce V1.0
 
-**Current release: V1.4.1.** The homepage uses original product photography, responsive WebP assets, a favicon set and pre-rendered social previews. Navigation now groups shopping, styling, the Vivi Edit and the brand story. See [brand assets and link-preview maintenance](docs/BRAND_ASSETS.md). The V1.0 and V1.1A sections below describe those historical releases; decorative homepage swatches and JavaScript-only social metadata have since been replaced.
+**Current release: V1.5.** COD checkout, order management, inventory by power, customer support and moderated verified-purchase reviews are available. See [commerce operations and deployment](docs/COMMERCE.md) and [brand asset maintenance](docs/BRAND_ASSETS.md). The V1.0 and V1.1A sections below are historical; checkout, prescription selection, real product images and static social previews have since been added. Checkout uses current server-side stock and prices; catalog previews with no verified stock remain browse-only.
 
 Responsive storefront for colored contact lenses. React/Vite + Supabase Auth/Postgres + Cloudflare Pages.
 

@@ -4,13 +4,20 @@ export const BRAND_DESCRIPTION='Mắt xinh, đúng mood. Khám phá lens màu VI
 export const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export function socialMetadata(page='home',product=null,origin=SITE_ORIGIN,path='/'){
  let title='VIVILENS — Mắt xinh, đúng mood.',description=BRAND_DESCRIPTION;
- const hidden=['account','admin','notfound'].includes(page)||(page==='detail'&&!product);
+ const hidden=['account','admin','notfound','checkout','receipt'].includes(page)||(page==='detail'&&!product);
  const isProduct=page==='detail'&&product;
  const color={Brown:'nâu',Gray:'xám',Pink:'hồng',Blue:'xanh dương',Green:'xanh lá',Violet:'tím',Black:'đen'}[product?.color];
  if(page==='catalog'){title='Bộ sưu tập lens màu | VIVILENS';description='Tìm mood của bạn cùng VIVILENS: xem ảnh sản phẩm thật, khám phá tông nâu, xám, hồng, xanh và quiz chọn màu lens.'}
  if(isProduct){title=product.name+' | VIVILENS';description=product.name+' — lens màu'+(color?' '+color:'')+(product.wear_period&&product.wear_period!=='Chưa xác nhận'?', chu kỳ '+product.wear_period:'')+'. Xem bộ ảnh thật và tìm look của bạn cùng VIVILENS.'}
  if(page==='account')title='Tài khoản | VIVILENS';
  if(page==='admin')title='Quản trị | VIVILENS';
+ if(page==='checkout')title='Đặt hàng COD | VIVILENS';
+ if(page==='receipt')title='Đơn hàng của bạn | VIVILENS';
+ if(page==='help'){
+  const helpTitles={contact:'Liên hệ & hỗ trợ',shipping:'Vận chuyển & COD',returns:'Hỗ trợ đổi trả','lens-care':'Sử dụng & bảo quản lens',privacy:'Thông tin riêng tư'};
+  title=(helpTitles[path.split('/').at(-1)]||'Hỗ trợ')+' | VIVILENS';
+  description='Thông tin hỗ trợ khách hàng VIVILENS: đơn hàng, giao hàng COD, chăm sóc lens và gửi yêu cầu đến cửa hàng.';
+ }
  if(page==='notfound')title='Không tìm thấy trang | VIVILENS';
  const canonicalPath=isProduct?'/products/'+encodeURIComponent(product.slug):path;
  const productImage=isProduct&&/^https:\/\//i.test(product.image_url||'')&&!/unsplash\.com|placehold\.co/.test(product.image_url);

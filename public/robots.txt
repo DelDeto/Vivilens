@@ -2,4 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /account
+Disallow: /checkout
+Disallow: /order/
 Sitemap: https://vivilens.duc-nguyen-ndd127.workers.dev/sitemap.xml

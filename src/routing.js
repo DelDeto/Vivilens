@@ -7,6 +7,11 @@ export function routeFromPath(pathname = '/') {
   if (path === '/shop') return { page: 'catalog' };
   if (path === '/account') return { page: 'account' };
   if (path === '/admin') return { page: 'admin' };
+  if (path === '/checkout') return { page: 'checkout' };
+  const receipt=/^\/order\/(VV-[A-F0-9]{12})$/.exec(path);
+  if(receipt)return {page:'receipt',code:receipt[1]};
+  const help=/^\/help\/(contact|shipping|returns|lens-care|privacy)$/.exec(path);
+  if(help)return {page:'help',topic:help[1]};
   const product = /^\/products\/([^/]+)$/.exec(path);
   if (product) {
     try {
@@ -24,6 +29,8 @@ export function pathForPage(page, product) {
   if (page === 'catalog') return '/shop';
   if (page === 'account') return '/account';
   if (page === 'admin') return '/admin';
+  if (page === 'checkout') return '/checkout';
+  if (page === 'receipt' && /^VV-[A-F0-9]{12}$/.test(product?.code||'')) return '/order/'+product.code;
   if (page === 'detail' && product?.slug) return '/products/' + encodeURIComponent(product.slug);
   return '/shop';
 }
