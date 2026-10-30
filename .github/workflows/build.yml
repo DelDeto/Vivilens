@@ -16,10 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      # package-lock.json is currently absent; switch to npm ci after committing it.
+      # Reproducible dependencies from the committed lockfile.
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
-      - name: Routing tests
+        run: npm ci --no-audit --no-fund
+      - name: Storefront behavior tests
         run: npm test
       - name: Build
         run: npm run build
