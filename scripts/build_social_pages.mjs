@@ -1,19 +1,25 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {socialMetadata,renderSocialHead,SITE_ORIGIN,escapeHtml} from '../src/social.js';
+import {renderSeoDocument} from '../src/seo-render.js';
+import {seoCollections,seoGuides} from '../src/seo-content.js';
 const root=path.resolve(import.meta.dirname,'..'),dist=path.join(root,'dist');
 const base=await fs.readFile(path.join(dist,'index.html'),'utf8');
-const products=JSON.parse(await fs.readFile(path.join(root,'catalog/social_products.json'),'utf8'));
-await fs.writeFile(path.join(dist,'index.html'),renderSocialHead(base,socialMetadata('home',null,SITE_ORIGIN,'/')));
-for(const [page,file] of [['catalog','shop'],['account','account'],['admin','admin'],['checkout','checkout']])await fs.writeFile(path.join(dist,file+'.html'),renderSocialHead(base,socialMetadata(page,null,SITE_ORIGIN,'/'+file)));
-await fs.mkdir(path.join(dist,'help'),{recursive:true});
-const helpPages=['contact','shipping','returns','lens-care','privacy'];
-for(const topic of helpPages)await fs.writeFile(path.join(dist,'help',topic+'.html'),renderSocialHead(base,socialMetadata('help',null,SITE_ORIGIN,'/help/'+topic)));
-await fs.mkdir(path.join(dist,'products'),{recursive:true});
+const products=JSON.parse(await fs.readFile(path.join(root,'catalog/seo_catalog.json'),'utf8'));
+async function write(file,options){const output=path.join(dist,file);await fs.mkdir(path.dirname(output),{recursive:true});await fs.writeFile(output,renderSeoDocument(base,{...options,products}))}
+await write('index.html',{page:'home',path:'/'});
+await fs.writeFile(path.join(dist,'__app-shell.html'),renderSocialHead(base,socialMetadata('account',null,SITE_ORIGIN,'/__app-shell')));
+for(const [page,file] of [['catalog','shop'],['account','account'],['admin','admin'],['checkout','checkout'],['journal','notes'],['notfound','404']])await write(file+'.html',{page,path:'/'+file});
+for(const topic of ['contact','shipping','returns','lens-care','privacy'])await write('help/'+topic+'.html',{page:'help',path:'/help/'+topic});
+for(const collection of seoCollections)await write('collections/'+collection.slug+'.html',{page:'collection',path:'/collections/'+collection.slug});
+for(const guide of seoGuides)await write('notes/'+guide.slug+'.html',{page:'guide',path:'/notes/'+guide.slug});
 for(const product of products){
- if(!/^[a-z0-9-]{1,128}$/.test(product.slug))throw new Error('Invalid product slug in social snapshot');
- await fs.writeFile(path.join(dist,'products',product.slug+'.html'),renderSocialHead(base,socialMetadata('detail',product)));
+ if(!/^[a-z0-9-]{1,128}$/.test(product.slug))throw new Error('Invalid product slug');
+ await write('products/'+product.slug+'.html',{page:'detail',product,path:'/products/'+product.slug});
 }
-const urls=['/','/shop',...helpPages.map(p=>'/help/'+p),...products.map(p=>'/products/'+p.slug)];
+const urls=['/','/shop','/notes',...['contact','shipping','returns','lens-care','privacy'].map(p=>'/help/'+p),...seoCollections.map(c=>'/collections/'+c.slug),...seoGuides.map(g=>'/notes/'+g.slug),...products.map(p=>'/products/'+p.slug)];
+const images=products.map(p=>'<url><loc>'+escapeHtml(SITE_ORIGIN+'/products/'+p.slug)+'</loc>'+p.images.map(i=>'<image:image><image:loc>'+escapeHtml(i.image_url)+'</image:loc><image:title>'+escapeHtml(p.name+' — ảnh sản phẩm VIVILENS')+'</image:title></image:image>').join('')+'</url>').join('');
 await fs.writeFile(path.join(dist,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(p=>'<url><loc>'+escapeHtml(SITE_ORIGIN+p)+'</loc></url>').join('')+'</urlset>');
-console.log('Social cards in raw HTML: home, shop, '+products.length+' products; private routes noindexed.');
+await fs.writeFile(path.join(dist,'sitemap-images.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'+images+'</urlset>');
+await fs.writeFile(path.join(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /account\nDisallow: /checkout\nDisallow: /order/\nDisallow: /__app-shell\nSitemap: '+SITE_ORIGIN+'/sitemap.xml\nSitemap: '+SITE_ORIGIN+'/sitemap-images.xml\n');
+console.log('SEO HTML: '+products.length+' products, '+seoCollections.length+' collections, '+seoGuides.length+' guides; '+urls.length+' sitemap URLs. Offers require live edge data.');

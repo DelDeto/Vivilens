@@ -1,6 +1,6 @@
 {
   "name": "vivilens-ecommerce-v1",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,9 @@
     "preview": "vite preview --host 0.0.0.0",
     "deploy": "wrangler deploy",
     "test": "node --test",
-    "build:brand": "node scripts/build_brand_assets.mjs"
+    "build:brand": "node scripts/build_brand_assets.mjs",
+    "seo:sync": "node scripts/sync_seo_catalog.mjs",
+    "check:seo": "node scripts/check_seo.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.57.0",

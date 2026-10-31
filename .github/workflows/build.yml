@@ -23,3 +23,6 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+
+      - name: Verify SEO HTML and internal links
+        run: npm run check:seo
