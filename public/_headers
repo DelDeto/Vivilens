@@ -10,3 +10,9 @@
 /checkout*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+/tryon/tfjs-wasm-v4.22.0/*
+  Cache-Control: public, max-age=31536000, immutable
+/tryon/models/short-c131145fade7/*
+  Cache-Control: public, max-age=31536000, immutable
+/tryon/models/attention-df2f0944de7d/*
+  Cache-Control: public, max-age=31536000, immutable

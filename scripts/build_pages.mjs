@@ -1,5 +1,6 @@
 import {build} from 'esbuild';
 import {writeFile} from 'node:fs/promises';
+import './prepare_tryon_assets.mjs';
 
 // Bundle the same tested public-product router for Pages advanced mode.
 await build({entryPoints:['worker/index.js'],outfile:'dist/_worker.js',bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,legalComments:'none'});

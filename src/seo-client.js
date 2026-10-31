@@ -11,6 +11,7 @@ export function updateClientStructuredData(page,product,products,variants,live){
   let availability=null;
   if(live&&product.active)availability=publicAvailability(product,variants.filter(v=>v.product_id===product.id));
   data=[productStructuredData(product,{availability}),breadcrumbs([['VIVILENS','/'],['Bộ sưu tập','/shop'],[product.name,path]])];
+ }else if(page==='tryon'){data=[{'@context':'https://schema.org','@type':'WebPage',name:'Thử màu lens bằng camera & ảnh',url:SITE_ORIGIN+'/try-on'}];
  }else if(page==='collection'){
   const c=collectionBySlug(path.split('/').at(-1));
   if(c)data=[breadcrumbs([['VIVILENS','/'],['Bộ sưu tập','/shop'],[c.short,path]]),{'@context':'https://schema.org','@type':'CollectionPage',name:c.title,url:SITE_ORIGIN+path,mainEntity:{'@type':'ItemList',itemListElement:editedProducts(products,c).map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name,url:SITE_ORIGIN+'/products/'+p.slug}))}}];

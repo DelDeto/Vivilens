@@ -1,0 +1,11 @@
+VIVILENS Try-on
+Runtime: TensorFlow.js core, converter and WASM backend 4.22.0; Google LLC, Apache License 2.0.
+Face landmarks detection 1.0.6 and face detection 1.0.3; Google LLC, Apache License 2.0.
+Official source: https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection
+Models: MediaPipe Attention Mesh and short-range Face Detection, version 1, FP16, Apache License 2.0.
+Official distributions:
+https://www.kaggle.com/models/mediapipe/face-landmarks-detection/tfJs/attention-mesh/1
+https://www.kaggle.com/models/mediapipe/face-detection/tfJs/short/1
+All model files are SHA-256 pinned in catalog/tryon_runtime_assets.json at build time.
+All runtime assets are served from the storefront origin. No customer photo or eye coordinates are uploaded.
+Color profiles are approximate radial color samples from VIVILENS product illustrations, not calibrated lens patterns.

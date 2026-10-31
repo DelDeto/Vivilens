@@ -7,3 +7,9 @@ dist/
 *.log
 
 supabase/.temp/
+.cache/
+public/tryon/wasm/
+public/tryon/wasm-v*/
+public/tryon/tfjs-wasm-v*/
+public/tryon/landmarks-v*.js
+public/tryon/models/

@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "milk-tea-brown",
+    "name": "Milk Tea Brown",
+    "color": "Brown",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7fc50441-c670-4114-9b44-b8d6cfbf80de/drive-15jN14P4gOecbP0DYIRFjczZ4XHB8TCfw.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#c8c3b5",
+      "mid": "#988870",
+      "outer": "#4e4638"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/7fc50441-c670-4114-9b44-b8d6cfbf80de/drive-15jN14P4gOecbP0DYIRFjczZ4XHB8TCfw.webp",
+      "sha256": "ba116758a3ea68d622ec46bb3b7283e96a0f0c7b0070bc74c1c80fe0b48452fb",
+      "sampleCircle": {
+        "x": 0.105,
+        "y": 0.895,
+        "r": 0.073
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  },
+  {
+    "slug": "fairy-gray",
+    "name": "Fairy Gray",
+    "color": "Gray",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fe31d894-252a-4915-ade7-d23d955ffbec/drive-1cTZzDTy5A-TGovXQ0rDBHWfjqni4KKp2.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#e1d5c5",
+      "mid": "#d3c8bc",
+      "outer": "#c2b7ae"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/fe31d894-252a-4915-ade7-d23d955ffbec/drive-1cTZzDTy5A-TGovXQ0rDBHWfjqni4KKp2.webp",
+      "sha256": "35cafa1e34b2158e3b4e509eca2acd27a160324928bc3b9ab76e0f4bdfd1e6db",
+      "sampleCircle": {
+        "x": 0.113,
+        "y": 0.864,
+        "r": 0.073
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  },
+  {
+    "slug": "fairy-pink",
+    "name": "Fairy Pink",
+    "color": "Pink",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/aa47acee-3448-4dd5-98e2-b76be8904127/drive-1S36MWljUPWFi6pCDcvW5bcqXmqXDHxAc.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#4c3d39",
+      "mid": "#5b4a48",
+      "outer": "#776662"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/aa47acee-3448-4dd5-98e2-b76be8904127/drive-1S36MWljUPWFi6pCDcvW5bcqXmqXDHxAc.webp",
+      "sha256": "b851e59f44fbd1a28238f29a85a46371263d89f736a386b5bc2cbf3b85ac8bcc",
+      "sampleCircle": {
+        "x": 0.11,
+        "y": 0.887,
+        "r": 0.077
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  },
+  {
+    "slug": "mist-blue",
+    "name": "Mist Blue",
+    "color": "Blue",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a8c63f36-38eb-4d8f-8617-f646cd2a88a6/drive-1JkZHTZIm8ZdFOV_-GjIwMkQx2e_fGWhr.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#acc7e2",
+      "mid": "#99aac2",
+      "outer": "#8993a9"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/a8c63f36-38eb-4d8f-8617-f646cd2a88a6/drive-1JkZHTZIm8ZdFOV_-GjIwMkQx2e_fGWhr.webp",
+      "sha256": "31839f607241e4c3d5fa9e85d6cfefc4fefd727ce7986d08e5e53f17cfc80487",
+      "sampleCircle": {
+        "x": 0.119,
+        "y": 0.835,
+        "r": 0.075
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  },
+  {
+    "slug": "olive-brown",
+    "name": "Olive Brown",
+    "color": "Brown",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/701142bd-903b-4a4c-a8ad-172c83087598/drive-1IckZ6fdiQV6j_k3J1VZQHxwtCj-dpwjF.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#cfd197",
+      "mid": "#c8d194",
+      "outer": "#c3d09b"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/701142bd-903b-4a4c-a8ad-172c83087598/drive-1IckZ6fdiQV6j_k3J1VZQHxwtCj-dpwjF.webp",
+      "sha256": "f7af5a6bf649f5dcc48cb5043adb7eefb3a42307b69eda8beef541a230543094",
+      "sampleCircle": {
+        "x": 0.127,
+        "y": 0.91,
+        "r": 0.081
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  },
+  {
+    "slug": "bubble-brown",
+    "name": "Bubble Brown",
+    "color": "Brown",
+    "image": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/46e9118e-4104-4500-9354-6e5ec70853c1/drive-1UpVkeoNUacqgqYbEoiJV8s4jRyYMoaTX.webp",
+    "mode": "color-only",
+    "palette": {
+      "inner": "#cdc2a7",
+      "mid": "#b2ab98",
+      "outer": "#9f9182"
+    },
+    "source": {
+      "url": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/46e9118e-4104-4500-9354-6e5ec70853c1/drive-1UpVkeoNUacqgqYbEoiJV8s4jRyYMoaTX.webp",
+      "sha256": "17fc6fc12313b50d3a8aac31f9f41e6f304e65fa94288aa2a5a7004ddd620e24",
+      "sampleCircle": {
+        "x": 0.112,
+        "y": 0.878,
+        "r": 0.077
+      },
+      "note": "Radial average from the product illustration; no calibrated lens artwork available."
+    }
+  }
+]

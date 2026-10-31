@@ -8,7 +8,7 @@ function follow(event,action){
  event.preventDefault();action();
 }
 
-export function BrandNavigation({mobileOpen,onClose,onCatalog,onCollection,onQuiz,page,style,admin,onAdmin}){
+export function BrandNavigation({mobileOpen,onClose,onCatalog,onCollection,onQuiz,page,style,admin,onAdmin,onTryOn}){
  const [moodsOpen,setMoodsOpen]=useState(false);
  const root=useRef(null),trigger=useRef(null);
  const close=()=>{setMoodsOpen(false);onClose()};
@@ -38,6 +38,7 @@ export function BrandNavigation({mobileOpen,onClose,onCatalog,onCollection,onQui
   </div>
   <a className="vv-nav-link" href="/#vivi-edit" onClick={close}>Vivi Edit <span className="vv-nav-tag">VIVI CHỌN</span></a>
   <a className="vv-nav-link" href="/#ve-vivilens" onClick={close}>Về VIVILENS</a>
+  <a className={'vv-nav-link'+(page==='tryon'?' is-active':'')} href="/try-on" onClick={e=>follow(e,()=>{close();onTryOn()})}>Thử lens <span className="vv-nav-tag">MỚI</span></a>
   <button className="vv-nav-quiz" onClick={()=>{close();onQuiz()}}><Sparkles size={15}/> Tìm lens của bạn</button>
   {admin&&<button className="vv-nav-link" onClick={()=>{close();onAdmin()}}>Admin</button>}
  </nav>;

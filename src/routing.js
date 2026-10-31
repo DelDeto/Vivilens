@@ -1,11 +1,13 @@
 import {socialMetadata} from './social.js';
 import {collectionBySlug,guideBySlug} from './seo-content.js';
+import {tryOnPath} from './tryon/profiles.js';
 // URL navigation and per-page metadata.
 
 export function routeFromPath(pathname = '/') {
   const path = pathname.replace(/\/+$/, '') || '/';
   if (path === '/') return { page: 'home' };
   if (path === '/shop') return { page: 'catalog' };
+  if (path === '/try-on') return { page: 'tryon' };
   if(path==='/notes')return {page:'journal'};
   const collection=/^\/collections\/([a-z0-9-]+)$/.exec(path);
   if(collection&&collectionBySlug(collection[1]))return {page:'collection',slug:collection[1]};
@@ -33,6 +35,7 @@ export function routeFromPath(pathname = '/') {
 export function pathForPage(page, product) {
   if (page === 'home') return '/';
   if (page === 'catalog') return '/shop';
+  if (page === 'tryon') return tryOnPath(product?.slug);
   if (page === 'account') return '/account';
   if (page === 'admin') return '/admin';
   if (page === 'checkout') return '/checkout';

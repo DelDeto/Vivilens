@@ -1,6 +1,6 @@
 # VIVILENS Ecommerce V1.0
 
-**Current release: V1.6.1 — https://vivilens.pages.dev/.** Cloudflare Pages is the production host; the old workers.dev storefront redirects to matching Pages URLs. Build and deploy with `npm run deploy`. Existing private guest receipts remain available on their original origin. SEO foundation: initial HTML for 122 products, four curated search collection pages, six Vivi Notes guides, live product structured data, real 404 responses and prepared consent-based analytics. See [SEO operations](docs/SEO.md), [commerce operations](docs/COMMERCE.md) and [brand assets](docs/BRAND_ASSETS.md). Older release sections below are historical.
+**Current release: V1.7.0 — https://vivilens.pages.dev/.** Lens Try-On at [/try-on](https://vivilens.pages.dev/try-on) adds on-device photo/camera color simulation, automatic iris placement, six product references, before/after, manual adjustment and branded JPEG export. See [Try-On operations and limitations](docs/TRY_ON.md). Cloudflare Pages remains the production host; legacy storefront links redirect to matching Pages URLs. Build/deploy with `npm run deploy`. Existing private guest receipts remain on their original origin. SEO includes 122 products, four curated collections, six guides and 141 sitemap URLs. See [SEO operations](docs/SEO.md), [commerce operations](docs/COMMERCE.md) and [brand assets](docs/BRAND_ASSETS.md). Older release sections below are historical.
 
 Responsive storefront for colored contact lenses. React/Vite + Supabase Auth/Postgres + Cloudflare Pages.
 

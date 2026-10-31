@@ -10,6 +10,7 @@ export function socialMetadata(page='home',product=null,origin=SITE_ORIGIN,path=
  const isProduct=page==='detail'&&product;
  const color={Brown:'nâu',Gray:'xám',Pink:'hồng',Blue:'xanh dương',Green:'xanh lá',Violet:'tím',Black:'đen'}[product?.color];
  if(page==='catalog'){title='Bộ sưu tập lens màu | VIVILENS';description='Tìm mood của bạn cùng VIVILENS: xem ảnh sản phẩm thật, khám phá tông nâu, xám, hồng, xanh và quiz chọn màu lens.'}
+ if(page==='tryon'){title='Thử màu lens bằng camera & ảnh | VIVILENS';description='Thử 6 tông màu lens bằng camera hoặc ảnh có sẵn, so sánh trước–sau và lưu ảnh. Mô phỏng màu tham khảo, xử lý ngay trên thiết bị của bạn.'}
  if(isProduct){title='Lens '+product.name+(color?' màu '+color:'')+' | VIVILENS';description=seoProductText(product).slice(0,170)}
  const collection=page==='collection'?collectionBySlug(path.split('/').at(-1)):null;
  const guide=page==='guide'?guideBySlug(path.split('/').at(-1)):null;
