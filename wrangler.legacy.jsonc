@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "vivilens",
+  "main": "worker/legacy-redirect.js",
+  "compatibility_date": "2026-10-31",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": true
+  },
+  "vars": {
+    "PUBLIC_CATALOG_URL": "https://qovmjpafxlabeamvblkc.supabase.co",
+    "PUBLIC_CATALOG_KEY": "sb_publishable_lRr9fD9D2xBOjdA9GvLgcg_PYdT_oiH"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1
+  }
+}

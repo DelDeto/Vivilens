@@ -8,7 +8,7 @@ const url=env.get('SUPABASE_URL');
 function keys(name){try{return Object.values(JSON.parse(env.get(name)||'{}')).filter(v=>typeof v==='string')}catch{return []}}
 const secret=keys('SUPABASE_SECRET_KEYS')[0]||env.get('SUPABASE_SERVICE_ROLE_KEY');
 const publicKeys=[...keys('SUPABASE_PUBLISHABLE_KEYS'),env.get('SUPABASE_ANON_KEY')].filter(Boolean);
-const allowedOrigins=new Set(['https://vivilens.duc-nguyen-ndd127.workers.dev','http://terminal.local:4173',env.get('VIVILENS_SITE_ORIGIN')].filter(Boolean));
+const allowedOrigins=new Set(['https://vivilens.pages.dev','https://vivilens.duc-nguyen-ndd127.workers.dev','http://terminal.local:4173',env.get('VIVILENS_SITE_ORIGIN')].filter(Boolean));
 const orderColumns='id,code,customer_user_id,customer_name,phone,address,city,note,status,payment_method,subtotal,shipping_fee,total,shipping_mode,customer_confirmed_at,carrier,tracking_code,created_at,updated_at';
 async function db(path,method='GET',body){
  const headers={apikey:secret,'Content-Type':'application/json',Prefer:'return=representation'};

@@ -22,7 +22,7 @@ jobs:
       - name: Storefront behavior tests
         run: npm test
       - name: Build
-        run: npm run build
+        run: npm run build:pages
 
       - name: Verify SEO HTML and internal links
         run: npm run check:seo

@@ -11,7 +11,7 @@
 
 ## Edge behavior and data freshness
 
-The existing Worker now includes a small ESM router plus Static Assets. Static pages/assets are served directly. `/products/*` runs the router first to obtain **public** product fields and images through Supabase's publishable API with existing RLS. Active SKU products additionally read public SKU quantities. No customer records or service-role keys are involved.
+Production is now **https://vivilens.pages.dev** on Cloudflare Pages. `npm run build:pages` bundles the tested ESM router into Pages advanced-mode `_worker.js`; `_routes.json` invokes it only for products and private receipts. Static pages/assets are served directly. `/products/*` obtains **public** product fields and images through Supabase's publishable API with existing RLS. Active SKU products additionally read public SKU quantities. No customer records or service-role keys are involved. See [Pages migration](PAGES_MIGRATION.md).
 
 `Product` JSON-LD always describes the actual two-lens box. `Offer` is included only after a successful current public read, with the real box price and InStock/OutOfStock state. Build snapshots never supply an Offer. Preview products remain browse-only and have no Offer. No review stars, identifiers, shipping fee or return period are fabricated.
 
@@ -21,15 +21,15 @@ The frontend refreshes its structured data after live catalog reads. Checkout co
 
 ## Refreshing catalog HTML
 
-Run `npm run seo:sync` to refresh **public** fields and gallery records from Supabase using `.env.production`'s publishable key, then review and commit `catalog/seo_catalog.json`. Run `npm test`, `npm run build`, `npm run check:seo`, and the Worker dry run before deployment. The committed snapshot makes CI builds reproducible without database write access.
+Run `npm run seo:sync` to refresh **public** fields and gallery records from Supabase using `.env.production`'s publishable key, then review and commit `catalog/seo_catalog.json`. Run `npm test`, `npm run build:pages` and `npm run check:seo` before deployment. The committed snapshot makes CI builds reproducible without database write access.
 
 When adding/hiding products or changing gallery/technical fields, refresh the snapshot and publish. Product edge pages read current public fields immediately; category cards and sitemap use the latest published snapshot. Keep both layers aligned.
 
 ## Merchant-owned domain and Google access still needed
 
-The connected Cloudflare account currently exposes no zones/custom domains for VIVILENS. The analytics connector currently has no Search Console or GA4 account. No domain was purchased and no Google account was created.
+The merchant selected the free Pages subdomain **vivilens.pages.dev**. Canonicals, social metadata, structured data, robots and both sitemaps now use that origin. The old workers.dev public storefront redirects permanently to matching Pages URLs. Old private guest receipt pages remain on their original origin to preserve browser-stored receipt capabilities. No domain was purchased. The analytics connector currently has no Search Console or GA4 account and no Google account was created.
 
-1. Supply the domain already owned by the merchant, add its Cloudflare zone and attach it to the existing Worker. Set `src/site-config.js` origin before building. Also update commerce CORS `VIVILENS_SITE_ORIGIN` and Supabase Auth redirect allowlists for the new hostname.
+1. If a merchant-owned domain is added later, attach it to the existing Pages project and update `src/site-config.js` before building. Also update commerce CORS and Supabase Auth redirect allowlists for the new hostname.
 2. Redirect each old public URL permanently to the matching new path; preserve query parameters when needed. Rebuild canonical URLs, schema URLs, social URLs and both sitemaps on the selected origin. Check the new host before enabling the redirects.
 3. Verify the site in Search Console via the domain's DNS or enter the supplied HTML verification value in `src/site-config.js`. Submit `/sitemap.xml` and `/sitemap-images.xml`; inspect home, a collection and a product in URL Inspection. We have not claimed successful Google indexing or rich-result approval.
 

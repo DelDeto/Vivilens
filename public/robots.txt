@@ -4,6 +4,6 @@ Disallow: /admin
 Disallow: /account
 Disallow: /checkout
 Disallow: /order/
-Sitemap: https://vivilens.duc-nguyen-ndd127.workers.dev/sitemap.xml
+Sitemap: https://vivilens.pages.dev/sitemap.xml
 Disallow: /__app-shell
-Sitemap: https://vivilens.duc-nguyen-ndd127.workers.dev/sitemap-images.xml
+Sitemap: https://vivilens.pages.dev/sitemap-images.xml

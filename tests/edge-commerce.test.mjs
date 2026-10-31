@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createCommerceHandler} from '../supabase/functions/vivilens-commerce/handler.mjs';
 const publicKey='sb_publishable_test_only',secret='sb_secret_test_only',uuid='12345678-1234-4234-8234-123456789abc',token='a'.repeat(64);
-const origin='https://vivilens.duc-nguyen-ndd127.workers.dev';
+const origin='https://vivilens.pages.dev';
 const env={get(name){return {SUPABASE_URL:'https://test.invalid',SUPABASE_PUBLISHABLE_KEYS:JSON.stringify({default:publicKey}),SUPABASE_SECRET_KEYS:JSON.stringify({default:secret})}[name]}};
 const makeRequest=(body,headers={})=>new Request('https://test.invalid/functions/v1/vivilens-commerce',{method:'POST',headers:{apikey:publicKey,Origin:origin,'Content-Type':'application/json',...headers},body:JSON.stringify(body)});
 const response=data=>Response.json(data);
