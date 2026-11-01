@@ -8,4 +8,4 @@ https://www.kaggle.com/models/mediapipe/face-landmarks-detection/tfJs/attention-
 https://www.kaggle.com/models/mediapipe/face-detection/tfJs/short/1
 All model files are SHA-256 pinned in catalog/tryon_runtime_assets.json at build time.
 All runtime assets are served from the storefront origin. No customer photo or eye coordinates are uploaded.
-Color profiles are approximate radial color samples from VIVILENS product illustrations, not calibrated lens patterns.
+Color profiles are approximate, individually photo-sampled iris tones from authentic VIVILENS product photographs, not calibrated lens patterns. Source image SHA-256, sampled eye regions and per-band sample counts are retained in catalog/tryon_profiles.json. Original photographs remain unchanged.

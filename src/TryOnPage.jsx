@@ -1,10 +1,11 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {Camera,ImagePlus,ShieldCheck,Download,RotateCcw,X,Eye,SlidersHorizontal,ArrowRight,Check,LoaderCircle,SplitSquareHorizontal} from 'lucide-react';
+import {Camera,ImagePlus,ShieldCheck,Download,RotateCcw,X,Eye,SlidersHorizontal,ArrowRight,LoaderCircle,SplitSquareHorizontal} from 'lucide-react';
 import {profiles,profileFor,validatePhoto} from './tryon/profiles';
 import {createVision} from './tryon/vision';
 import {colorTexture,drawTryOn,exportTryOn} from './tryon/render';
 import {manualEye,sourcePoint,smoothEyes} from './tryon/geometry';
 import {money} from './data';
+import ProfilePicker from './tryon/ProfilePicker';
 import './tryon.css';
 
 async function photoCanvas(file){
@@ -123,13 +124,13 @@ export default function TryOnPage({products,onProduct}){
  },[]);
  return <main className="vv-tryon-page section">
   <div className="vv-tryon-heading"><div><span className="eyebrow">VIVI TRY-ON / YOUR COLOR PLAYGROUND</span><h1>Mắt mình, <em>mood mới.</em></h1><p>Thử tông màu trên ảnh của bạn. So với ảnh gốc, chọn mood mình thích.</p></div><span className="vv-tryon-beta">MÔ PHỎNG MÀU</span></div>
-  {initial&&!profileFor(initial)&&<p className="vv-tryon-notice" role="status">Mẫu bạn chọn chưa có bản mô phỏng. Bạn thử một trong 6 mẫu dưới đây nhé.</p>}
+  {initial&&!profileFor(initial)&&<p className="vv-tryon-notice" role="status">Chưa tìm thấy mẫu trong liên kết này. Bạn tìm tên mẫu trong bộ sưu tập bên dưới nhé.</p>}
   <div className="vv-tryon-grid">
    <section className="vv-tryon-studio" aria-label="Khung thử màu lens">
     <div className="vv-tryon-stage" data-mode={mode}>
      <canvas ref={canvasRef} width="960" height="960" aria-label={mode==='empty'?'Khung thử màu, chưa chọn ảnh':'Ảnh thử tông màu '+profile.name} className={manual?'is-editing':''} onPointerDown={e=>pointer(e)} onPointerMove={e=>pointer(e,true)} onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}} hidden={mode==='empty'}/>
      <video ref={videoRef} playsInline muted className="vv-tryon-video" aria-hidden="true"/>
-     {mode==='empty'?<div className="vv-tryon-empty"><div className="vv-tryon-eye-art"><Eye size={56} strokeWidth={1}/><span/><span/></div><span>HELLO, BEAUTIFUL EYES ♡</span><h2>Một chút màu.<br/>Một mood rất bạn.</h2><p>Chọn ảnh rõ hai mắt hoặc bật camera để bắt đầu.</p><div className="vv-tryon-empty-tags"><span>Ảnh của bạn</span><span>6 tông màu</span><span>Trước / sau</span></div></div>:<><span className="vv-tryon-stage-tag">{sample?'ẢNH MẪU · ':''}{original?'ẢNH GỐC':profile.name}</span>{split&&!original&&<div className="vv-tryon-split-label"><span>Gốc</span><span>Thử màu</span></div>}<button className="vv-tryon-clear" onClick={clear} aria-label="Xóa ảnh và tắt camera"><X size={17}/></button></>}
+     {mode==='empty'?<div className="vv-tryon-empty"><div className="vv-tryon-eye-art"><Eye size={56} strokeWidth={1}/><span/><span/></div><span>HELLO, BEAUTIFUL EYES ♡</span><h2>Một chút màu.<br/>Một mood rất bạn.</h2><p>Chọn ảnh rõ hai mắt hoặc bật camera để bắt đầu.</p><div className="vv-tryon-empty-tags"><span>Ảnh của bạn</span><span>{profiles.length} mẫu lens</span><span>Trước / sau</span></div></div>:<><span className="vv-tryon-stage-tag">{sample?'ẢNH MẪU · ':''}{original?'ẢNH GỐC':profile.name}</span>{split&&!original&&<div className="vv-tryon-split-label"><span>Gốc</span><span>Thử màu</span></div>}<button className="vv-tryon-clear" onClick={clear} aria-label="Xóa ảnh và tắt camera"><X size={17}/></button></>}
      {busy&&<div className="vv-tryon-loading" role="status"><LoaderCircle size={20}/><span>Đang chuẩn bị phòng thử…</span></div>}
     </div>
     <p className="vv-tryon-status" role="status" aria-live="polite">{message||'Ảnh chính diện, đủ sáng và không dùng filter sẽ dễ thử hơn.'}</p>
@@ -144,11 +145,11 @@ export default function TryOnPage({products,onProduct}){
    </section>
    <aside className="vv-tryon-picker">
     <span className="eyebrow">01 / PICK YOUR COLOR</span><h2>Hôm nay thử <em>màu nào?</em></h2>
-    <div className="vv-tryon-options">{profiles.map(p=><button key={p.slug} aria-pressed={slug===p.slug} onClick={()=>selectProfile(p.slug)}><img src={p.image} alt={'Ảnh sản phẩm thật '+p.name} loading="lazy" width="60" height="60"/><span><strong>{p.name}</strong><small>{({Brown:'Nâu',Gray:'Xám',Pink:'Hồng',Blue:'Xanh dương'})[p.color]}</small></span>{slug===p.slug&&<Check size={17}/>}</button>)}</div>
+    <ProfilePicker profiles={profiles} slug={slug} onSelect={selectProfile}/>
     <label className="vv-tryon-strength">Độ đậm màu <span>{Math.round(strength*100)}%</span><input type="range" aria-label="Độ đậm màu lens" min="0.2" max="0.9" step="0.01" value={strength} onChange={e=>setStrength(Number(e.target.value))}/><small>Nhẹ nhàng <span>Nổi bật hơn</span></small></label>
     <div className="vv-tryon-selected"><span className="eyebrow">YOUR LITTLE COLOR PICK</span><h3>{profile.name}</h3>{product&&<p>{money(product.price)} / hộp 2 chiếc</p>}<button className="primary wide" onClick={()=>product?onProduct(product):window.location.assign('/products/'+slug)}>{product?.active?'Xem mẫu & chọn độ':'Xem ảnh sản phẩm thật'}<ArrowRight size={16}/></button><button className="secondary wide" disabled={mode!=='photo'||count!==2||busy||saving} onClick={save}><Download size={16}/>{saving?'Đang lưu…':'Lưu ảnh thử màu'}</button></div>
     <p className="vv-tryon-accuracy">Mô phỏng tông màu tham khảo. Hoa văn, độ giãn và màu thực tế có thể khác theo màu mắt, ánh sáng và màn hình.</p>
-    <details className="vv-tryon-explain"><summary>Vivi thử màu như thế nào?</summary><p>Bản đầu hỗ trợ 6 tông được lấy mẫu từ ảnh minh họa sản phẩm. Lớp màu được đặt vào vùng mống mắt, có thể so với ảnh gốc và chỉnh vị trí nếu cần. Đây chưa phải bản tái tạo hoa văn lens đã được hiệu chuẩn.</p><p>Ảnh chỉ ở bộ nhớ của tab đang mở. “Xóa ảnh” hoặc rời trang sẽ xóa phiên thử; camera tự tắt khi bạn rời tab. Chỉ khi bấm “Lưu ảnh thử màu”, ảnh mới được tải xuống thiết bị.</p><a href="/help/privacy">Thông tin riêng tư</a></details>
+    <details className="vv-tryon-explain"><summary>Vivi thử màu như thế nào?</summary><p>Phòng thử hỗ trợ {profiles.length} mẫu, với tông màu được lấy từ vùng lens trong ảnh sản phẩm. Lớp màu được đặt vào vùng mống mắt, có thể so với ảnh gốc và chỉnh vị trí nếu cần. Đây chưa phải bản tái tạo hoa văn lens đã được hiệu chuẩn.</p><p>Ảnh chỉ ở bộ nhớ của tab đang mở. “Xóa ảnh” hoặc rời trang sẽ xóa phiên thử; camera tự tắt khi bạn rời tab. Chỉ khi bấm “Lưu ảnh thử màu”, ảnh mới được tải xuống thiết bị.</p><a href="/help/privacy">Thông tin riêng tư</a></details>
    </aside>
   </div>
  </main>;

@@ -1,6 +1,6 @@
 import {socialMetadata} from './social.js';
 import {collectionBySlug,guideBySlug} from './seo-content.js';
-import {tryOnPath} from './tryon/profiles.js';
+import {tryOnPath} from './tryon/links.js';
 // URL navigation and per-page metadata.
 
 export function routeFromPath(pathname = '/') {

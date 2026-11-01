@@ -1,0 +1,10 @@
+{
+  "angel-blue": {"eyes": [{"x": 0.54, "y": 0.39, "rx": 0.17, "ry": 0.135}]},
+  "autumn-green": {"eyes": [{"x": 0.522, "y": 0.408, "rx": 0.135, "ry": 0.09}]},
+  "ocean-blue": {"imagePosition": 5},
+  "peacook-blue": {"eyes": [{"x": 0.585, "y": 0.424, "rx": 0.034, "ry": 0.027}]},
+  "pink-noir-rose": {"eyes": [{"x": 0.508, "y": 0.382, "rx": 0.163, "ry": 0.15}]},
+  "royal-blue": {"eyes": [{"x": 0.556, "y": 0.351, "rx": 0.155, "ry": 0.135}]},
+  "cat-dimond-brown": {"eyes": [{"x": 0.259, "y": 0.353, "rx": 0.064, "ry": 0.053}]},
+  "midnight-blue": {"region": {"x": 0, "y": 0.35, "width": 0.52, "height": 0.65}}
+}
