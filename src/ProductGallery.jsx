@@ -1,17 +1,20 @@
 import React, {useEffect,useRef,useState} from 'react';
+import {productMediaGroups} from './product-media';
 import {ArrowLeft,ArrowRight,ChevronLeft,ChevronRight,ImagePlus,LoaderCircle,MoveDown,MoveUp,Trash2,X,ZoomIn} from 'lucide-react';
 
 export function ProductGallery({product,images=[]}){
  const cover=String(product?.image_url||'');
  const verifiedCover=cover&&!cover.includes('unsplash.com')&&!cover.includes('placehold.co');
- const slides = images.length ? [...images].sort((a,b)=>(a.position||0)-(b.position||0)) : (verifiedCover ? [{id:'cover',image_url:cover,alt_text:'Ảnh lens '+product.name}] : []);
+ const groups=productMediaGroups(product,images),[album,setAlbum]=useState('primary');
+ const slides = images.length ? groups[album] : (verifiedCover ? [{id:'cover',image_url:cover,alt_text:'Ảnh lens '+product.name}] : []);
  const [current,setCurrent]=useState(0),[zoom,setZoom]=useState(false),touch=useRef(null);
- useEffect(()=>{setCurrent(0);setZoom(false)},[product?.id]);
+ useEffect(()=>{setCurrent(0);setZoom(false);setAlbum('primary')},[product?.id]);
  useEffect(()=>{if(!zoom)return;const handle=e=>{if(e.key==='Escape')setZoom(false);if(e.key==='ArrowRight')setCurrent(i=>(i+1)%Math.max(slides.length,1));if(e.key==='ArrowLeft')setCurrent(i=>(i-1+Math.max(slides.length,1))%Math.max(slides.length,1))};window.addEventListener('keydown',handle);return()=>window.removeEventListener('keydown',handle)},[zoom,slides.length]);
  const idx=Math.min(current,Math.max(slides.length-1,0)),slide=slides[idx],step=dir=>setCurrent(i=>(i+dir+slides.length)%slides.length);
  const swipeStart=e=>{touch.current=e.touches[0]?.clientX};
  const swipeEnd=e=>{if(touch.current===null)return;const delta=e.changedTouches[0]?.clientX-touch.current;touch.current=null;if(Math.abs(delta)>45 && slides.length>1)step(delta<0?1:-1)};
  return <div className="vv-gallery">
+  {groups.other.length>0&&<div className="vv-gallery-albums" role="group" aria-label="Chọn bộ ảnh sản phẩm"><button aria-pressed={album==='primary'} onClick={()=>{setAlbum('primary');setCurrent(0)}}>Ảnh chính & thông tin</button><button aria-pressed={album==='other'} onClick={()=>{setAlbum('other');setCurrent(0)}}>Ảnh mẫu khác ({groups.other.length})</button></div>}
   <div className="vv-gallery-stage" onTouchStart={swipeStart} onTouchEnd={swipeEnd}>
    {slide?<button type="button" className="vv-gallery-open" onClick={()=>setZoom(true)} aria-label={'Phóng to ảnh '+(idx+1)}><img src={slide.image_url} alt={slide.alt_text||product.name} loading="eager"/><span className="vv-zoom-hint"><ZoomIn size={17}/> Xem ảnh lớn</span></button>:<div className="vv-gallery-empty vv-gallery-brand"><strong>VIVILENS</strong><span>{product.name}</span><small>YOUR EYES, YOUR MOOD</small></div>}
    {slides.length>1&&<><button type="button" className="vv-gallery-arrow prev" onClick={()=>step(-1)} aria-label="Ảnh trước"><ChevronLeft/></button><button type="button" className="vv-gallery-arrow next" onClick={()=>step(1)} aria-label="Ảnh tiếp"><ChevronRight/></button></>}

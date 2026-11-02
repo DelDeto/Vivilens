@@ -194,7 +194,7 @@ footer{background:#f9eff2}
 
 /* VIVILENS V1.1 / five-image product gallery and admin media */
 .vv-gallery{min-width:0;width:100%;position:relative}
-.vv-gallery-stage{position:relative;overflow:hidden;border-radius:18px;background:#faeef2;aspect-ratio:4/5}
+.vv-gallery-albums{display:flex;gap:7px;margin:0 0 10px;flex-wrap:wrap}.vv-gallery-albums button{padding:8px 11px;border:1px solid #e7ccdc;background:#fff8fb;color:#84546d;border-radius:20px;font:inherit;font-size:11px}.vv-gallery-albums button[aria-pressed=true]{background:#f0dce8;border-color:#b47b98}.vv-gallery-stage{position:relative;overflow:hidden;border-radius:18px;background:#faeef2;aspect-ratio:4/5}
 .vv-gallery-open{display:block;width:100%;height:100%;border:0;padding:0;background:transparent;cursor:zoom-in;overflow:hidden}
 .vv-gallery-open img{height:100%;width:100%;object-fit:contain;object-position:center;background:#f9ecf0}
 .vv-gallery-empty{height:100%;display:grid;place-items:center;color:#967384}

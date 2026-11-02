@@ -1,10 +1,11 @@
 import React from 'react';
+import {productMediaGroups} from './product-media';
 import {ArrowRight,Eye,Heart,Scale} from 'lucide-react';
 import {money} from './data';
 
 // Kept outside App so selections don't remount cards or lose keyboard focus.
 export function ProductCard({p,photos,saved,compared,onWish,onCompare,onQuick,onDetail}){
- const [cover,next]=photos;
+ const [cover,next]=productMediaGroups(p,photos).primary;
  const href='/products/'+encodeURIComponent(p.slug);
  function follow(e){if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();onDetail(p)}
  return <article className="product vv-catalog-card vv-shop-card">

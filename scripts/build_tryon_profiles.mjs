@@ -28,7 +28,7 @@ async function localModel(name){
 const detector=await mesh.createDetector(mesh.SupportedModels.MediaPipeFaceMesh,{runtime:'tfjs',refineLandmarks:true,maxFaces:4,detectorModelUrl:await localModel('detector'),landmarkModelUrl:await localModel('landmark')});
 const profiles=[],missing=[],audit=[];
 for(const p of catalog){
- const override=overrides[p.slug],url=override?.imagePosition?(p.images.find(i=>i.position===override.imagePosition)?.image_url):p.image_url;
+ const override=overrides[p.slug],url=override?.imageUrl||(override?.imagePosition?(p.images.find(i=>i.position===override.imagePosition)?.image_url):p.image_url);
  if(!url)throw new Error('Missing source URL: '+p.slug);
  const imageFile=path.join(cache,p.slug+'.webp');let bytes;
  if(cacheManifest[p.slug]?.url===url){try{bytes=await fs.readFile(imageFile);if(hash(bytes)!==cacheManifest[p.slug].sha256)bytes=null}catch{}}

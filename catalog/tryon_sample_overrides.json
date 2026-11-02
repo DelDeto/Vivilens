@@ -1,10 +1,80 @@
 {
-  "angel-blue": {"eyes": [{"x": 0.54, "y": 0.39, "rx": 0.17, "ry": 0.135}]},
-  "autumn-green": {"eyes": [{"x": 0.522, "y": 0.408, "rx": 0.135, "ry": 0.09}]},
-  "ocean-blue": {"imagePosition": 5},
-  "peacook-blue": {"eyes": [{"x": 0.585, "y": 0.424, "rx": 0.034, "ry": 0.027}]},
-  "pink-noir-rose": {"eyes": [{"x": 0.508, "y": 0.382, "rx": 0.163, "ry": 0.15}]},
-  "royal-blue": {"eyes": [{"x": 0.556, "y": 0.351, "rx": 0.155, "ry": 0.135}]},
-  "cat-dimond-brown": {"eyes": [{"x": 0.259, "y": 0.353, "rx": 0.064, "ry": 0.053}]},
-  "midnight-blue": {"region": {"x": 0, "y": 0.35, "width": 0.52, "height": 0.65}}
+  "angel-blue": {
+    "eyes": [
+      {
+        "x": 0.54,
+        "y": 0.39,
+        "rx": 0.17,
+        "ry": 0.135
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/cfc90208-fc73-407d-b00b-ed82a64b8210/drive-1rgYc7rU_R3UwaKqBr5BSa8pwI9ZeLfZ_.webp"
+  },
+  "autumn-green": {
+    "eyes": [
+      {
+        "x": 0.522,
+        "y": 0.408,
+        "rx": 0.135,
+        "ry": 0.09
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/13d702ba-0aa3-49f9-a151-fe6ed9122a87/drive-1Pd-diXaA88AsLqAElwVfMlJJFPTow3LV.webp"
+  },
+  "ocean-blue": {
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/358f2fef-45a4-41f3-9692-8120e705d058/drive-17MIjfDyZ3jGiMFeedIBV4NcyhFuE9fvu.webp"
+  },
+  "peacook-blue": {
+    "eyes": [
+      {
+        "x": 0.585,
+        "y": 0.424,
+        "rx": 0.034,
+        "ry": 0.027
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/21f37375-c1cf-4d5b-9720-555eb5dd9551/drive-1WcCicdQYWfwjnSaTEVTKm1iU4uwmAtKU.webp"
+  },
+  "pink-noir-rose": {
+    "eyes": [
+      {
+        "x": 0.508,
+        "y": 0.382,
+        "rx": 0.163,
+        "ry": 0.15
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/1d3155ac-ae17-4a99-a49f-10e3daeb1b87/drive-1U4yEfpiKFLGIBWfvfoo9gVehS6MtkMaM.webp"
+  },
+  "royal-blue": {
+    "eyes": [
+      {
+        "x": 0.556,
+        "y": 0.351,
+        "rx": 0.155,
+        "ry": 0.135
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/2f04ce63-1376-4b30-98fe-04190a921a7b/drive-1izxbdF2AfOrr1L6EqgZJgjbchdPoeS2u.webp"
+  },
+  "cat-dimond-brown": {
+    "eyes": [
+      {
+        "x": 0.259,
+        "y": 0.353,
+        "rx": 0.064,
+        "ry": 0.053
+      }
+    ],
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/8972175e-fea2-4658-8029-326e16a80524/drive-1NgO62phMrMMbcFTUf1VsPJJbVE6Ubawu.webp"
+  },
+  "midnight-blue": {
+    "region": {
+      "x": 0,
+      "y": 0.35,
+      "width": 0.52,
+      "height": 0.65
+    },
+    "imageUrl": "https://qovmjpafxlabeamvblkc.supabase.co/storage/v1/object/public/vivilens-products/e7fdf103-f045-474b-91c0-3ea181484505/drive-1fWuwUa4TPZb_5zbzhr8RZi2Qf7j2ZGD6.webp"
+  }
 }
