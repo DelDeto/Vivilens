@@ -1,0 +1,128 @@
+/* VIVILENS Pearl Edition — site-wide visual skin. No edits to product photos or commerce logic. */
+:root {
+  --vv-ink:#543445;
+  --vv-rose:#a95778;
+  --vv-rose-dark:#78374f;
+  --vv-rose-pale:#fff0f6;
+  --vv-cream:#fffafc;
+  --vv-line:rgba(166,91,126,.22);
+  --vv-muted:#765666;
+  --vv-pearl-panel:rgba(255,249,252,.85);
+  --vv-pearl-border:rgba(255,255,255,.73);
+  --vv-pearl-shadow:0 12px 35px rgba(101,49,79,.105);
+}
+html { background:#e8c7d3; }
+body {
+  background-image:linear-gradient(120deg,rgba(255,243,248,.18),rgba(255,241,246,.07)),url('/brand/pearl-background.webp') !important;
+  background-position:center top !important;
+  background-size:cover !important;
+  background-attachment:fixed !important;
+  background-repeat:no-repeat !important;
+  color:var(--vv-ink);
+}
+#root { min-height:100dvh; background:transparent !important; }
+header { background:rgba(255,247,251,.90) !important; border-color:rgba(255,255,255,.75) !important; box-shadow:0 4px 20px #8b53631a; }
+.topline { background:rgba(133,59,88,.92) !important; }
+.header-inner { backdrop-filter:blur(16px); }
+.logo,.logo span { color:#8f4766; }
+.primary { background:#a95778; border-radius:999px; box-shadow:0 4px 14px #a957782b; }
+.primary:hover { background:#88415f; }
+.secondary { border-radius:999px; background:rgba(255,250,252,.85); }
+:where(.section,.catalog,.account,.admin,.vv-detail-page,.vv-checkout,.vv-help,.vv-receipt,.vv-brand-story) {
+  position:relative;
+}
+:where(.section,.catalog,.account,.admin,.vv-detail-page,.vv-checkout,.vv-help,.vv-receipt) > :is(h1,h2,p,small,.eyebrow,.section-heading) { position:relative; }
+.hero,.hero-v2,.vv-hero-editorial {
+  background:linear-gradient(100deg,rgba(255,247,250,.79),rgba(255,238,246,.44) 47%,rgba(255,247,252,.20)) !important;
+  border:1px solid var(--vv-pearl-border);
+  border-radius:25px;
+  box-shadow:var(--vv-pearl-shadow);
+  overflow:hidden;
+}
+.vv-hero-editorial .vv-brand-collage:before { background:rgba(255,229,244,.45) !important; }
+.vv-hero-editorial .hero-copy,.hero-copy { background:transparent !important; }
+.vv-brand-collage,.hero-visual { background:transparent !important; }
+.vv-hero-editorial h1,.hero h1,.section-heading h2 { color:#6f3b54; }
+.vv-hero-editorial h1 em,.section-heading h2 span { color:#a65379; }
+.vv-hero-editorial .hero-copy>p,.hero p { color:#604654; }
+.vv-original-frame { background:rgba(255,252,253,.96) !important; box-shadow:0 12px 34px #6b3f5a20; }
+.benefits,.service-note {
+  background:rgba(255,246,250,.66) !important;
+  border-color:rgba(255,255,255,.70) !important;
+  backdrop-filter:blur(12px);
+}
+.vv-real-color-shop,.vv-real-moods,.featured-section,.color-shop { isolation:isolate; }
+.vv-real-color-card,.vv-real-mood,.vv-real-pink-feature,.vv-quiz-invite,.vv-brand-story,
+.vv-shop-card,.vv-catalog-card,.vv-commerce-card,.vv-checkout-summary,.account-card,
+.vv-help-grid > *, .vv-detail-page .vv-preview-notice,.vv-consult-card,.vv-quiz-results article {
+  border:1px solid var(--vv-pearl-border) !important;
+  background:var(--vv-pearl-panel) !important;
+  box-shadow:var(--vv-pearl-shadow);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.vv-real-mood.is-photo,.vv-real-color-card.is-blue,.vv-real-color-card.is-gray,.vv-real-color-card.is-brown { background:rgba(255,249,252,.78) !important; }
+.vv-real-color-image,.vv-real-mood>img,.vv-pink-photo img { background:#fffafc; }
+.vv-shop-card .vv-card-body,.vv-catalog-card .vv-card-body { background:rgba(255,250,252,.95) !important; }
+.vv-real-color-card:hover,.vv-shop-card:hover,.vv-catalog-card:hover { box-shadow:0 15px 40px #85486325; }
+.vv-real-pink-feature { overflow:hidden; }
+.chips button,.vv-style-filters button,.vv-brand-navigation .vv-nav-quiz,
+.vv-mood-nav-card,.vv-card-interactions button {
+  border-radius:999px;
+}
+.chips button:not(.active),.vv-style-filters button:not(.active) {
+  background:rgba(255,250,252,.91);
+  border:1px solid rgba(161,92,125,.2);
+}
+.catalog,.account,.admin,.vv-detail-page,.vv-checkout,.vv-help,.vv-receipt {
+  background:rgba(255,249,252,.70) !important;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:22px;
+  margin-top:22px !important;
+  margin-bottom:26px !important;
+  box-shadow:var(--vv-pearl-shadow);
+  backdrop-filter:blur(14px);
+}
+.vv-detail-grid,.vv-quick-grid { color:var(--vv-ink); }
+.vv-detail-gallery,.vv-gallery-stage,.vv-gallery-thumbs,.detail-grid>img {
+  background:rgba(255,250,252,.88);
+}
+.drawer,.modal,.vv-discovery-dialog {
+  background:#fff9fc !important;
+  color:var(--vv-ink);
+}
+:is(.drawer,.modal,.vv-discovery-dialog) input,
+:is(.drawer,.modal,.vv-discovery-dialog) textarea,
+:is(.drawer,.modal,.vv-discovery-dialog) select,
+.catalog input,.catalog select,.vv-checkout input,.vv-checkout select,.vv-checkout textarea {
+  background:#fff !important;
+  color:#503545 !important;
+}
+footer {
+  background:rgba(255,241,247,.88) !important;
+  border-top:1px solid rgba(255,255,255,.75);
+  backdrop-filter:blur(16px);
+}
+.footer-main,.footer-bottom { color:#674c5d; }
+.mobile-bottom-nav { background:rgba(255,248,252,.96) !important; backdrop-filter:blur(18px); }
+.vv-brand-navigation .vv-mood-navigation,.vv-mood-navigation {
+  background:rgba(255,250,252,.97);
+}
+@media(min-width:901px){
+  .vv-hero-editorial,.hero-v2 { max-width:1360px;margin:18px auto 12px; }
+  .vv-real-color-shop,.vv-real-moods,.featured-section { padding-block:34px; }
+}
+@media(max-width:900px){
+  body { background-attachment:scroll !important; background-size:auto 100vh !important; background-repeat:repeat-y !important; }
+  .vv-hero-editorial,.hero-v2 { border-radius:18px; margin:12px 12px 0; }
+  .catalog,.account,.admin,.vv-detail-page,.vv-checkout,.vv-help,.vv-receipt { margin:12px 10px 18px !important; border-radius:17px; }
+  header .vv-brand-navigation { background:#fff9fc !important; }
+}
+@media(max-width:650px){
+  .vv-hero-editorial,.hero-v2 { margin:9px 9px 0; border-radius:16px; }
+  .vv-hero-editorial .hero-copy { background:rgba(255,246,250,.24) !important; }
+  .vv-real-color-card,.vv-real-mood,.vv-shop-card,.vv-catalog-card { backdrop-filter:none; }
+  .catalog,.account,.admin,.vv-detail-page,.vv-checkout,.vv-help,.vv-receipt { margin:10px 8px 14px !important; padding-left:13px !important; padding-right:13px !important; }
+  footer { padding-bottom:85px; }
+}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
